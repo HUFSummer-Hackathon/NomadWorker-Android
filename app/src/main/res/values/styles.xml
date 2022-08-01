@@ -48,6 +48,10 @@
     <style name="TextHeadLine6">
         <item name="android:textSize">20dp</item>
     </style>
+    
+    <style name="TextHeadLine6.Black">
+        <item name="android:textColor">@color/nomad_black_01</item>
+    </style>
 
     <style name="TextHeadLine6.Bold">
         <item name="android:textStyle">bold</item>

@@ -76,6 +76,14 @@ object NomadSharedPreferences {
         setUserIsLogin(user.isLogin)
     }
 
+    fun logoutUser() {
+        setUserIsLogin(false)
+        setUserLatitude(0.0F)
+        setUserLongitude(0.0F)
+        setUserNickname(null)
+        setAccessToken(null)
+    }
+
     // 사용자 위치 갱신
     fun setLocation(latitude : Float, longitude : Float, address : String) {
         setUserLatitude(latitude)
@@ -87,5 +95,4 @@ object NomadSharedPreferences {
     fun removeToken() {
         setAccessToken(null)
     }
-
 }
