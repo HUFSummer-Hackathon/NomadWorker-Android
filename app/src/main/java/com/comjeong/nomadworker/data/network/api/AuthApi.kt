@@ -24,7 +24,7 @@ interface AuthApi {
         @Query("userEmail") userEmail: String
     ): UserEmailResponseData
 
-    @GET("user/nicknamecheck")
+    @GET("user/nickname")
     suspend fun getUserNicknameVerify(
         @Query("userNickname") nickname: String
     ): UserNicknameResponseData
