@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.FEED_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentMyPageBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
+import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
@@ -69,9 +71,19 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
     }
 
     private fun showBottomSheetDialog(){
-        val bottomSheet = BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialog)
-        bottomSheet.setContentView(R.layout.fragment_my_page_setting_bottom_sheet)
-        bottomSheet.show()
-    }
+        val settingsFragment = MyPageSettingBottomSheetFragment.getNewInstance { clickId ->
+            when (clickId) {
+                0 -> {
+                    Toast.makeText(requireContext(), "프로필 변경", Toast.LENGTH_SHORT).show()
+                }
+                1 -> {
+                    NomadSharedPreferences.logoutUser()
+                    Toast.makeText(requireContext(), "로그아웃 되었습니다 :)", Toast.LENGTH_SHORT).show()
+                    requireActivity().finish()
+                }
+            }
+        }
 
+        settingsFragment.show(childFragmentManager, settingsFragment.tag)
+    }
 }
