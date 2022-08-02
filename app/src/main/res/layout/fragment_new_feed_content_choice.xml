@@ -78,6 +78,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_done_to_write_content"
             style="@style/TextSubtitle1.Bold.White"
+            android:enabled="false"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

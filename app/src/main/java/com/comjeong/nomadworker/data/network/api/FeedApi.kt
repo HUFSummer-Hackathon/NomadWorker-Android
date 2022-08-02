@@ -1,5 +1,6 @@
 package com.comjeong.nomadworker.data.network.api
 
+import com.comjeong.nomadworker.data.model.feed.NewFeedPlaceSearchResultResponseData
 import com.comjeong.nomadworker.data.model.feed.TotalFeedsResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsResponseData
@@ -18,4 +19,9 @@ interface FeedApi {
     suspend fun getUserFeedDetail(
         @Query("f_id") feedId: Long
     ): UserFeedDetailResponseData
+
+    @GET("search/placetag")
+    suspend fun getNewFeedPlaceSearchResult(
+        @Query("placeName") placeName : String
+    ) : NewFeedPlaceSearchResultResponseData
 }
