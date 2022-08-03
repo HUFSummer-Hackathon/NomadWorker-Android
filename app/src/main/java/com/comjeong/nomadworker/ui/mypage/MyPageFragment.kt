@@ -12,19 +12,22 @@ import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentMyPageBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
 
     private val viewModel: MyPageViewModel by sharedViewModel()
+    private var userId: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        userId = NomadSharedPreferences.getUserId()
+        viewModel.userId = userId
+
         viewModel.getUserTotalFeedsWithInfo()
 
         return super.onCreateView(inflater, container, savedInstanceState)

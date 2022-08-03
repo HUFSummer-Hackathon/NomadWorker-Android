@@ -9,11 +9,13 @@ import com.comjeong.nomadworker.domain.model.signup.UserNicknameResult
 
 object SignUpMapper {
 
-    fun mapToSignUpResult(responseData: SignUpResponseData ): SignUpResult {
+    fun mapToSignUpResult(responseData: SignUpResponseData): SignUpResult {
         return SignUpResult(
             message = responseData.message,
             status = responseData.status,
             data = SignUpResult.MemberInfo(
+                userId = responseData.data.userId,
+                userProfileImageUrl = responseData.data.userProfileImageUrl,
                 userNickname = responseData.data.userNickname,
                 accessToken = responseData.data.accessToken,
                 latitude = responseData.data.latitude,

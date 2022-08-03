@@ -113,6 +113,8 @@ class SignUpViewModel(private val repository: SignUpRepository) : ViewModel() {
     private fun setUser(response: SignUpResult, loginStatus: Boolean) {
         NomadSharedPreferences.setUser(
             UserInfo(
+                userId = response.data.userId,
+                userProfileImageUrl= response.data.userProfileImageUrl,
                 userNickname = response.data.userNickname,
                 accessToken = response.data.accessToken,
                 latitude = response.data.latitude,

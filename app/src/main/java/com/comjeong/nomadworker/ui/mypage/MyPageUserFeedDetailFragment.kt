@@ -17,7 +17,6 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
 
     private val viewModel: MyPageViewModel by sharedViewModel()
     private var feedId: Long = 0
-    private var userId: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +24,6 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
         savedInstanceState: Bundle?
     ): View {
         feedId = requireArguments().getLong(FEED_ID_KEY)
-        userId = NomadSharedPreferences.getUserId()
         viewModel.feedId = feedId
 
         viewModel.getUserFeedDetail()
