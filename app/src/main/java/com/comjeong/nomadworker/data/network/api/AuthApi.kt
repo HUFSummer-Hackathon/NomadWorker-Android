@@ -1,5 +1,6 @@
 package com.comjeong.nomadworker.data.network.api
 
+import com.comjeong.nomadworker.data.model.mypage.ProfileImageResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserInfoResponseData
 import com.comjeong.nomadworker.data.model.signin.SignInRequestData
 import com.comjeong.nomadworker.data.model.signin.SignInResponseData
@@ -7,10 +8,8 @@ import com.comjeong.nomadworker.data.model.signup.SignUpRequestData
 import com.comjeong.nomadworker.data.model.signup.SignUpResponseData
 import com.comjeong.nomadworker.data.model.signup.UserEmailResponseData
 import com.comjeong.nomadworker.data.model.signup.UserNicknameResponseData
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface AuthApi {
 
@@ -36,4 +35,10 @@ interface AuthApi {
 
     @GET("user/profile")
     suspend fun getUserInfo(): UserInfoResponseData
+
+    @Multipart
+    @PUT("user/profile")
+    suspend fun updateUserProfileImage(
+        @Part profileImage: MultipartBody.Part
+    ): ProfileImageResponseData
 }
