@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.comjeong.nomadworker.common.Event
-import com.comjeong.nomadworker.domain.model.feed.UserTotalFeedResult
+import com.comjeong.nomadworker.domain.model.feed.UserTotalFeedsWithInfoResult
 import com.comjeong.nomadworker.domain.model.mypage.UserFeedDetailResult
-import com.comjeong.nomadworker.domain.model.mypage.UserInfoResult
 import com.comjeong.nomadworker.domain.repository.mypage.MyPageRepository
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
@@ -22,6 +21,13 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
             field = value
         }
 
+    private var _userId: Long = 0
+    var userId: Long = _userId
+        set(value) {
+            _userId = value
+            field = value
+        }
+
     private var _profileImage: MultipartBody.Part = MultipartBody.Part.createFormData("file", "file")
     var profileImage: MultipartBody.Part = _profileImage
         set(value) {
@@ -29,11 +35,11 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
             field = value
         }
 
-    private val _userInfo: MutableLiveData<UserInfoResult.Result> = MutableLiveData<UserInfoResult.Result>()
-    val userInfo: LiveData<UserInfoResult.Result> = _userInfo
+    private val _userFeedList: MutableLiveData<List<UserTotalFeedsWithInfoResult.Result.Feed>> = MutableLiveData<List<UserTotalFeedsWithInfoResult.Result.Feed>>()
+    val userFeedList: LiveData<List<UserTotalFeedsWithInfoResult.Result.Feed>> = _userFeedList
 
-    private val _userFeedList: MutableLiveData<List<UserTotalFeedResult.Result.Feed>> = MutableLiveData<List<UserTotalFeedResult.Result.Feed>>()
-    val userFeedList: LiveData<List<UserTotalFeedResult.Result.Feed>> = _userFeedList
+    private val _userInfo: MutableLiveData<UserTotalFeedsWithInfoResult.Result> = MutableLiveData<UserTotalFeedsWithInfoResult.Result>()
+    val userInfo: LiveData<UserTotalFeedsWithInfoResult.Result> = _userInfo
 
     private val _openFeedDetailEvent: MutableLiveData<Event<Long>> = MutableLiveData<Event<Long>>()
     val openFeedDetailEvent: LiveData<Event<Long>> = _openFeedDetailEvent
@@ -44,37 +50,18 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
     private val _message: MutableLiveData<Event<String>> = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> = _message
 
-    fun getUserInfo() {
+    fun getUserTotalFeedsWithInfo() {
         viewModelScope.launch {
             try {
-                val response = repository.getUserInfo()
+                val response = repository.getUserTotalFeedsWithInfo(_userId)
 
                 when (response.status) {
                     200 -> {
                         _userInfo.value = response.data
-                    }
-                    400 -> {
-                        _userInfo.value = response.data
-                    }
-                }
-
-                Timber.d("SUCCESS: $response")
-            } catch (e: Throwable) {
-                Timber.d("FAILED: $e")
-            }
-        }
-    }
-
-    fun getUserTotalFeed() {
-        viewModelScope.launch {
-            try {
-                val response = repository.getUserTotalFeed()
-
-                when (response.status) {
-                    200 -> {
                         _userFeedList.value = response.data?.feedList
                     }
                     400 -> {
+                        _userInfo.value = response.data
                         _userFeedList.value = emptyList()
                     }
                 }

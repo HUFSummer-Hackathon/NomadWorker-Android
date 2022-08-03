@@ -25,8 +25,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel.getUserInfo()
-        viewModel.getUserTotalFeed()
+        viewModel.getUserTotalFeedsWithInfo()
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -34,13 +33,18 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observeUserInfo()
         setUserFeed()
+        observeUserInfo()
         observeFeedDetailEvent()
-
 
         binding.btnMypageSetting.setOnClickListener {
             showBottomSheetDialog()
+        }
+    }
+
+    private fun observeUserInfo() {
+        viewModel.userInfo.observe(viewLifecycleOwner) { userInfo ->
+            binding.userInfo = userInfo
         }
     }
 
@@ -61,12 +65,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
             viewModel.userFeedList.observe(viewLifecycleOwner) { feedList ->
                 submitList(feedList)
             }
-        }
-    }
-
-    private fun observeUserInfo() {
-        viewModel.userInfo.observe(viewLifecycleOwner) { userInfo ->
-            binding.userInfo = userInfo
         }
     }
 

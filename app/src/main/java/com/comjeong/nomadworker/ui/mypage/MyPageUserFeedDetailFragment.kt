@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.FEED_ID_KEY
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentMyPageUserFeedDetailBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
@@ -16,6 +17,7 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
 
     private val viewModel: MyPageViewModel by sharedViewModel()
     private var feedId: Long = 0
+    private var userId: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +25,7 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
         savedInstanceState: Bundle?
     ): View {
         feedId = requireArguments().getLong(FEED_ID_KEY)
+        userId = NomadSharedPreferences.getUserId()
         viewModel.feedId = feedId
 
         viewModel.getUserFeedDetail()
