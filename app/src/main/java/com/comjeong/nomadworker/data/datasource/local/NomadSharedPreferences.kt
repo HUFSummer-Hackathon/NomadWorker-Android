@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.comjeong.nomadworker.common.Constants
 import com.comjeong.nomadworker.model.UserInfo
+import timber.log.Timber
 
 object NomadSharedPreferences {
     private const val ACCESS_TOKEN_KEY = "access_token"
@@ -88,7 +89,7 @@ object NomadSharedPreferences {
     // 로그인
     fun setUser(user: UserInfo) {
         setUserId(user.userId)
-        setUserProfileImage(user.userProfileImage)
+        setUserProfileImage(user.userProfileImageUrl)
         setUserNickname(user.userNickname)
         setUserLatitude(user.latitude)
         setUserLongitude(user.longitude)
@@ -116,5 +117,16 @@ object NomadSharedPreferences {
     // 토큰 삭제
     fun removeToken() {
         setAccessToken(null)
+    }
+
+    // 개발 용
+    fun loadUserInfo() {
+        Timber.d("${getUserId()}")
+        Timber.d("${getUserProfileImage()}")
+        Timber.d("${getUserNickName()}")
+        Timber.d("${getAccessToken()}")
+        Timber.d("${getUserLatitude()}")
+        Timber.d("${getUserLongitude()}")
+        Timber.d("${getUserIsLogin()}")
     }
 }

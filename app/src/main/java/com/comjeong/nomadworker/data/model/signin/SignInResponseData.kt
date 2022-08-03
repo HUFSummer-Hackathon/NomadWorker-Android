@@ -8,6 +8,8 @@ data class SignInResponseData(
     @SerializedName("data") val data: Result
 ) {
     data class Result(
+        @SerializedName("userid") val userId: Long,
+        @SerializedName("userUrl") val userProfileImageUrl: String?,
         @SerializedName("nickname") val nickname: String?,
         @SerializedName("token") val accessToken: String?,
         @SerializedName("latitude") val latitude: Float,

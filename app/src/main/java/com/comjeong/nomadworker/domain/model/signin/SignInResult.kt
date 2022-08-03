@@ -6,6 +6,8 @@ data class SignInResult(
     val data: Result
 ) {
     data class Result(
+        val userId: Long,
+        val userProfileImageUrl: String?,
         val nickname: String?,
         val accessToken: String?,
         val latitude: Float,

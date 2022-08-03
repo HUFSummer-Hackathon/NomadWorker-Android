@@ -48,6 +48,7 @@ class SignInViewModel(private val repository: SignInRepository) : ViewModel() {
                         _isLoginSuccess.value = Event(true)
                         _message.value = Event(response.message)
                         setUser(response, true)
+                        NomadSharedPreferences.loadUserInfo()
                     }
                     else -> {
                         _isLoginSuccess.value = Event(false)
@@ -66,6 +67,8 @@ class SignInViewModel(private val repository: SignInRepository) : ViewModel() {
     private fun setUser(response: SignInResult, loginStatus: Boolean) {
         NomadSharedPreferences.setUser(
             UserInfo(
+                userId = response.data.userId,
+                userProfileImageUrl = response.data.userProfileImageUrl,
                 userNickname = response.data.nickname,
                 accessToken = response.data.accessToken,
                 latitude = response.data.latitude,
