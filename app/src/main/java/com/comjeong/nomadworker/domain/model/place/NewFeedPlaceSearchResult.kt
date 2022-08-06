@@ -6,7 +6,7 @@ data class NewFeedPlaceSearchResult(
     val placeList : List<Result>?
 ) {
     data class Result(
-        val place_id : Long,
-        val place_name : String
+        val placeId : Long,
+        val placeName : String
     )
 }

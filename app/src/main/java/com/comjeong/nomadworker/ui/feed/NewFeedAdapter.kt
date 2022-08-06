@@ -35,7 +35,7 @@ class NewFeedDiffCallback() : DiffUtil.ItemCallback<NewFeedPlaceSearchResult.Res
         oldItem: NewFeedPlaceSearchResult.Result,
         newItem: NewFeedPlaceSearchResult.Result
     ): Boolean {
-        return oldItem.place_name == newItem.place_name
+        return oldItem.placeName == newItem.placeName
     }
 
     override fun areContentsTheSame(

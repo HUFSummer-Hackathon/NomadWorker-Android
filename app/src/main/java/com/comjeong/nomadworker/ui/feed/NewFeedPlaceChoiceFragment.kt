@@ -7,11 +7,10 @@ import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentNewFeedPlaceChoiceBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedCloseDialog
+import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedSuccessDialog
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
-import timber.log.Timber
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class NewFeedPlaceChoiceFragment : BaseFragment<FragmentNewFeedPlaceChoiceBinding>(R.layout.fragment_new_feed_place_choice){
 
@@ -25,6 +24,7 @@ class NewFeedPlaceChoiceFragment : BaseFragment<FragmentNewFeedPlaceChoiceBindin
         bindCancelFeedPosting()
 
         observeSelectingPlace()
+        observePostNewFeed()
     }
 
     private fun bindViews(){
@@ -33,8 +33,7 @@ class NewFeedPlaceChoiceFragment : BaseFragment<FragmentNewFeedPlaceChoiceBindin
         }
 
         binding.btnDoneToChoicePlace.setOnClickListener {
-            fillAllInfo()
-//            requireActivity().finish()
+            viewModel.postNewFeed()
         }
     }
 
@@ -60,7 +59,12 @@ class NewFeedPlaceChoiceFragment : BaseFragment<FragmentNewFeedPlaceChoiceBindin
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Timber.d("WRITING_TEXT -> $newText")
+                if(newText.isNullOrEmpty()){
+                    handleNextButton(false)
+                }
+                if(viewModel.isSelectPlace.value == true && newText != viewModel.placeName){
+                    handleNextButton(false)
+                }
                 return true
             }
         })
@@ -76,20 +80,21 @@ class NewFeedPlaceChoiceFragment : BaseFragment<FragmentNewFeedPlaceChoiceBindin
 
     private fun observeSelectingPlace() {
         viewModel.isSelectPlace.observe(viewLifecycleOwner) { isSelect ->
-            Timber.d("onClickPlace -> ${viewModel.placeName}")
-            binding.svSearchBar.setQuery(viewModel.placeName, true)
+            Timber.d("onClickPlace -> ${NewFeedInfo.placeName}")
+            binding.svSearchBar.setQuery(NewFeedInfo.placeName, true)
             handleNextButton(true)
         }
     }
 
-    private fun fillAllInfo() {
-        val feedContent = RequestBody.create("text/plain".toMediaTypeOrNull(),viewModel.content)
-        val placeId = RequestBody.create("text/plain".toMediaTypeOrNull(),viewModel.placeId.toString())
-        val feedInfoMap = HashMap<String, RequestBody>()
-        feedInfoMap["feed_content"] = feedContent
-        feedInfoMap["p_id"] = placeId
-        viewModel.map = feedInfoMap
-        Timber.d("SUCCESS FILL INFO -> ${viewModel.map.keys}")
+    private fun observePostNewFeed() {
+        viewModel.isSuccessPost.observe(viewLifecycleOwner) { isSuccess ->
+            if(isSuccess){
+                setNewFeedSuccessDialog(requireContext())
+            }
+            else{
+                Toast.makeText(requireActivity(), "다시 시도해주세요.", Toast.LENGTH_SHORT)
+            }
+        }
     }
 
     private fun handleNextButton(canEnable: Boolean) {
@@ -101,6 +106,4 @@ class NewFeedPlaceChoiceFragment : BaseFragment<FragmentNewFeedPlaceChoiceBindin
             binding.btnDoneToChoicePlace.setBackgroundResource(R.drawable.bg_grey06_radius_10)
         }
     }
-
-
 }

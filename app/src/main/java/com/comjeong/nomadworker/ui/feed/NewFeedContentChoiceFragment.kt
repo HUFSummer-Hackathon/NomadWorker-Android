@@ -10,14 +10,8 @@ import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedCloseDialog
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class NewFeedContentChoiceFragment : BaseFragment<FragmentNewFeedContentChoiceBinding>(R.layout.fragment_new_feed_content_choice) {
-
-    private val viewModel : FeedViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,7 +67,7 @@ class NewFeedContentChoiceFragment : BaseFragment<FragmentNewFeedContentChoiceBi
 
     private fun saveText() {
         val text = binding.tvContentInputContainer.text.toString()
-        viewModel.content = text
+        NewFeedInfo.content = text
     }
 
     private fun handleNextButton(canEnable: Boolean) {

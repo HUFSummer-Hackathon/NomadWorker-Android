@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> viewModel.onClickedPlace(place.place_name)}">
+        android:onClick="@{() -> viewModel.onClickedPlace(place.placeName,place.placeId)}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_place_name"
@@ -25,7 +25,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginEnd="28dp"
             android:layout_marginBottom="24dp"
-            android:text="@{place.place_name}"
+            android:text="@{place.placeName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -10,31 +10,11 @@ import com.comjeong.nomadworker.domain.repository.feed.FeedRepository
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import timber.log.Timber
+import java.io.File
 
 class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
-
-    private var _image: MultipartBody.Part = MultipartBody.Part.createFormData("file", "file")
-    var image : MultipartBody.Part = _image
-        set(value){
-            _image = value
-            field = value
-        }
-
-    private var _content: String = ""
-    var content : String = _content
-        set(value){
-            _content = value
-            field = value
-        }
-
-    private var _placeId: Long = 0
-    var placeId : Long = _placeId
-        set(value){
-            _placeId = value
-            field = value
-        }
 
     private var _placeName: String = ""
     var placeName : String = _placeName
@@ -43,18 +23,14 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
             field = value
         }
 
-    private var _map : HashMap<String, RequestBody> = hashMapOf()
-    var map : HashMap<String, RequestBody> = _map
-        set(value){
-            _map = value
-            field = value
-        }
-
     private val _placeList: MutableLiveData<List<NewFeedPlaceSearchResult.Result>> = MutableLiveData<List<NewFeedPlaceSearchResult.Result>>()
     val placeList: LiveData<List<NewFeedPlaceSearchResult.Result>> = _placeList
 
     private val _isSelectPlace: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val isSelectPlace: LiveData<Boolean> = _isSelectPlace
+
+    private val _isSuccessPost: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val isSuccessPost: LiveData<Boolean> = _isSuccessPost
 
     private val _feedList: MutableLiveData<List<TotalFeedsResult.Result>> = MutableLiveData<List<TotalFeedsResult.Result>>()
     val feedList: LiveData<List<TotalFeedsResult.Result>> = _feedList
@@ -94,18 +70,44 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
                         _placeList.value = emptyList()
                     }
                 }
-                Timber.d("SUCCESS: $response")
+                Timber.d("SUCCESS GET PLACE LIST: $response")
             } catch (e : Throwable) {
                 Timber.d("FAILED: $e")
             }
         }
     }
 
-    fun onClickedPlace(placeName : String) {
+    fun postNewFeed() {
+        viewModelScope.launch {
+            try{
+                val image = NewFeedInfo.image
+                val content = NewFeedInfo.content.toRequestBody("text/plain".toMediaTypeOrNull())
+                val placeId = NewFeedInfo.placeId.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+                val response = repository.postNewFeed(image,content,placeId)
+
+                when(response.status) {
+                    200 -> {
+                        _isSuccessPost.value = true
+                    }
+                    400 -> {
+                        _isSuccessPost.value = false
+                    }
+                }
+                Timber.d("SUCCESS POST NEW FEED $response")
+            } catch (e : Throwable) {
+                Timber.d("FAILED $e")
+            }
+        }
+    }
+
+    fun onClickedPlace(placeName : String, placeId : Long) {
         _placeName = placeName
         this.placeName = _placeName
+
+        NewFeedInfo.placeId = placeId
+        NewFeedInfo.placeName = placeName
+
         _isSelectPlace.value = true
-        Timber.d("PlaceClickEvent! -> $placeName")
     }
 
 }

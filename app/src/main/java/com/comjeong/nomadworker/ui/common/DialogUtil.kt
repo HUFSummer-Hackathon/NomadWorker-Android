@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import androidx.fragment.app.Fragment
 import com.comjeong.nomadworker.R
+import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedCloseDialog
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 
 object DialogUtil {
@@ -28,6 +29,16 @@ object DialogUtil {
                 this.requireActivity().finish()
             }
             .setNegativeButton("아니오",null)
+
+        builder.show()
+    }
+
+    fun Fragment.setNewFeedSuccessDialog(context: Context) {
+        val builder = AlertDialog.Builder(context)
+            .setMessage("피드가 등록되었습니다.")
+            .setPositiveButton("확인") { _, _ ->
+                this.requireActivity().finish()
+            }
 
         builder.show()
     }
