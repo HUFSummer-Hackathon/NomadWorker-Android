@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.comjeong.nomadworker.databinding.ItemMypageUserFeedBinding
-import com.comjeong.nomadworker.domain.model.feed.UserTotalFeedResult
+import com.comjeong.nomadworker.domain.model.feed.UserTotalFeedsWithInfoResult
 
-class UserFeedAdapter(private val viewModel: MyPageViewModel) : ListAdapter<UserTotalFeedResult.Result.Feed, UserFeedAdapter.UserFeedViewHolder>(
+class UserFeedAdapter(private val viewModel: MyPageViewModel) : ListAdapter<UserTotalFeedsWithInfoResult.Result.Feed, UserFeedAdapter.UserFeedViewHolder>(
     UserFeedDiffCallback()
 ) {
 
@@ -23,24 +23,24 @@ class UserFeedAdapter(private val viewModel: MyPageViewModel) : ListAdapter<User
     }
 
     inner class UserFeedViewHolder(private val binding: ItemMypageUserFeedBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindItems(feed: UserTotalFeedResult.Result.Feed) {
+        fun bindItems(feed: UserTotalFeedsWithInfoResult.Result.Feed) {
             binding.viewModel = viewModel
             binding.userFeed = feed
             binding.executePendingBindings()
         }
     }
 
-    class UserFeedDiffCallback() : DiffUtil.ItemCallback<UserTotalFeedResult.Result.Feed>() {
+    class UserFeedDiffCallback() : DiffUtil.ItemCallback<UserTotalFeedsWithInfoResult.Result.Feed>() {
         override fun areItemsTheSame(
-            oldItem: UserTotalFeedResult.Result.Feed,
-            newItem: UserTotalFeedResult.Result.Feed
+            oldItem: UserTotalFeedsWithInfoResult.Result.Feed,
+            newItem: UserTotalFeedsWithInfoResult.Result.Feed
         ): Boolean {
             return oldItem.feedId == newItem.feedId
         }
 
         override fun areContentsTheSame(
-            oldItem: UserTotalFeedResult.Result.Feed,
-            newItem: UserTotalFeedResult.Result.Feed
+            oldItem: UserTotalFeedsWithInfoResult.Result.Feed,
+            newItem: UserTotalFeedsWithInfoResult.Result.Feed
         ): Boolean {
             return oldItem == newItem
         }

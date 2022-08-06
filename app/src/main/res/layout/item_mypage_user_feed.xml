@@ -10,7 +10,7 @@
 
         <variable
             name="userFeed"
-            type="com.comjeong.nomadworker.domain.model.feed.UserTotalFeedResult.Result.Feed" />
+            type="com.comjeong.nomadworker.domain.model.feed.UserTotalFeedsWithInfoResult.Result.Feed" />
 
     </data>
 

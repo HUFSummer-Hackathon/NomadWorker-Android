@@ -9,6 +9,8 @@ object SignInMapper {
             message = body.message,
             status = body.status,
             data = SignInResult.Result(
+                userId = body.data.userId,
+                userProfileImageUrl = body.data.userProfileImageUrl,
                 nickname = body.data.nickname,
                 accessToken = body.data.accessToken,
                 latitude = body.data.latitude,

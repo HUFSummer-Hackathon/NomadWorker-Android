@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.FEED_ID_KEY
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentMyPageUserFeedDetailBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp

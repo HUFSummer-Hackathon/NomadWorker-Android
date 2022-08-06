@@ -1,13 +1,13 @@
 package com.comjeong.nomadworker.domain.model.feed
 
-import com.google.gson.annotations.SerializedName
-
-data class UserTotalFeedResult(
+data class UserTotalFeedsWithInfoResult(
     val message: String,
     val status: Int,
     val data: Result?
 ) {
     data class Result(
+        val userNickname: String?,
+        val userProfileImage: String?,
         val feedList: List<Feed>?
     ) {
         data class Feed(
