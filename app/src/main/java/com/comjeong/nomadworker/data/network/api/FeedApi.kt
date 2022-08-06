@@ -1,10 +1,13 @@
 package com.comjeong.nomadworker.data.network.api
 
+import com.comjeong.nomadworker.data.model.feed.NewFeedPlaceSearchResultResponseData
+import com.comjeong.nomadworker.data.model.feed.PostNewFeedResponseData
 import com.comjeong.nomadworker.data.model.feed.TotalFeedsResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
-import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsResponseData
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 interface FeedApi {
 
@@ -20,4 +23,17 @@ interface FeedApi {
     suspend fun getUserFeedDetail(
         @Query("f_id") feedId: Long
     ): UserFeedDetailResponseData
+
+    @GET("search/placetag")
+    suspend fun getNewFeedPlaceSearchResult(
+        @Query("placeName") placeName : String
+    ) : NewFeedPlaceSearchResultResponseData
+
+    @Multipart
+    @POST("feeds/new")
+    suspend fun postNewFeed(
+        @Part file : MultipartBody.Part,
+        @Part("feed_content") content : RequestBody,
+        @Part("p_id") placeId : RequestBody
+    ) : PostNewFeedResponseData
 }

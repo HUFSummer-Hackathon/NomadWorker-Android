@@ -1,7 +1,11 @@
 package com.comjeong.nomadworker.data.mapper
 
+import com.comjeong.nomadworker.data.model.feed.NewFeedPlaceSearchResultResponseData
+import com.comjeong.nomadworker.data.model.feed.PostNewFeedResponseData
 import com.comjeong.nomadworker.data.model.feed.TotalFeedsResponseData
+import com.comjeong.nomadworker.domain.model.feed.PostNewFeedResult
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
+import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
 
 object FeedMapper {
 
@@ -23,4 +27,25 @@ object FeedMapper {
             }
         )
     }
+
+    fun mapToNewFeedPlaceSearchResult(body: NewFeedPlaceSearchResultResponseData): NewFeedPlaceSearchResult {
+        return NewFeedPlaceSearchResult(
+            message = body.message,
+            status = body.status,
+            placeList = body.placeList?.map { place ->
+                NewFeedPlaceSearchResult.Result(
+                    placeId = place.placeId,
+                    placeName = place.placeName
+                )
+            }
+        )
+    }
+
+    fun mapToPostNewFeedResult(body: PostNewFeedResponseData) : PostNewFeedResult {
+        return PostNewFeedResult(
+            message = body.message,
+            status = body.status
+        )
+    }
+
 }
