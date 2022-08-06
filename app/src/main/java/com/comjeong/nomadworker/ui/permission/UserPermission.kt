@@ -22,10 +22,13 @@ object UserPermission {
     }
 
     fun Activity.isGrantedPhotoGalleryPermission() : Boolean {
-        val photoGallery = ContextCompat.checkSelfPermission(this,
+        val photoGalleryRead = ContextCompat.checkSelfPermission(this,
             android.Manifest.permission.READ_EXTERNAL_STORAGE)
 
-        return photoGallery == PackageManager.PERMISSION_GRANTED
+        val photoGalleryWrite = ContextCompat.checkSelfPermission(this,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        return (photoGalleryRead == PackageManager.PERMISSION_GRANTED) && (photoGalleryWrite == PackageManager.PERMISSION_GRANTED)
     }
 
     fun Activity.isGrantedAllPermission() : Boolean {
@@ -40,14 +43,16 @@ object UserPermission {
 
     fun Activity.requestPhotoGalleryPermission(){
         ActivityCompat.requestPermissions(this,
-            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),2)
+            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 2)
     }
 
     fun Activity.requestAllPermission(){
         ActivityCompat.requestPermissions(this,
             arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION,
                 android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE),3)
+                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE),3)
     }
 
     fun isGrantedPermission(grantResults : IntArray) : Boolean {
