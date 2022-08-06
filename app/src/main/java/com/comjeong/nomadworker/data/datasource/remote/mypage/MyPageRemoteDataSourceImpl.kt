@@ -1,9 +1,9 @@
 package com.comjeong.nomadworker.data.datasource.remote.mypage
 
 import com.comjeong.nomadworker.data.datasource.source.mypage.MyPageDataSource
-import com.comjeong.nomadworker.data.model.mypage.ProfileImageResponseData
+import com.comjeong.nomadworker.data.model.mypage.response.ProfileImageResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
-import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
+import com.comjeong.nomadworker.data.model.mypage.response.UserTotalFeedsWithInfoResponseData
 import com.comjeong.nomadworker.data.network.api.AuthApi
 import com.comjeong.nomadworker.data.network.api.FeedApi
 import okhttp3.MultipartBody

@@ -1,6 +1,6 @@
 package com.comjeong.nomadworker.data.network.api
 
-import com.comjeong.nomadworker.data.model.mypage.ProfileImageResponseData
+import com.comjeong.nomadworker.data.model.mypage.response.ProfileImageResponseData
 import com.comjeong.nomadworker.data.model.signin.SignInRequestData
 import com.comjeong.nomadworker.data.model.signin.SignInResponseData
 import com.comjeong.nomadworker.data.model.signup.SignUpRequestData
