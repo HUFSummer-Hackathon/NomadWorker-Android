@@ -28,7 +28,7 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
             field = value
         }
 
-    private var _profileImage: MultipartBody.Part = MultipartBody.Part.createFormData("file", "file")
+    private var _profileImage: MultipartBody.Part = MultipartBody.Part.createFormData("image", "file")
     var profileImage: MultipartBody.Part = _profileImage
         set(value) {
             _profileImage = value
@@ -94,6 +94,7 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
     }
 
     fun updateUserProfileImage() {
+        Timber.d("TEST $_profileImage")
         viewModelScope.launch {
             try {
                 val response = repository.updateUserProfileImage(_profileImage)
