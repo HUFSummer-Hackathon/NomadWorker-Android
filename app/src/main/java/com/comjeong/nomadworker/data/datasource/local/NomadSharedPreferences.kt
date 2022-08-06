@@ -121,12 +121,12 @@ object NomadSharedPreferences {
 
     // 개발 용
     fun loadUserInfo() {
-        Timber.d("${getUserId()}")
-        Timber.d("${getUserProfileImage()}")
-        Timber.d("${getUserNickName()}")
-        Timber.d("${getAccessToken()}")
-        Timber.d("${getUserLatitude()}")
-        Timber.d("${getUserLongitude()}")
-        Timber.d("${getUserIsLogin()}")
+        Timber.d("USER_ID => ${getUserId()}")
+        Timber.d("USER_IMAGE => ${getUserProfileImage()}")
+        Timber.d("USER_NICKNAME => ${getUserNickName()}")
+        Timber.d("USER_TOKEN => ${getAccessToken()}")
+        Timber.d("USER_LATITUDE => ${getUserLatitude()}")
+        Timber.d("USER_LONGITUDE => ${getUserLongitude()}")
+        Timber.d("USER_IS_LOGIN => ${getUserIsLogin()}")
     }
 }
