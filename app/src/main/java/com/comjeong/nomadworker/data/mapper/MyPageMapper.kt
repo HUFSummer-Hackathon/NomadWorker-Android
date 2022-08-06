@@ -1,8 +1,8 @@
 package com.comjeong.nomadworker.data.mapper
 
-import com.comjeong.nomadworker.data.model.mypage.response.ProfileImageResponseData
+import com.comjeong.nomadworker.data.model.mypage.ProfileImageResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
-import com.comjeong.nomadworker.data.model.mypage.response.UserTotalFeedsWithInfoResponseData
+import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
 import com.comjeong.nomadworker.domain.model.feed.UserTotalFeedsWithInfoResult
 import com.comjeong.nomadworker.domain.model.mypage.ProfileImageResult
 import com.comjeong.nomadworker.domain.model.mypage.UserFeedDetailResult

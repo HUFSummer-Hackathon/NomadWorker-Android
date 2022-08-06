@@ -4,7 +4,7 @@ import com.comjeong.nomadworker.data.model.feed.NewFeedPlaceSearchResultResponse
 import com.comjeong.nomadworker.data.model.feed.PostNewFeedResponseData
 import com.comjeong.nomadworker.data.model.feed.TotalFeedsResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
-import com.comjeong.nomadworker.data.model.mypage.response.UserTotalFeedsWithInfoResponseData
+import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*

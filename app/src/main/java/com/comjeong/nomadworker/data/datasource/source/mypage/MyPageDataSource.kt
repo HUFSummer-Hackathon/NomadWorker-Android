@@ -1,8 +1,8 @@
 package com.comjeong.nomadworker.data.datasource.source.mypage
 
-import com.comjeong.nomadworker.data.model.mypage.response.ProfileImageResponseData
+import com.comjeong.nomadworker.data.model.mypage.ProfileImageResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
-import com.comjeong.nomadworker.data.model.mypage.response.UserTotalFeedsWithInfoResponseData
+import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
 import okhttp3.MultipartBody
 
 interface MyPageDataSource {

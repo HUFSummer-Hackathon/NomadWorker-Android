@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.data.model.mypage.response
+package com.comjeong.nomadworker.data.model.mypage
 
 import com.google.gson.annotations.SerializedName
 
