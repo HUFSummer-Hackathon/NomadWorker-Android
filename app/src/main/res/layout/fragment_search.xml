@@ -12,18 +12,22 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/nomad_white">
+            android:background="@color/nomad_white"
+            app:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/tb_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/nomad_white"
+                android:paddingTop="24dp"
+                android:paddingBottom="10dp"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:title="오늘 근무할 장소를 찾아보세요"
-                app:titleTextAppearance="@style/TextHeadLine6.Bold.Black" />
+                app:titleTextAppearance="@style/TextHeadLine5.Black01.Bold" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -40,9 +44,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_bluegrey_radius_10"
+                    android:background="@drawable/bg_white_radius_10_stroke_bluegrey"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -52,15 +56,16 @@
                     android:id="@+id/cl_search_option"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sv_search">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_search_option"
-                        style="@style/TextSubtitle2.Bold.Blue"
                         android:layout_width="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/nomad_primary_blue"
                         android:layout_height="wrap_content"
                         android:text="@string/search_detail"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +75,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_marginStart="0dp"
                         android:src="@drawable/ic_forward_24"
                         app:layout_constraintBottom_toBottomOf="@id/tv_search_option"
                         app:layout_constraintStart_toEndOf="@id/tv_search_option"
@@ -91,7 +96,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cl_search_option"
-                    tools:listitem="@layout/item_search_place" />
+                    tools:listitem="@layout/item_search_result" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,6 +5,7 @@ import com.comjeong.nomadworker.data.datasource.remote.feed.FeedsRemoteDataSourc
 import com.comjeong.nomadworker.data.datasource.remote.home.HomeRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.place.PlaceDetailRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.place.PlaceRegionRemoteDataSourceImpl
+import com.comjeong.nomadworker.data.datasource.remote.search.PlaceSearchDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.signin.SignInRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.signup.SignUpRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.source.SignInDataSource
@@ -14,6 +15,7 @@ import com.comjeong.nomadworker.data.datasource.source.home.HomeRemoteDataSource
 import com.comjeong.nomadworker.data.datasource.source.mypage.MyPageDataSource
 import com.comjeong.nomadworker.data.datasource.source.place.PlaceDetailDataSource
 import com.comjeong.nomadworker.data.datasource.source.place.PlaceRegionDataSource
+import com.comjeong.nomadworker.data.datasource.source.search.PlaceSearchDataSource
 import org.koin.dsl.module
 
 val dataSourceModule = module {
@@ -24,4 +26,5 @@ val dataSourceModule = module {
     single<PlaceDetailDataSource> { PlaceDetailRemoteDataSourceImpl(get()) }
     single<FeedsDataSource> { FeedsRemoteDataSourceImpl(get()) }
     single<MyPageDataSource> { MyPageRemoteDataSourceImpl(get(), get()) }
+    single<PlaceSearchDataSource> { PlaceSearchDataSourceImpl(get()) }
 }

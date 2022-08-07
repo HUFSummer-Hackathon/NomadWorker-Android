@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_home_to_place_detail"
             app:destination="@id/navigation_place_detail" />
+        <action
+            android:id="@+id/action_navigation_home_to_searchFragment"
+            app:destination="@id/navigation_search" />
     </fragment>
 
     <fragment
@@ -74,10 +77,23 @@
             android:id="@+id/action_place_region_to_place_detail"
             app:destination="@id/navigation_place_detail" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_feed_detail"
         android:name="com.comjeong.nomadworker.ui.mypage.MyPageUserFeedDetailFragment"
         android:label="MyPageUserFeedDetailFragment"
         tools:layout="@layout/fragment_my_page_user_feed_detail"/>
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.comjeong.nomadworker.ui.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_search_option"
+            app:destination="@id/navigation_search_option" />
+    </fragment>
+
+
 
 </navigation>

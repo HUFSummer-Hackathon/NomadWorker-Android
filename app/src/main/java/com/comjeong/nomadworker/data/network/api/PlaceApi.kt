@@ -7,6 +7,7 @@ import com.comjeong.nomadworker.data.model.home.UpdateCurrentLocationRequestData
 import com.comjeong.nomadworker.data.model.home.UpdateCurrentLocationResponseData
 import com.comjeong.nomadworker.data.model.place.NearbyPlaceResponseData
 import com.comjeong.nomadworker.data.model.place.PlaceDetailResponseData
+import com.comjeong.nomadworker.data.model.search.PlaceSearchResponseData
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PUT
@@ -40,5 +41,12 @@ interface PlaceApi {
 
     @GET("place/recommend")
     suspend fun getRecommendPlace(): RecommendPlaceResponseData
+
+    @GET("search/place")
+    suspend fun getPlaceSearchResult(
+        @Query("place_cat") location: String,
+        @Query("place_Storetype") storetype: String,
+        @Query("place_name") placeName: String
+    ): PlaceSearchResponseData
 }
 
