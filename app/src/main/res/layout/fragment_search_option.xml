@@ -25,10 +25,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_option_location"
-            style="@style/TextSubtitle1.Bold.Black01"
+            style="@style/TextHeadLine5.Black01.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/location"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,11 +38,13 @@
             android:id="@+id/cg_option_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_option_location">
+            app:layout_constraintTop_toBottomOf="@id/tv_option_location"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_seoul"
@@ -81,10 +83,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_option_place"
-            style="@style/TextSubtitle1.Bold.Black01"
+            style="@style/TextHeadLine5.Black01.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:text="@string/place"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,11 +96,13 @@
             android:id="@+id/cg_option_place"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_option_place">
+            app:layout_constraintTop_toBottomOf="@id/tv_option_place"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_cafe"
@@ -123,8 +127,8 @@
             style="@style/TextSubtitle1.Bold.White"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/bg_blue_radius_10"
             android:text="@string/ok"

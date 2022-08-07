@@ -2,7 +2,6 @@ package com.comjeong.nomadworker.ui.feed
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentFeedBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment

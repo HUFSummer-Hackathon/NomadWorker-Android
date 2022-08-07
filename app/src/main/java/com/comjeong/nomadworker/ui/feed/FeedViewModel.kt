@@ -9,10 +9,8 @@ import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
 import com.comjeong.nomadworker.domain.repository.feed.FeedRepository
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import timber.log.Timber
-import java.io.File
 
 class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
 

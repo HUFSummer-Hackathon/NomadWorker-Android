@@ -18,7 +18,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import com.comjeong.nomadworker.NomadWorkerApplication.Companion.getAppContext
 import com.comjeong.nomadworker.R
-import com.comjeong.nomadworker.common.BitmapRequestBody
 import com.comjeong.nomadworker.common.Constants.FEED_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
@@ -27,7 +26,6 @@ import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
 import com.comjeong.nomadworker.ui.permission.UserPermission.isGrantedPhotoGalleryPermission
 import com.comjeong.nomadworker.ui.permission.UserPermission.requestPhotoGalleryPermission
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody

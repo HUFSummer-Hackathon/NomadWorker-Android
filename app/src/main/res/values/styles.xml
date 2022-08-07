@@ -127,6 +127,10 @@
         <item name="android:textColor">@color/nomad_accent_red</item>
     </style>
 
+    <style name="TextSubtitle2.Blue">
+        <item name="android:textColor">@color/nomad_primary_blue</item>
+    </style>
+
     <style name="TextSubtitle2.Bold.Blue">
         <item name="android:textColor">@color/nomad_primary_blue</item>
     </style>
@@ -166,6 +170,10 @@
     </style>
 
     <!-- Image Style -->
+    <style name="RoundCorner8">
+        <item name="cornerSize">8dp</item>
+    </style>
+
     <style name="RoundCorner10">
         <item name="cornerSize">10dp</item>
     </style>
@@ -199,10 +207,13 @@
 
     <!-- Chip Style -->
     <style name="ChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="rippleColor">@color/nomad_secondary_yellow_gradient</item>
+        <item name="chipStartPadding">20dp</item>
+        <item name="chipEndPadding">20dp</item>
         <item name="chipBackgroundColor">@drawable/selector_chip_background</item>
         <item name="chipStrokeColor">@drawable/selector_chip_stroke</item>
         <item name="chipStrokeWidth">1dp</item>
-        <item name="shapeAppearanceOverlay">@style/RoundCorner10</item>
-        <item name="android:textAppearance">@style/TextSubtitle2.Bold</item>
+        <item name="shapeAppearanceOverlay">@style/RoundCorner8</item>
+        <item name="android:textAppearance">@style/TextSubtitle1</item>
     </style>
 </resources>
