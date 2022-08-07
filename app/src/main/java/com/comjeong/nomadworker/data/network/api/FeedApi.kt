@@ -1,8 +1,6 @@
 package com.comjeong.nomadworker.data.network.api
 
-import com.comjeong.nomadworker.data.model.feed.NewFeedPlaceSearchResultResponseData
-import com.comjeong.nomadworker.data.model.feed.PostNewFeedResponseData
-import com.comjeong.nomadworker.data.model.feed.TotalFeedsResponseData
+import com.comjeong.nomadworker.data.model.feed.*
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
 import okhttp3.MultipartBody
@@ -36,4 +34,9 @@ interface FeedApi {
         @Part("feed_content") content : RequestBody,
         @Part("p_id") placeId : RequestBody
     ) : PostNewFeedResponseData
+
+    @POST("feeds/like")
+    suspend fun postFeedLike(
+        @Body body: FeedLikeRequestData
+    ): FeedLikeResponseData
 }

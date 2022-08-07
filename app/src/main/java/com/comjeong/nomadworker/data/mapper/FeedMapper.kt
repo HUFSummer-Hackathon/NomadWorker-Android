@@ -1,8 +1,7 @@
 package com.comjeong.nomadworker.data.mapper
 
-import com.comjeong.nomadworker.data.model.feed.NewFeedPlaceSearchResultResponseData
-import com.comjeong.nomadworker.data.model.feed.PostNewFeedResponseData
-import com.comjeong.nomadworker.data.model.feed.TotalFeedsResponseData
+import com.comjeong.nomadworker.data.model.feed.*
+import com.comjeong.nomadworker.domain.model.feed.FeedLikeResult
 import com.comjeong.nomadworker.domain.model.feed.PostNewFeedResult
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
 import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
@@ -48,4 +47,14 @@ object FeedMapper {
         )
     }
 
+    fun mapToFeedLikeResult(body: FeedLikeResponseData): FeedLikeResult {
+        return FeedLikeResult(
+            message = body.message,
+            status = body.status,
+            data = FeedLikeResult.Result(
+                likeStatus = body.data?.likeStatus,
+                likeCount = body.data?.likeCount
+            )
+        )
+    }
 }
