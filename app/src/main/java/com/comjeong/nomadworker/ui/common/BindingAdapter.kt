@@ -1,13 +1,11 @@
 package com.comjeong.nomadworker.ui.common
 
-import android.view.View
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.GlideApp
-import com.comjeong.nomadworker.domain.model.place.PlaceDetailResult
 import java.text.DecimalFormat
 
 object BindingAdapter {
@@ -44,6 +42,12 @@ object BindingAdapter {
     @BindingAdapter("toString")
     fun setToString(view: AppCompatTextView, likeCount: Int) {
         view.text = likeCount.toString()
+    }
+
+    @JvmStatic
+    @BindingAdapter("bindLikeStatus")
+    fun setLikeStatus(view: AppCompatImageButton, isSelected: Boolean) {
+        view.isSelected = isSelected
     }
 
 //    @JvmStatic

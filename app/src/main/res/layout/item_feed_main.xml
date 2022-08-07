@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="1dp"
-            android:background="@drawable/ic_dislike_24"
+            android:background="@drawable/selector_like_heart"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_profile"
             app:layout_constraintEnd_toStartOf="@id/tv_like_count"
             app:layout_constraintTop_toTopOf="@id/iv_user_profile" />
