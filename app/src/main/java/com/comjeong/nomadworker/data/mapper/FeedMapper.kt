@@ -21,6 +21,7 @@ object FeedMapper {
                     feedImageUrl = feed.feedImageUrl,
                     feedContent = feed.feedContent,
                     feedLike = feed.feedLike,
+                    feedLikeStatus = feed.likeStatus,
                     placeName = feed.placeName
                 )
             }
@@ -50,11 +51,7 @@ object FeedMapper {
     fun mapToFeedLikeResult(body: FeedLikeResponseData): FeedLikeResult {
         return FeedLikeResult(
             message = body.message,
-            status = body.status,
-            data = FeedLikeResult.Result(
-                likeStatus = body.data?.likeStatus,
-                likeCount = body.data?.likeCount
-            )
+            status = body.status
         )
     }
 }

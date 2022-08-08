@@ -1,5 +1,6 @@
 package com.comjeong.nomadworker.ui.common
 
+import android.widget.ImageButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
@@ -46,8 +47,9 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("bindLikeStatus")
-    fun setLikeStatus(view: AppCompatImageButton, isSelected: Boolean) {
-        view.isSelected = isSelected
+    fun setLikeStatus(view: ImageButton, favorite: Boolean) {
+        var select = true
+        view.isSelected = favorite
     }
 
 //    @JvmStatic

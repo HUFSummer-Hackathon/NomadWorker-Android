@@ -15,6 +15,7 @@ data class TotalFeedsResult(
         val feedImageUrl: String,
         val feedContent: String,
         val feedLike: Int,
+        val feedLikeStatus: Boolean,
         val placeName: String
     )
 }

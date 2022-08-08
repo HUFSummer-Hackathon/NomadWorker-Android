@@ -35,7 +35,7 @@ interface FeedApi {
         @Part("p_id") placeId : RequestBody
     ) : PostNewFeedResponseData
 
-    @POST("feeds/like")
+    @POST("feeds/likes")
     suspend fun postFeedLike(
         @Body body: FeedLikeRequestData
     ): FeedLikeResponseData

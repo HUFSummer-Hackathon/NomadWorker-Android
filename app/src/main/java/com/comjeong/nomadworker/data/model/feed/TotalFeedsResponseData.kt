@@ -14,7 +14,8 @@ data class TotalFeedsResponseData(
         @SerializedName("f_id") val feedId: Long,
         @SerializedName("f_image") val feedImageUrl: String,
         @SerializedName("f_content") val feedContent: String,
-        @SerializedName("f_like") val feedLike: Int,
+        @SerializedName("f_like_count") val feedLike: Int,
+        @SerializedName("like_status") val likeStatus: Boolean,
         @SerializedName("p_name") val placeName: String
     )
 }
