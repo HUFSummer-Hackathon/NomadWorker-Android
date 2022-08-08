@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.comjeong.nomadworker.data.model.feed.FeedLikeRequestData
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
 import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
 import com.comjeong.nomadworker.domain.repository.feed.FeedRepository
+import com.comjeong.nomadworker.ui.common.extension.default
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -21,6 +23,7 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
             field = value
         }
 
+
     private val _placeList: MutableLiveData<List<NewFeedPlaceSearchResult.Result>> = MutableLiveData<List<NewFeedPlaceSearchResult.Result>>()
     val placeList: LiveData<List<NewFeedPlaceSearchResult.Result>> = _placeList
 
@@ -32,6 +35,12 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
 
     private val _feedList: MutableLiveData<List<TotalFeedsResult.Result>> = MutableLiveData<List<TotalFeedsResult.Result>>()
     val feedList: LiveData<List<TotalFeedsResult.Result>> = _feedList
+
+    private val _isFavorite: MutableLiveData<Int> = MutableLiveData<Int>()
+    val isFavorite: LiveData<Int> = _isFavorite
+
+    private val _likesCount: MutableLiveData<Int> = MutableLiveData<Int>()
+    val likesCount: LiveData<Int> = _likesCount
 
     fun getTotalFeeds() {
         viewModelScope.launch {
@@ -93,6 +102,28 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
                 }
                 Timber.d("SUCCESS POST NEW FEED $response")
             } catch (e : Throwable) {
+                Timber.d("FAILED $e")
+            }
+        }
+    }
+
+    fun postFeedLike(feedLikeRequestData: FeedLikeRequestData) {
+        viewModelScope.launch {
+            try {
+                val response = repository.postFeedLike(feedLikeRequestData)
+
+                when (response.status) {
+                    200 -> {
+                        Timber.d("좋아요 통신 성공")
+
+                    }
+                    400 -> {
+                        Timber.d("좋아요 통신 실패")
+                    }
+                }
+
+                Timber.d("SUCCESS: $response")
+            } catch (e: Throwable) {
                 Timber.d("FAILED $e")
             }
         }

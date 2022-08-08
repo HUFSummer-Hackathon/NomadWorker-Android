@@ -7,8 +7,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.comjeong.nomadworker.databinding.ItemFeedMainBinding
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
+import timber.log.Timber
 
-class FeedAdapter : ListAdapter<TotalFeedsResult.Result, FeedAdapter.FeedViewHolder>(FeedDiffCallback()) {
+class FeedAdapter(
+    private val viewModel: FeedViewModel,
+    val feedLike: FeedFragment.FeedLike
+) : ListAdapter<TotalFeedsResult.Result, FeedAdapter.FeedViewHolder>(FeedDiffCallback()) {
+
+    private var isLikeClick = true
+    private var feedId: Long = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -20,10 +27,33 @@ class FeedAdapter : ListAdapter<TotalFeedsResult.Result, FeedAdapter.FeedViewHol
         holder.bindItems(getItem(position))
     }
 
-    inner class FeedViewHolder(private val binding: ItemFeedMainBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class FeedViewHolder(private val binding: ItemFeedMainBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bindItems(feed: TotalFeedsResult.Result) {
             binding.feed = feed
+            binding.viewModel = viewModel
             binding.executePendingBindings()
+
+            setLikeButtonClickListener(feed)
+        }
+
+        private fun setLikeButtonClickListener(feed: TotalFeedsResult.Result) {
+            binding.btnLike.setOnClickListener {
+                Timber.d("$isLikeClick")
+                if (isLikeClick) {
+                    it.isSelected = !feed.feedLikeStatus
+
+                    binding.tvLikeCount.text = "${feed.feedLike.plus(1)}"
+                    isLikeClick = false
+                } else {
+                    it.isSelected = feed.feedLikeStatus
+                    binding.tvLikeCount.text = "${feed.feedLike}"
+                    isLikeClick = true
+                }
+
+                feedId = feed.feedId
+                feedLike.getFeedId(feedId)
+            }
         }
     }
 

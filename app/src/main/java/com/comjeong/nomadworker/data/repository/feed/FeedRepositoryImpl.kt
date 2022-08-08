@@ -2,6 +2,9 @@ package com.comjeong.nomadworker.data.repository.feed
 
 import com.comjeong.nomadworker.data.datasource.source.feed.FeedsDataSource
 import com.comjeong.nomadworker.data.mapper.FeedMapper
+import com.comjeong.nomadworker.data.model.feed.FeedLikeRequestData
+import com.comjeong.nomadworker.data.model.feed.FeedLikeResponseData
+import com.comjeong.nomadworker.domain.model.feed.FeedLikeResult
 import com.comjeong.nomadworker.domain.model.feed.PostNewFeedResult
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
 import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
@@ -21,5 +24,9 @@ class FeedRepositoryImpl(private val dataSource: FeedsDataSource) : FeedReposito
     override suspend fun postNewFeed(placeImage: MultipartBody.Part, content: RequestBody, placeId: RequestBody)
     : PostNewFeedResult {
         return FeedMapper.mapToPostNewFeedResult(dataSource.postNewFeed(placeImage, content, placeId))
+    }
+
+    override suspend fun postFeedLike(body: FeedLikeRequestData): FeedLikeResult {
+        return FeedMapper.mapToFeedLikeResult(dataSource.postFeedLike(body))
     }
 }

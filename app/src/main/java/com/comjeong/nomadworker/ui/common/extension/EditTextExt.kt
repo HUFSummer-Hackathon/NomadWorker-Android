@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.ui.common
+package com.comjeong.nomadworker.ui.common.extension
 
 import android.text.Editable
 import android.text.TextWatcher

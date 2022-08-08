@@ -5,6 +5,10 @@
 
     <data>
         <variable
+            name="viewModel"
+            type="com.comjeong.nomadworker.ui.feed.FeedViewModel" />
+
+        <variable
             name="feed"
             type="com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult.Result" />
 
@@ -51,12 +55,14 @@
             app:layout_constraintTop_toTopOf="@id/iv_user_profile"
             tools:text="강원도불주먹" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/btn_like"
+            app:layout_constraintCircleRadius="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="1dp"
-            android:background="@drawable/ic_dislike_24"
+            bindLikeStatus="@{feed.feedLikeStatus}"
+            android:background="@drawable/selector_like_heart"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_profile"
             app:layout_constraintEnd_toStartOf="@id/tv_like_count"
             app:layout_constraintTop_toTopOf="@id/iv_user_profile" />

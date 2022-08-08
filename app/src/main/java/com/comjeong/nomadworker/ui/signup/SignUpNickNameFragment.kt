@@ -3,12 +3,8 @@ package com.comjeong.nomadworker.ui.signup
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentSignUpNickNameBinding
@@ -16,20 +12,7 @@ import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.DialogUtil.setSignUpCloseDialog
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
-import com.comjeong.nomadworker.ui.common.NavigationUtil.popBackStack
-import com.comjeong.nomadworker.ui.common.textChangesToFlow
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
-import kotlin.coroutines.CoroutineContext
 
 class SignUpNickNameFragment :
     BaseFragment<FragmentSignUpNickNameBinding>(R.layout.fragment_sign_up_nick_name) {
