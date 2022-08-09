@@ -18,6 +18,8 @@
     <color name="nomad_grey_07">#d6d6d6</color>
     <color name="nomad_grey_08">#e9e9e9</color>
     <color name="nomad_grey_09">#eeeff1</color>
-    <color name="nomad_blue_grey">#e2e2e6</color>
+    <color name="nomad_blue_grey">#e2e2e6</color>을
+    <color name="nomad_blue_grey_transparent">#aae2e2e6</color>
     <color name="nomad_white">#ffffff</color>
+    <color name="nomad_white_transparent">#aaffffff</color>
 </resources>

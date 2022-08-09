@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_radius_10">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_place_name"
+        style="@style/TextHeadLine6.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="커피에 반하다" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/rb_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:isIndicator="false"
+        android:progressBackgroundTint="@color/nomad_blue_grey"
+        android:progressTint="@color/nomad_secondary_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_place_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_evaluation_number"
+        style="@style/TextSubtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/nomad_secondary_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_rating"
+        tools:text="4.5" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_alert"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="@string/evaluation_alert"
+        android:textColor="@color/nomad_accent_red"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_evaluation_number" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_close"
+        style="@style/TextSubtitle1.Bold.Blue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_white_radius_10_stroke_blue"
+        android:stateListAnimator="@null"
+        android:text="@string/close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_add_evaluation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_alert" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_evaluation"
+        style="@style/TextSubtitle1.Bold.White"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_blue_radius_10"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/add_evaluation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_close"
+        app:layout_constraintTop_toBottomOf="@id/tv_alert" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_recommend_address"
-            style="@style/TextSubtitle3.Grey07"
+            style="@style/TextSubtitle1.Bold.White"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
