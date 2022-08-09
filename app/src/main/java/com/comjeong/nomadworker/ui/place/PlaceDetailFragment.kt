@@ -120,6 +120,7 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
         val evaluationButton =  view.findViewById<Button>(R.id.btn_add_evaluation)
         val closeButton = view.findViewById<Button>(R.id.btn_close)
         val ratingBar = view.findViewById<RatingBar>(R.id.rb_rating)
+
         placeName.text = binding.tvPlaceName.text
         ratingNumber.text = ratingBar.rating.toString()
 
@@ -134,7 +135,8 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
                 alertMessage.visibility = View.VISIBLE
             }
             else{
-                // TODO( 서버에 평점 바뀐 것을 전송 및 업데이트 된 평점을 뷰에 적용 )
+                // TODO( 서버에 평점바뀐 것을 전송 및 업데이트 된 평점을 뷰에 적용 )
+                // 우선은 정상동작 체크를 위해서 확인을 누르면 다이얼로그가 종료되게끔 dismiss()로 임시설정함
                 alertDialog.dismiss()
             }
         }

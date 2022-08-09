@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="placeInfo"
             type="com.comjeong.nomadworker.domain.model.place.PlaceDetailResult.Result" />
@@ -83,19 +84,22 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
                     android:text="@{placeInfo.placeName}"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_place_detail_thumbnail"
-                    tools:text="커피에반하다" />
+                    tools:text="커피에반했는데 피자에 반했는데 그런데 말입니다" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_place_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="@{placeInfo.placeStoreType}"
-                    android:textColor="@color/nomad_grey_04"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_place_name"
-                    app:layout_constraintStart_toEndOf="@id/tv_place_name"
+                    android:textColor="@color/nomad_grey_01"
+                    app:layout_constraintTop_toBottomOf="@id/rb_evaluation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="6dp"
                     tools:text="카페" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -119,17 +123,17 @@
                     android:isIndicator="true"
                     android:progressTint="@color/nomad_secondary_yellow"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_place_name"/>
+                    app:layout_constraintTop_toBottomOf="@id/tv_place_name" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
-                    android:textColor="@color/nomad_grey_04"
+                    android:text="(4.5)"
+                    android:textColor="@color/nomad_grey_01"
                     app:layout_constraintBottom_toBottomOf="@id/rb_evaluation"
                     app:layout_constraintStart_toEndOf="@id/rb_evaluation"
                     app:layout_constraintTop_toTopOf="@id/rb_evaluation"
-                    android:text="(4.5)"
                     tools:text="(4.5)" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -140,7 +144,7 @@
                     android:layout_marginTop="26dp"
                     android:src="@drawable/ic_place_detail_address_22"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rb_evaluation" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_place_type" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_icon_clock"
@@ -273,8 +277,8 @@
                     android:id="@+id/mv_place_map"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
-                    android:layout_marginTop="12dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="80dp"
                     android:clickable="false"
