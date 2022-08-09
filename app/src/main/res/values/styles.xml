@@ -160,6 +160,9 @@
         <item name="android:textColor">@color/nomad_grey_07</item>
     </style>
 
+    <style name="TextSubtitle3.Grey03">
+        <item name="android:textColor">@color/nomad_grey_03</item>
+    </style>
     <style name="TextSubtitle3.Black01">
         <item name="android:textColor">@color/nomad_black_01</item>
     </style>

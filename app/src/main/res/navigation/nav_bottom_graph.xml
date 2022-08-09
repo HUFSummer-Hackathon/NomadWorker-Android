@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_my_page_to_feed_detail"
             app:destination="@id/navigation_feed_detail" />
+        <action
+            android:id="@+id/action_my_page_to_settings"
+            app:destination="@id/navigation_settings" />
     </fragment>
 
     <fragment
@@ -94,6 +97,11 @@
             app:destination="@id/navigation_search_option" />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
 
 
 </navigation>

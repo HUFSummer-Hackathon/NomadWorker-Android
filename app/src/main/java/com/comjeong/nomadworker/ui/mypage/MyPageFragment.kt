@@ -23,6 +23,7 @@ import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentMyPageBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
+import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
 import com.comjeong.nomadworker.ui.permission.UserPermission.isGrantedPhotoGalleryPermission
 import com.comjeong.nomadworker.ui.permission.UserPermission.requestPhotoGalleryPermission
@@ -84,6 +85,10 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
 
         binding.btnMypageSetting.setOnClickListener {
             showBottomSheetDialog()
+        }
+
+        binding.btnMypageSetting.setOnClickListener {
+            navigate(R.id.action_my_page_to_settings)
         }
     }
 
