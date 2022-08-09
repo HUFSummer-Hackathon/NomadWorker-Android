@@ -101,7 +101,24 @@
         android:id="@+id/navigation_settings"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsFragment"
         android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings"/>
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settings_to_tos"
+            app:destination="@id/navigation_settings_tos" />
+        <action
+            android:id="@+id/action_settings_to_privacy"
+            app:destination="@id/navigation_settings_privacy" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_settings_tos"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsTosFragment"
+        android:label="SettingsTosFragment"
+        tools:layout="@layout/fragment_settings_tos"/>
+    <fragment
+        android:id="@+id/navigation_settings_privacy"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsPrivacyFragment"
+        android:label="SettingsPrivacyFragment"
+        tools:layout="@layout/fragment_settings_privacy"/>
 
 
 </navigation>
