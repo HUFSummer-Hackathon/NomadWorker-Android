@@ -14,8 +14,10 @@ import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.CustomDialog
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.signin.SignInActivity
+import com.google.android.gms.oss.licenses.OssLicensesActivity
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
-class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment_settings){
+class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,6 +30,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
         with(binding) {
             tvUserNickname.text = NomadSharedPreferences.getUserNickName()
             tvVersionInfo.text = "v ${getVersionName()}"
+
             // 프로필 이미지 수정
             tvUpdateProfileImage.setOnClickListener {
 
@@ -65,20 +68,23 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
 
             // 오픈소스 라이선스
             tvOssLicense.setOnClickListener {
-
+                startActivity(Intent(requireActivity(), OssLicensesMenuActivity::class.java))
+                OssLicensesMenuActivity.setActivityTitle("오픈소스 라이선스")
             }
 
             // 로그아웃
             tvLogout.setOnClickListener {
                 val dialog = CustomDialog(requireActivity())
                 dialog.showDialog("로그아웃 하시겠습니까?", "그동안의 정보들은 연동된 계정에 안전하게 보관됩니다 :)", true)
-                dialog.setDialogButtonClickListener(object : CustomDialog.DialogButtonClickListener {
+                dialog.setDialogButtonClickListener(object :
+                    CustomDialog.DialogButtonClickListener {
                     override fun onClicked(event: CustomDialog.DialogEvent) {
                         when (event) {
                             // 로그아웃 처리
                             CustomDialog.DialogEvent.POSITIVE -> {
                                 NomadSharedPreferences.logoutUser()
-                                Toast.makeText(requireActivity(), "로그아웃 되었습니다", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireActivity(), "로그아웃 되었습니다", Toast.LENGTH_SHORT)
+                                    .show()
                                 ActivityCompat.finishAffinity(requireActivity())
                                 startActivity(Intent(requireActivity(), SignInActivity::class.java))
                             }

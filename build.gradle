@@ -1,4 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    dependencies {
+        classpath 'com.google.android.gms:oss-licenses-plugin:0.10.4'
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.2.1' apply false
     id 'com.android.library' version '7.2.1' apply false
@@ -22,6 +28,7 @@ ext {
     coroutineVersion = '1.6.1'
     koinVersion = '3.1.5'
     googleMapsVersion = '18.1.0'
+    ossVersion = '17.0.0'
 }
 task clean(type: Delete) {
     delete rootProject.buildDir
