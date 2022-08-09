@@ -43,7 +43,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
 
             // 공지사항 보기
             tvNotice.setOnClickListener {
-
+                navigate(R.id.action_settings_to_notice)
             }
 
             // 1:1 문의

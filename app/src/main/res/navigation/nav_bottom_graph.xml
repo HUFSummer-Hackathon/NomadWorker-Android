@@ -108,6 +108,9 @@
         <action
             android:id="@+id/action_settings_to_privacy"
             app:destination="@id/navigation_settings_privacy" />
+        <action
+            android:id="@+id/action_settings_to_notice"
+            app:destination="@id/navigation_settings_notice" />
     </fragment>
     <fragment
         android:id="@+id/navigation_settings_tos"
@@ -119,6 +122,11 @@
         android:name="com.comjeong.nomadworker.ui.setting.SettingsPrivacyFragment"
         android:label="SettingsPrivacyFragment"
         tools:layout="@layout/fragment_settings_privacy"/>
+    <fragment
+        android:id="@+id/navigation_settings_notice"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsNoticeFragment"
+        android:label="SettingsNoticeFragment"
+        tools:layout="@layout/fragment_settings_notice"/>
 
 
 </navigation>

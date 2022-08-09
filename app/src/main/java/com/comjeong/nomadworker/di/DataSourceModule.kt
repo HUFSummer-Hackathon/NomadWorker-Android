@@ -1,5 +1,6 @@
 package com.comjeong.nomadworker.di
 
+import com.comjeong.nomadworker.data.datasource.local.SettingsDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.mypage.MyPageRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.feed.FeedsRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.home.HomeRemoteDataSourceImpl
@@ -16,6 +17,7 @@ import com.comjeong.nomadworker.data.datasource.source.mypage.MyPageDataSource
 import com.comjeong.nomadworker.data.datasource.source.place.PlaceDetailDataSource
 import com.comjeong.nomadworker.data.datasource.source.place.PlaceRegionDataSource
 import com.comjeong.nomadworker.data.datasource.source.search.PlaceSearchDataSource
+import com.comjeong.nomadworker.data.datasource.source.settings.SettingsDataSource
 import org.koin.dsl.module
 
 val dataSourceModule = module {
@@ -27,4 +29,5 @@ val dataSourceModule = module {
     single<FeedsDataSource> { FeedsRemoteDataSourceImpl(get()) }
     single<MyPageDataSource> { MyPageRemoteDataSourceImpl(get(), get()) }
     single<PlaceSearchDataSource> { PlaceSearchDataSourceImpl(get()) }
+    single<SettingsDataSource> { SettingsDataSourceImpl() }
 }
