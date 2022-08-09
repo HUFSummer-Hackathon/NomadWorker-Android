@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="subtitle"
+            type="String" />
+
+        <variable
+            name="subtitleVisibility"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_radius_10"
+        android:padding="24dp">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_notice"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_notice_accent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_dialog_title"
+            style="@style/TextSubtitle1.Bold.Black01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_notice"
+            tools:text="로그아웃 하실건가요?" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_dialog_subtitle"
+            style="@style/TextSubtitle2.Grey05"
+            subtitle="@{subtitle}"
+            visibility="@{subtitleVisibility}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:maxWidth="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_dialog_title"
+            tools:text="그동안의 정보들은 연동된 계정에 안전하게 보관됩니다 :)" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_negative"
+            style="@style/TextSubtitle2.Grey02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_bluegrey_radius_10"
+            android:paddingStart="48dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="48dp"
+            android:paddingBottom="16dp"
+            android:text="@string/cancel"
+            app:layout_constraintEnd_toStartOf="@id/tv_positive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_dialog_subtitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_positive"
+            style="@style/TextSubtitle2.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_solid_red_radius_10"
+            android:paddingStart="48dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="48dp"
+            android:paddingBottom="16dp"
+            android:text="@string/ok"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_negative"
+            app:layout_constraintTop_toBottomOf="@id/tv_dialog_subtitle" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
