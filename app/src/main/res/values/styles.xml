@@ -119,8 +119,20 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextSubtitle2.Black01">
+        <item name="android:textColor">@color/nomad_black_01</item>
+    </style>
+
     <style name="TextSubtitle2.Grey">
         <item name="android:textColor">@color/nomad_grey_06</item>
+    </style>
+
+    <style name="TextSubtitle2.Grey02">
+        <item name="android:textColor">@color/nomad_grey_02</item>
+    </style>
+
+    <style name="TextSubtitle2.Grey05">
+        <item name="android:textColor">@color/nomad_grey_05</item>
     </style>
 
     <style name="TextSubtitle2.Red">
