@@ -48,12 +48,12 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
 
             // 1:1 문의
             tvContactOneByOne.setOnClickListener {
-
+                navigate(R.id.action_settings_to_contact)
             }
 
             // 사용자 신고하기
             tvReportUser.setOnClickListener {
-
+                navigate(R.id.action_settings_to_report)
             }
 
             // 서비스 이용 약관

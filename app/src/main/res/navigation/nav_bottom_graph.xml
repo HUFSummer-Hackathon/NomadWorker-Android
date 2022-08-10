@@ -111,6 +111,12 @@
         <action
             android:id="@+id/action_settings_to_notice"
             app:destination="@id/navigation_settings_notice" />
+        <action
+            android:id="@+id/action_settings_to_contact"
+            app:destination="@id/navigation_settings_contact" />
+        <action
+            android:id="@+id/action_settings_to_report"
+            app:destination="@id/navigation_settings_report" />
     </fragment>
     <fragment
         android:id="@+id/navigation_settings_tos"
@@ -127,6 +133,16 @@
         android:name="com.comjeong.nomadworker.ui.setting.SettingsNoticeFragment"
         android:label="SettingsNoticeFragment"
         tools:layout="@layout/fragment_settings_notice"/>
+    <fragment
+        android:id="@+id/navigation_settings_contact"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsContactFragment"
+        android:label="SettingsContactFragment"
+        tools:layout="@layout/fragment_settings_contact"/>
+    <fragment
+        android:id="@+id/navigation_settings_report"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsReportFragment"
+        android:label="SettingsReportFragment"
+        tools:layout="@layout/fragment_settings_report"/>
 
 
 </navigation>

@@ -8,6 +8,8 @@ object Constants {
     const val BASE_URL = "http://3.37.224.92:8080/api/"
     const val TOS_URL = "https://dev-wotjd.notion.site/30102a46da7d4f65af7b9af8a9769f3d"
     const val PRIVACY_POLICY_URL = "https://dev-wotjd.notion.site/7e6065d1856745f5bffa7a5411c650ca"
+    const val CONTACT_ONE_BY_ONE_URL = "https://docs.google.com/forms/d/e/1FAIpQLSekosCqDM2Fqi3hdCpXx7wQQfD0onSLtFKg4yiCGidDgCX0UQ/viewform?usp=sf_link"
+    const val REPORT_USER_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdm7ZJWq3-ZjGyiNvdM3WbnGQAJ1sliAltSNLbDFIZ0xtVKvg/viewform?usp=sf_link"
     const val CAMERA_ZOOM = 17f
     const val DEFAULT_LATITUDE : Float = 37.5666805F
     const val DEFAULT_LONGITUDE : Float = 126.9784147F
