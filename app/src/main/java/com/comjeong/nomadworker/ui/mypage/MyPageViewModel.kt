@@ -9,7 +9,6 @@ import com.comjeong.nomadworker.domain.model.feed.UserTotalFeedsWithInfoResult
 import com.comjeong.nomadworker.domain.model.mypage.UserFeedDetailResult
 import com.comjeong.nomadworker.domain.repository.mypage.MyPageRepository
 import kotlinx.coroutines.launch
-import okhttp3.MultipartBody
 import timber.log.Timber
 
 class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
@@ -25,13 +24,6 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
     var userId: Long = _userId
         set(value) {
             _userId = value
-            field = value
-        }
-
-    private var _profileImage: MultipartBody.Part = MultipartBody.Part.createFormData("image", "file")
-    var profileImage: MultipartBody.Part = _profileImage
-        set(value) {
-            _profileImage = value
             field = value
         }
 
@@ -87,27 +79,6 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
                     }
                 }
                 Timber.d("SUCCESS: $response")
-            } catch (e: Throwable) {
-                Timber.d("FAILED: $e")
-            }
-        }
-    }
-
-    fun updateUserProfileImage() {
-        Timber.d("TEST $_profileImage")
-        viewModelScope.launch {
-            try {
-                val response = repository.updateUserProfileImage(_profileImage)
-
-                when (response.status) {
-                    200 -> {
-                        // 업로드 성공, 갱신
-                        _message.value = Event(response.message)
-                    }
-                    400 -> {
-                        _message.value = Event(response.message)
-                    }
-                }
             } catch (e: Throwable) {
                 Timber.d("FAILED: $e")
             }

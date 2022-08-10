@@ -3,7 +3,7 @@ package com.comjeong.nomadworker.ui.setting
 import android.os.Bundle
 import android.view.View
 import com.comjeong.nomadworker.R
-import com.comjeong.nomadworker.data.datasource.local.SettingsDataSourceImpl
+import com.comjeong.nomadworker.data.datasource.local.SettingsLocalDataSourceImpl
 import com.comjeong.nomadworker.databinding.FragmentSettingsNoticeBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
@@ -28,7 +28,7 @@ class SettingsNoticeFragment :
     }
 
     private fun setRecyclerView() {
-        val noticeData = SettingsDataSourceImpl().fetchNoticeData()
+        val noticeData = SettingsLocalDataSourceImpl().fetchNoticeData()
         Timber.d("$noticeData")
 
         noticeAdapter = NoticeAdapter()

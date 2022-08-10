@@ -1,9 +1,10 @@
 package com.comjeong.nomadworker.data.datasource.local
 
-import com.comjeong.nomadworker.data.datasource.source.settings.SettingsDataSource
+import com.comjeong.nomadworker.data.datasource.source.settings.SettingsLocalDataSource
+import com.comjeong.nomadworker.data.datasource.source.settings.SettingsRemoteDataSource
 import com.comjeong.nomadworker.data.model.settings.NoticeLocalData
 
-class SettingsDataSourceImpl : SettingsDataSource {
+class SettingsLocalDataSourceImpl : SettingsLocalDataSource {
 
     override fun fetchNoticeData(): MutableList<NoticeLocalData> {
         return mutableListOf(
