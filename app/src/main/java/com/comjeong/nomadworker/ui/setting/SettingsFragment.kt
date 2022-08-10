@@ -12,6 +12,7 @@ import com.comjeong.nomadworker.databinding.FragmentSettingsBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.CustomDialog
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
+import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
 import com.comjeong.nomadworker.ui.signin.SignInActivity
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
@@ -29,9 +30,13 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
             tvUserNickname.text = NomadSharedPreferences.getUserNickName()
             tvVersionInfo.text = "v ${getVersionName()}"
 
+            tbSettings.setNavigationOnClickListener {
+                navigateUp()
+            }
+
             // 프로필 이미지 수정
             tvUpdateProfileImage.setOnClickListener {
-
+                navigate(R.id.action_settings_to_profile)
             }
 
             // 스크랩한 장소 보기

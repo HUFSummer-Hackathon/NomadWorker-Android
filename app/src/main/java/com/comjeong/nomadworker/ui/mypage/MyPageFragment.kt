@@ -44,23 +44,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
     lateinit var currentImagePath: String
     lateinit var file: File
 
-    private val singleImageResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val imageUri = result.data?.data
-                Timber.d("$imageUri")
-                imageUri?.let { uri ->
-                    setBitmapFromUriByVersion(uri)
-
-                    file = convertUriToFile(requireContext(), imageUri)
-                    Timber.d("$file")
-
-                    viewModel.profileImage = convertFileToMultiPart(file)
-
-                    viewModel.updateUserProfileImage()
-                }
-            }
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,9 +66,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
         observeUserInfo()
         observeFeedDetailEvent()
 
-        binding.btnMypageSetting.setOnClickListener {
-            showBottomSheetDialog()
-        }
+//        binding.btnMypageSetting.setOnClickListener {
+//            showBottomSheetDialog()
+//        }
 
         binding.btnMypageSetting.setOnClickListener {
             navigate(R.id.action_my_page_to_settings)
@@ -120,37 +103,37 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
         }
     }
 
-    private fun showBottomSheetDialog() {
-        val settingsFragment = MyPageSettingBottomSheetFragment.getNewInstance { clickId ->
-            when (clickId) {
-                0 -> {
-                    if (requireActivity().isGrantedPhotoGalleryPermission()) {
-                        openGallery()
-                    } else {
-                        requireActivity().requestPhotoGalleryPermission()
-                    }
-                }
-                1 -> {
-                    NomadSharedPreferences.logoutUser()
-                    Toast.makeText(requireContext(), "로그아웃 되었습니다 :)", Toast.LENGTH_SHORT).show()
-                    requireActivity().finish()
-                }
-            }
-        }
+//    private fun showBottomSheetDialog() {
+//        val settingsFragment = MyPageSettingBottomSheetFragment.getNewInstance { clickId ->
+//            when (clickId) {
+//                0 -> {
+//                    if (requireActivity().isGrantedPhotoGalleryPermission()) {
+//                        openGallery()
+//                    } else {
+//                        requireActivity().requestPhotoGalleryPermission()
+//                    }
+//                }
+//                1 -> {
+//                    NomadSharedPreferences.logoutUser()
+//                    Toast.makeText(requireContext(), "로그아웃 되었습니다 :)", Toast.LENGTH_SHORT).show()
+//                    requireActivity().finish()
+//                }
+//            }
+//        }
+//
+//        settingsFragment.show(childFragmentManager, settingsFragment.tag)
+//    }
 
-        settingsFragment.show(childFragmentManager, settingsFragment.tag)
-    }
-
-    private fun openGallery() {
-        val intent = Intent().apply {
-            action = Intent.ACTION_GET_CONTENT
-            setDataAndType(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                "image/*"
-            )
-        }
-        singleImageResult.launch(intent)
-    }
+//    private fun openGallery() {
+//        val intent = Intent().apply {
+//            action = Intent.ACTION_GET_CONTENT
+//            setDataAndType(
+//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+//                "image/*"
+//            )
+//        }
+//        singleImageResult.launch(intent)
+//    }
 
     private fun convertUriToFile(context: Context, uri: Uri): File {
         val file = createImageFile(context, uri)

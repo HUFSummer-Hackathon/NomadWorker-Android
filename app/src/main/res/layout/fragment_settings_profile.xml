@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,6 +9,47 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/nomad_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tb_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentInsetStartWithNavigation="0dp"
+                app:navigationIcon="@drawable/ic_back_24"
+                app:title="프로필 수정" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="48dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_home_banner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/abl_profile"
+            app:shapeAppearanceOverlay="@style/circleImageView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_update_profile"
+            style="@style/TextSubtitle2.Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="프로필 사진 변경하기"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -117,6 +117,9 @@
         <action
             android:id="@+id/action_settings_to_report"
             app:destination="@id/navigation_settings_report" />
+        <action
+            android:id="@+id/action_settings_to_profile"
+            app:destination="@id/navigation_settings_profile" />
     </fragment>
     <fragment
         android:id="@+id/navigation_settings_tos"
@@ -143,6 +146,11 @@
         android:name="com.comjeong.nomadworker.ui.setting.SettingsReportFragment"
         android:label="SettingsReportFragment"
         tools:layout="@layout/fragment_settings_report"/>
+    <fragment
+        android:id="@+id/navigation_settings_profile"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsProfileFragment"
+        android:label="SettingsProfileFragment"
+        tools:layout="@layout/fragment_settings_profile"/>
 
 
 </navigation>
