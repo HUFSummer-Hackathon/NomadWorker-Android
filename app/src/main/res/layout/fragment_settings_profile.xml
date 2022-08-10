@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="profileImage"
+            type="String" />
 
     </data>
 
@@ -30,11 +33,11 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_profile"
+            imageUrl="@{profileImage}"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginTop="48dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_home_banner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/abl_profile"
