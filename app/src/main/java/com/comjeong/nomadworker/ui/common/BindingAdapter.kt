@@ -1,7 +1,6 @@
 package com.comjeong.nomadworker.ui.common
 
 import android.widget.ImageButton
-import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
@@ -50,6 +49,20 @@ object BindingAdapter {
     fun setLikeStatus(view: ImageButton, favorite: Boolean) {
         var select = true
         view.isSelected = favorite
+    }
+
+    @JvmStatic
+    @BindingAdapter("visibility", "subtitle")
+    fun setSubtitleVisibility(View: AppCompatTextView, visibility: Boolean, subtitle: String) {
+        when (visibility) {
+            true -> {
+                View.visibility = android.view.View.VISIBLE
+                View.text = subtitle
+            }
+            false -> {
+                View.visibility = android.view.View.GONE
+            }
+        }
     }
 
 //    @JvmStatic

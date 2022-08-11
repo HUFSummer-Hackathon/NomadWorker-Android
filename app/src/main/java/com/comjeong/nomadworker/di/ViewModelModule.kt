@@ -6,6 +6,7 @@ import com.comjeong.nomadworker.ui.mypage.MyPageViewModel
 import com.comjeong.nomadworker.ui.place.PlaceDetailViewModel
 import com.comjeong.nomadworker.ui.place.PlaceRegionViewModel
 import com.comjeong.nomadworker.ui.search.SearchViewModel
+import com.comjeong.nomadworker.ui.setting.SettingsViewModel
 import com.comjeong.nomadworker.ui.signin.SignInViewModel
 import com.comjeong.nomadworker.ui.signup.SignUpViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -20,4 +21,5 @@ val viewModelModule = module {
     viewModel { FeedViewModel(get()) }
     viewModel { MyPageViewModel(get()) }
     viewModel { SearchViewModel(get()) }
+    viewModel { SettingsViewModel(get()) }
 }
