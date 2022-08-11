@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         findNavController().addOnDestinationChangedListener { _, destination, _ ->
             binding.bnvMain.visibility =
                 when (destination.id) {
-                    R.id.navigation_feed, R.id.navigation_home,
+                    R.id.navigation_feed, R.id.navigation_home, R.id.navigation_search,
                     R.id.navigation_my_page -> View.VISIBLE
                     else -> View.GONE
             }
