@@ -21,7 +21,7 @@ import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
@@ -29,7 +29,7 @@ import java.io.IOException
 
 class SettingsProfileFragment : BaseFragment<FragmentSettingsProfileBinding>(R.layout.fragment_settings_profile) {
 
-    private val viewModel: SettingsViewModel by viewModel()
+    private val viewModel: SettingsViewModel by sharedViewModel()
 
     lateinit var file: File
 

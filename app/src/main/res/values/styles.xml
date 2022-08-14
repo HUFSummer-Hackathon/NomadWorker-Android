@@ -90,6 +90,10 @@
         <item name="android:textColor">@color/nomad_black_01</item>
     </style>
 
+    <style name="TextSubtitle1.Blue">
+        <item name="android:textColor">@color/nomad_primary_blue</item>
+    </style>
+
     <style name="TextSubtitle1.Bold">
         <item name="android:textStyle">bold</item>
     </style>
