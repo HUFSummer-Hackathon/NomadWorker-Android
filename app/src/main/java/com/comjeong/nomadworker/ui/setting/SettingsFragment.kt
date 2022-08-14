@@ -41,7 +41,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
 
             // 스크랩한 장소 보기
             tvScrap.setOnClickListener {
-
+                navigate(R.id.action_settings_to_scrap)
             }
 
             // 공지사항 보기

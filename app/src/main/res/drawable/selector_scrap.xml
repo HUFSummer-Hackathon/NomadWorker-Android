@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="12dp"
+        android:end="12dp"
+        android:start="12dp"
+        android:top="12dp">
+
+        <selector>
+            <item
+                android:drawable="@drawable/ic_scrap_activate_28"
+                android:state_selected="true" />
+            <item android:drawable="@drawable/ic_scrap_disable_28" />
+        </selector>
+    </item>
+</layer-list>
+
+

@@ -120,6 +120,9 @@
         <action
             android:id="@+id/action_settings_to_profile"
             app:destination="@id/navigation_settings_profile" />
+        <action
+            android:id="@+id/action_settings_to_scrap"
+            app:destination="@id/navigation_settings_scrap" />
     </fragment>
     <fragment
         android:id="@+id/navigation_settings_tos"
@@ -151,6 +154,11 @@
         android:name="com.comjeong.nomadworker.ui.setting.SettingsProfileFragment"
         android:label="SettingsProfileFragment"
         tools:layout="@layout/fragment_settings_profile"/>
+    <fragment
+        android:id="@+id/navigation_settings_scrap"
+        android:name="com.comjeong.nomadworker.ui.setting.SettingsPlaceScrapFragment"
+        android:label="SettingsPlaceScrapFragment"
+        tools:layout="@layout/fragment_settings_place_scrap"/>
 
 
 </navigation>
