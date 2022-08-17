@@ -6,6 +6,7 @@ import com.comjeong.nomadworker.data.datasource.remote.feed.FeedsRemoteDataSourc
 import com.comjeong.nomadworker.data.datasource.remote.home.HomeRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.place.PlaceDetailRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.place.PlaceRegionRemoteDataSourceImpl
+import com.comjeong.nomadworker.data.datasource.remote.reply.ReplyDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.search.PlaceSearchDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.settings.SettingsRemoteDataSourceImpl
 import com.comjeong.nomadworker.data.datasource.remote.signin.SignInRemoteDataSourceImpl
@@ -17,6 +18,7 @@ import com.comjeong.nomadworker.data.datasource.source.home.HomeRemoteDataSource
 import com.comjeong.nomadworker.data.datasource.source.mypage.MyPageDataSource
 import com.comjeong.nomadworker.data.datasource.source.place.PlaceDetailDataSource
 import com.comjeong.nomadworker.data.datasource.source.place.PlaceRegionDataSource
+import com.comjeong.nomadworker.data.datasource.source.reply.ReplyDataSource
 import com.comjeong.nomadworker.data.datasource.source.search.PlaceSearchDataSource
 import com.comjeong.nomadworker.data.datasource.source.settings.SettingsLocalDataSource
 import com.comjeong.nomadworker.data.datasource.source.settings.SettingsRemoteDataSource
@@ -33,4 +35,5 @@ val dataSourceModule = module {
     single<PlaceSearchDataSource> { PlaceSearchDataSourceImpl(get()) }
     single<SettingsLocalDataSource> { SettingsLocalDataSourceImpl() }
     single<SettingsRemoteDataSource> { SettingsRemoteDataSourceImpl(get()) }
+    single<ReplyDataSource> { ReplyDataSourceImpl(get()) }
 }

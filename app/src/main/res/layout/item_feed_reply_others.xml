@@ -1,64 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="16dp"
-    android:paddingStart="8dp"
-    android:paddingEnd="8dp"
-    android:paddingBottom="8dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_others_profile"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.comjeong.nomadworker.ui.reply.ReplyViewModel" />
 
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_home_banner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circleImageView" />
+        <variable
+            name="reply"
+            type="com.comjeong.nomadworker.domain.model.reply.GetReplyResult.Result.Other" />
+    </data>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_others_nickname"
-        style="@style/TextSubtitle1.Black01"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:ellipsize="end"
-        android:maxWidth="220dp"
-        android:maxLines="1"
-        app:layout_constraintStart_toEndOf="@id/iv_others_profile"
-        app:layout_constraintTop_toTopOf="@id/iv_others_profile"
-        tools:text="해커톤냠" />
+        android:paddingStart="8dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_reply_time"
-        style="@style/TextSubtitle2.Grey05"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:gravity="start"
-        android:maxLines="1"
-        app:layout_constraintBaseline_toBaselineOf="@id/tv_others_nickname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_others_nickname"
-        app:layout_constraintTop_toTopOf="@id/tv_others_nickname"
-        tools:text="1시간 전" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_others_profile"
+            imageUrl="@{reply.userImage}"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_home_banner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/circleImageView" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_reply"
-        style="@style/TextSubtitle2.Grey02"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_others_profile"
-        app:layout_constraintTop_toBottomOf="@id/tv_others_nickname"
-        tools:text="갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_others_nickname"
+            style="@style/TextSubtitle3.Black01"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{reply.userNickname}"
+            app:layout_constraintStart_toEndOf="@id/iv_others_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_others_profile"
+            app:layout_constraintEnd_toStartOf="@id/btn_reply_option"
+            tools:text="해커톤냠커톤냠커톤냠커" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_reply_time"
+            style="@style/TextCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            time="@{reply.replyDate}"
+            android:textColor="@color/nomad_grey_04"
+            app:layout_constraintTop_toBottomOf="@id/tv_others_nickname"
+            app:layout_constraintStart_toStartOf="@id/tv_others_nickname"
+            android:layout_marginTop="2dp"
+            tools:text="2022-04-21 14:20:02" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:visibility="invisible"
+            android:onClick="@{() -> viewModel.onClickReplyOption(reply.replyId) }"
+            android:id="@+id/btn_reply_option"
+            optionVisibility="@{reply.userId}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_option_14"
+            app:layout_constraintBottom_toBottomOf="@id/tv_others_nickname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_others_nickname" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_reply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@{reply.replyContent}"
+            android:textColor="@color/nomad_grey_01"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_others_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_reply_time"
+            tools:text="갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

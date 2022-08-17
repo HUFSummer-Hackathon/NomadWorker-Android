@@ -1,72 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="author"
+            type="com.comjeong.nomadworker.domain.model.reply.Author" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_feed_author_profile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            imageUrl="@{author.userImage}"
+            tools:src="@drawable/img_home_banner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/circleImageView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_feed_author_nickname"
+            style="@style/TextSubtitle1.Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_feed_author_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_feed_author_profile"
+            android:text="@{author.userNickname}"
+            tools:text="해커톤냠" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_feed_place_tag"
+            style="@style/TextSubtitle3.Blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="@id/iv_feed_author_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_feed_author_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_feed_author_nickname"
+            android:text="@{author.placeName}"
+            tools:text="Gulmarg, Kashmir" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_feed_content"
+            android:textColor="@color/nomad_grey_02"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_feed_author_profile"
+            android:text="@{author.feedContent}"
+            tools:text="ㅑ갸갸갸갸ㅑ갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸" />
+
+        <View
+            android:id="@+id/view_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/nomad_blue_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_feed_content" />
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_feed_author_profile"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_home_banner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circleImageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_feed_author_nickname"
-        style="@style/TextSubtitle1.Black01"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_feed_author_profile"
-        app:layout_constraintTop_toTopOf="@id/iv_feed_author_profile"
-        tools:text="해커톤냠" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_feed_place_tag"
-        style="@style/TextSubtitle2.Blue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="@id/iv_feed_author_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_feed_author_profile"
-        app:layout_constraintTop_toBottomOf="@id/tv_feed_author_nickname"
-        tools:text="Gulmarg, Kashmir" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_feed_content"
-        style="@style/TextSubtitle2.Grey02"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_feed_author_profile"
-        tools:text="ㅑ갸갸갸갸ㅑ갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸갸갸갸ㅑ갸ㅑㅑㅑ갸갸ㅑ갸갸갸갸" />
-
-    <View
-        android:id="@+id/view_divider"
-        android:layout_width="0dp"
-        android:layout_height="4dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/nomad_blue_grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_feed_content" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

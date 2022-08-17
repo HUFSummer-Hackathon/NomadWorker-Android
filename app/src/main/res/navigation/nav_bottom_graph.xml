@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_navigation_feed_to_newFeedActivity"
             app:destination="@id/navigation_new_feed_activity" />
+        <action
+            android:id="@+id/action_navigation_feed_to_navigation_feed_detail"
+            app:destination="@id/navigation_feed_detail" />
     </fragment>
 
     <fragment
@@ -85,7 +88,12 @@
         android:id="@+id/navigation_feed_detail"
         android:name="com.comjeong.nomadworker.ui.mypage.MyPageUserFeedDetailFragment"
         android:label="MyPageUserFeedDetailFragment"
-        tools:layout="@layout/fragment_my_page_user_feed_detail"/>
+        tools:layout="@layout/fragment_my_page_user_feed_detail">
+        <action
+            android:id="@+id/action_navigation_feed_detail_to_navigation_reply"
+            app:destination="@id/navigation_reply" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
@@ -124,31 +132,37 @@
             android:id="@+id/action_settings_to_scrap"
             app:destination="@id/navigation_settings_scrap" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_settings_tos"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsTosFragment"
         android:label="SettingsTosFragment"
         tools:layout="@layout/fragment_settings_tos"/>
+
     <fragment
         android:id="@+id/navigation_settings_privacy"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsPrivacyFragment"
         android:label="SettingsPrivacyFragment"
         tools:layout="@layout/fragment_settings_privacy"/>
+
     <fragment
         android:id="@+id/navigation_settings_notice"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsNoticeFragment"
         android:label="SettingsNoticeFragment"
         tools:layout="@layout/fragment_settings_notice"/>
+
     <fragment
         android:id="@+id/navigation_settings_contact"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsContactFragment"
         android:label="SettingsContactFragment"
         tools:layout="@layout/fragment_settings_contact"/>
+
     <fragment
         android:id="@+id/navigation_settings_report"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsReportFragment"
         android:label="SettingsReportFragment"
         tools:layout="@layout/fragment_settings_report"/>
+
     <fragment
         android:id="@+id/navigation_settings_profile"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsProfileFragment"
@@ -159,6 +173,12 @@
         android:name="com.comjeong.nomadworker.ui.setting.SettingsPlaceScrapFragment"
         android:label="SettingsPlaceScrapFragment"
         tools:layout="@layout/fragment_settings_place_scrap"/>
+
+    <fragment
+        android:id="@+id/navigation_reply"
+        android:name="com.comjeong.nomadworker.ui.reply.ReplyFragment"
+        android:label="ReplyFragment"
+        tools:layout="@layout/fragment_feed_reply"/>
 
 
 </navigation>

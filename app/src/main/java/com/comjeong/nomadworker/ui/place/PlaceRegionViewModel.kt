@@ -30,7 +30,6 @@ class PlaceRegionViewModel(private val repository: PlaceRegionRepository) : View
     val openPlaceDetailEvent: LiveData<Event<Long>> = _openPlaceDetailEvent
 
     fun getPlaceWithLocationName() {
-        Timber.d("START")
         viewModelScope.launch {
             try {
                 Timber.d(_locationName)

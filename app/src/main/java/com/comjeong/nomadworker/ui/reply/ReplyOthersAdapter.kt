@@ -1,11 +1,14 @@
 package com.comjeong.nomadworker.ui.reply
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.ItemFeedReplyOthersBinding
+import com.comjeong.nomadworker.domain.model.reply.GetReplyResult
 
 
 /**
@@ -18,7 +21,8 @@ import com.comjeong.nomadworker.databinding.ItemFeedReplyOthersBinding
  * 3. DiffCallback
  */
 
-class ReplyOthersAdapter : ListAdapter<Any, ReplyOthersAdapter.ReplyOthersViewHolder>(ReplyOthersDiffCallback()) {
+class ReplyOthersAdapter(private val viewModel: ReplyViewModel)
+    : ListAdapter<GetReplyResult.Result.Other, ReplyOthersAdapter.ReplyOthersViewHolder>(ReplyOthersDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReplyOthersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -28,21 +32,31 @@ class ReplyOthersAdapter : ListAdapter<Any, ReplyOthersAdapter.ReplyOthersViewHo
 
     override fun onBindViewHolder(holder: ReplyOthersViewHolder, position: Int) {
         holder.bindItems(getItem(position))
+
+
     }
 
-    class ReplyOthersViewHolder(private val binding: ItemFeedReplyOthersBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindItems(item: Any?) {
-            TODO("Not yet implemented")
+    inner class ReplyOthersViewHolder(private val binding: ItemFeedReplyOthersBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bindItems(reply: GetReplyResult.Result.Other) {
+            binding.reply = reply
+            binding.viewModel = viewModel
+            binding.executePendingBindings()
         }
     }
 
-    class ReplyOthersDiffCallback : DiffUtil.ItemCallback<Any>() {
-        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+    class ReplyOthersDiffCallback : DiffUtil.ItemCallback<GetReplyResult.Result.Other>() {
+        override fun areItemsTheSame(
+            oldItem: GetReplyResult.Result.Other,
+            newItem: GetReplyResult.Result.Other
+        ): Boolean {
+            return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
-            return true
+        override fun areContentsTheSame(
+            oldItem: GetReplyResult.Result.Other,
+            newItem: GetReplyResult.Result.Other
+        ): Boolean {
+            return oldItem.replyId == newItem.replyId
         }
     }
 }

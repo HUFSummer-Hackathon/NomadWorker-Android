@@ -5,6 +5,7 @@ import com.comjeong.nomadworker.ui.home.HomeViewModel
 import com.comjeong.nomadworker.ui.mypage.MyPageViewModel
 import com.comjeong.nomadworker.ui.place.PlaceDetailViewModel
 import com.comjeong.nomadworker.ui.place.PlaceRegionViewModel
+import com.comjeong.nomadworker.ui.reply.ReplyViewModel
 import com.comjeong.nomadworker.ui.search.SearchViewModel
 import com.comjeong.nomadworker.ui.setting.SettingsViewModel
 import com.comjeong.nomadworker.ui.signin.SignInViewModel
@@ -22,4 +23,5 @@ val viewModelModule = module {
     viewModel { MyPageViewModel(get()) }
     viewModel { SearchViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
+    viewModel { ReplyViewModel(get()) }
 }

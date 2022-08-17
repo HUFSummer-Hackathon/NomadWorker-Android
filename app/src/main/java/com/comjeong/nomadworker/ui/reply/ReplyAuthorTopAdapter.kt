@@ -2,10 +2,13 @@ package com.comjeong.nomadworker.ui.reply
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.comjeong.nomadworker.databinding.ItemFeedReplyAuthorBinding
+import com.comjeong.nomadworker.domain.model.reply.Author
+import timber.log.Timber
 
 /**
  * @author 이재성
@@ -17,7 +20,8 @@ import com.comjeong.nomadworker.databinding.ItemFeedReplyAuthorBinding
  * 3. DiffCallback
  */
 
-class ReplyAuthorTopAdapter : ListAdapter<Any, ReplyAuthorTopAdapter.ReplyAuthorTopViewHolder>(ReplyOthersDiffCallback()) {
+class ReplyAuthorTopAdapter(private val viewModel: ReplyViewModel, private val viewLifecycleOwner: LifecycleOwner)
+    : ListAdapter<Author, ReplyAuthorTopAdapter.ReplyAuthorTopViewHolder>(ReplyOthersDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReplyAuthorTopViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -29,19 +33,27 @@ class ReplyAuthorTopAdapter : ListAdapter<Any, ReplyAuthorTopAdapter.ReplyAuthor
         holder.bindItems(getItem(position))
     }
 
-    class ReplyAuthorTopViewHolder(private val binding: ItemFeedReplyAuthorBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindItems(item: Any?) {
-            TODO("Not yet implemented")
+    inner class ReplyAuthorTopViewHolder(private val binding: ItemFeedReplyAuthorBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bindItems(author: Author) {
+            binding.author = author
+            binding.executePendingBindings()
         }
     }
 
-    class ReplyOthersDiffCallback : DiffUtil.ItemCallback<Any>() {
-        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+    class ReplyOthersDiffCallback : DiffUtil.ItemCallback<Author>() {
+        override fun areItemsTheSame(
+            oldItem: Author,
+            newItem: Author
+        ): Boolean {
+            return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
-            return true
+        override fun areContentsTheSame(
+            oldItem: Author,
+            newItem: Author
+        ): Boolean {
+            return oldItem == newItem
         }
     }
 }
