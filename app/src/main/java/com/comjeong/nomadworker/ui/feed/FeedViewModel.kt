@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.comjeong.nomadworker.common.Event
 import com.comjeong.nomadworker.data.model.feed.FeedLikeRequestData
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
 import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
@@ -35,6 +36,9 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
 
     private val _feedList: MutableLiveData<List<TotalFeedsResult.Result>> = MutableLiveData<List<TotalFeedsResult.Result>>()
     val feedList: LiveData<List<TotalFeedsResult.Result>> = _feedList
+
+    private val _openFeedDetailEvent: MutableLiveData<Event<Long>> = MutableLiveData<Event<Long>>()
+    val openFeedDetailEvent: LiveData<Event<Long>> = _openFeedDetailEvent
 
     private val _isFavorite: MutableLiveData<Int> = MutableLiveData<Int>()
     val isFavorite: LiveData<Int> = _isFavorite
@@ -137,6 +141,13 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
         NewFeedInfo.placeName = placeName
 
         _isSelectPlace.value = true
+    }
+
+    fun openFeedDetailByFeedId(feedId: Long, placeName: String) {
+        _placeName = placeName
+        this.placeName = _placeName
+
+        _openFeedDetailEvent.value = Event(feedId)
     }
 
 }

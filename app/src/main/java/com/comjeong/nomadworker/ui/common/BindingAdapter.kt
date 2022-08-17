@@ -1,11 +1,14 @@
 package com.comjeong.nomadworker.ui.common
 
+import android.view.View
 import android.widget.ImageButton
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.GlideApp
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import java.text.DecimalFormat
 
 object BindingAdapter {
@@ -62,6 +65,22 @@ object BindingAdapter {
             false -> {
                 View.visibility = android.view.View.GONE
             }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("time")
+    fun setTime(view: AppCompatTextView, timeToString: String) {
+        val idx = 10
+        view.text = timeToString.replace("T", " ")
+    }
+
+    @JvmStatic
+    @BindingAdapter("optionVisibility")
+    fun setOptionVisibility(view: AppCompatImageButton, userId: Long) {
+        when(userId == NomadSharedPreferences.getUserId()){
+            true -> view.visibility = View.VISIBLE
+            false -> view.visibility = View.INVISIBLE
         }
     }
 

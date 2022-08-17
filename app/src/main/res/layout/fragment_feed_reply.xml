@@ -1,39 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/nomad_white">
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@drawable/ic_back_24"
+            app:title="댓글 보기" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tb_reply"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                app:contentInsetStartWithNavigation="0dp"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:navigationIcon="@drawable/ic_back_24"
-                app:title="댓글 보기" />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_feed_reply"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            app:layout_constraintBottom_toTopOf="@id/cl_comment_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_reply" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_comment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_comment_input"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:backgroundTint="@color/nomad_white"
+                android:hint="댓글을 입력하세요."
+                android:padding="10dp"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_done_to_write_comment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_done_to_write_comment" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_done_to_write_comment"
+                style="@style/TextSubtitle1.Bold.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/nomad_primary_blue"
+                android:text="입력"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
