@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.ConcatAdapter
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.FEED_CONTENT_KEY
@@ -23,7 +20,6 @@ import com.comjeong.nomadworker.domain.model.reply.Author
 import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.CustomDialog
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
-import com.comjeong.nomadworker.ui.common.RootViewInsetsCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

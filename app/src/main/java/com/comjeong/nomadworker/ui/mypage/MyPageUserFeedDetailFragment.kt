@@ -78,7 +78,7 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
             navigateUp()
         }
 
-        binding.btnReply.setOnClickListener {
+        binding.clCommentIconContainer.setOnClickListener {
             moveReplyPage()
         }
     }

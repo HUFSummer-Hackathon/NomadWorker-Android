@@ -81,6 +81,7 @@
                 tools:text="강원도불주먹강원도불주먹" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:clickable="true"
                 android:id="@+id/cl_comment_icon_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,6 +90,7 @@
                 app:layout_constraintTop_toTopOf="@id/tv_user_nickname">
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:clickable="false"
                     android:id="@+id/btn_reply"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,6 +102,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:clickable="false"
                     android:id="@+id/tv_reply"
                     style="@style/TextSubtitle1.Gray01"
                     android:layout_width="wrap_content"
