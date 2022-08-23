@@ -7,6 +7,7 @@ import com.comjeong.nomadworker.common.Event
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.data.model.reply.DeleteReplyRequestData
 import com.comjeong.nomadworker.data.model.reply.PostReplyRequestData
+import com.comjeong.nomadworker.domain.model.reply.Author
 import com.comjeong.nomadworker.domain.model.reply.GetReplyResult
 import com.comjeong.nomadworker.domain.model.reply.PostReplyResult
 import com.comjeong.nomadworker.domain.repository.reply.ReplyRepository
@@ -46,6 +47,9 @@ class ReplyViewModel(private val repository: ReplyRepository): ViewModel() {
     private val _replyList: MutableLiveData<List<GetReplyResult.Result.Other>> = MutableLiveData<List<GetReplyResult.Result.Other>>()
     val replyList: MutableLiveData<List<GetReplyResult.Result.Other>> = _replyList
 
+    private val _authorList: MutableLiveData<List<Author>> = MutableLiveData<List<Author>>()
+    val authorList: MutableLiveData<List<Author>> = _authorList
+
     private val _isPostReply: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
     val isPostReply: MutableLiveData<Event<Boolean>> = _isPostReply
 
@@ -62,12 +66,14 @@ class ReplyViewModel(private val repository: ReplyRepository): ViewModel() {
 
                 when (response.status) {
                     200 -> {
-                        _replyList.value = response.data?.reply
-                        _placeName = response.data?.placeName.toString()
-                        placeName = _placeName
+                        if(response.data.reply != null) _replyList.value = response.data.reply
+                        else _replyList.value = emptyList()
+
+                        _authorList.value = listOf(Author(response.data.userNickname, response.data.userImage, response.data.placeName, response.data.feedContent))
                     }
                     400 -> {
                         _replyList.value = emptyList()
+                        _authorList.value = emptyList()
                     }
                 }
                 Timber.d("SUCCESS : $response")

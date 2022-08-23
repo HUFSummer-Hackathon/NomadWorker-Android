@@ -27,29 +27,15 @@ import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * @author 이재성
- *
- * Adapter 두개 [ReplyAuthorTopAdapter], [ReplyOthersAdapter]를 ConcatAdapter로 연결해서 만들면 됨
- */
-
 class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_feed_reply) {
 
     private val viewModel: ReplyViewModel by sharedViewModel()
-    private var userNickname: String = ""
-    private var userImage: String = ""
-    private var placeName: String = ""
-    private var feedContent: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        userNickname = requireArguments().getString(USER_NICKNAME_KEY).toString()
-        userImage = requireArguments().getString(USER_IMAGE_KEY).toString()
-        viewModel.placeName = requireArguments().getString(PLACE_NAME_KEY).toString()
-        feedContent = requireArguments().getString(FEED_CONTENT_KEY).toString()
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -67,7 +53,6 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
         observeDeleteReply()
         observePostReply()
 
-        viewModel.getReply()
     }
 
     private fun bindView() {
@@ -120,7 +105,9 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
         val otherAdapter = ReplyOthersAdapter(viewModel)
         binding.rvFeedReply.adapter = ConcatAdapter(authorAdapter,otherAdapter)
 
-        authorAdapter.submitList(listOf(Author(userNickname,userImage,viewModel.placeName,feedContent)))
+        viewModel.authorList.observe(viewLifecycleOwner) { authorList ->
+            authorAdapter.submitList(authorList)
+        }
         viewModel.replyList.observe(viewLifecycleOwner) { replyList ->
             Timber.d("댓글 리스트 : $replyList")
             otherAdapter.submitList(replyList)

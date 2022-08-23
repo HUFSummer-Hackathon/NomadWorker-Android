@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 data class GetReplyResponseData(
     @SerializedName("message") val message: String,
     @SerializedName("status") val status: Int,
-    @SerializedName("data") val data: Result?
+    @SerializedName("data") val data: Result
 ) {
     data class Result(
         @SerializedName("f_content") val feedContent: String,
