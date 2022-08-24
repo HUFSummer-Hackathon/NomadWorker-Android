@@ -29,7 +29,6 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
     private val viewModel: MyPageViewModel by sharedViewModel()
     private val replyViewModel: ReplyViewModel by sharedViewModel()
     private var feedId: Long = 0
-    private var placeName: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +36,7 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
         savedInstanceState: Bundle?
     ): View {
         feedId = requireArguments().getLong(FEED_ID_KEY)
-        placeName = requireArguments().getString(PLACE_NAME_KEY).toString()
+
         viewModel.feedId = feedId
         replyViewModel.feedId = feedId
 
