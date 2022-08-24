@@ -64,6 +64,31 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        mMapView.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mMapView.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mMapView.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mMapView.onLowMemory()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mMapView.onSaveInstanceState(outState)
+    }
+
     private fun observePlaceDetailInfo() {
         viewModel.placeDetailInfo.observe(viewLifecycleOwner) { detailInfo ->
             binding.placeInfo = detailInfo
