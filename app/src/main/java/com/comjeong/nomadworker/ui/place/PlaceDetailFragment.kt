@@ -16,8 +16,8 @@ import com.comjeong.nomadworker.common.Constants.CAMERA_ZOOM
 import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentPlaceDetailBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView

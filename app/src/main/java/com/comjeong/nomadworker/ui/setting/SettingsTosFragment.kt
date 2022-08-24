@@ -7,8 +7,8 @@ import android.webkit.WebViewClient
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.TOS_URL
 import com.comjeong.nomadworker.databinding.FragmentSettingsTosBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 
 class SettingsTosFragment : BaseFragment<FragmentSettingsTosBinding>(R.layout.fragment_settings_tos) {
 

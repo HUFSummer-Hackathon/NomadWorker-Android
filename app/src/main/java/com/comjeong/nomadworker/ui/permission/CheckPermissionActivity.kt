@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.ActivityCheckPermissionBinding
 import com.comjeong.nomadworker.ui.MainActivity
-import com.comjeong.nomadworker.ui.common.BaseActivity
+import com.comjeong.nomadworker.ui.common.base.BaseActivity
 import com.comjeong.nomadworker.ui.permission.UserPermission.isGrantedPermission
 import com.comjeong.nomadworker.ui.permission.UserPermission.requestAllPermission
 

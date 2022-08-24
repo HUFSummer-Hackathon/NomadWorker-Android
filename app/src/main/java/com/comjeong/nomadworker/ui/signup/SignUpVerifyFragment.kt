@@ -5,16 +5,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
-import androidx.navigation.fragment.findNavController
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.VERIFICATION_CODE
 import com.comjeong.nomadworker.databinding.FragmentSignUpVerifyBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.DialogUtil.setSignUpCloseDialog
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.DialogUtil.setSignUpCloseDialog
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 
 class SignUpVerifyFragment : BaseFragment<FragmentSignUpVerifyBinding>(R.layout.fragment_sign_up_verify) {
 

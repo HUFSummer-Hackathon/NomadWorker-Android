@@ -7,8 +7,8 @@ import android.webkit.WebViewClient
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.REPORT_USER_URL
 import com.comjeong.nomadworker.databinding.FragmentSettingsReportBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 
 class SettingsReportFragment : BaseFragment<FragmentSettingsReportBinding>(R.layout.fragment_settings_report) {
 

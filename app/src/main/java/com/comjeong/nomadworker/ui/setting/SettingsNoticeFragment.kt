@@ -5,8 +5,8 @@ import android.view.View
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.data.datasource.local.SettingsLocalDataSourceImpl
 import com.comjeong.nomadworker.databinding.FragmentSettingsNoticeBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import timber.log.Timber
 
 class SettingsNoticeFragment :

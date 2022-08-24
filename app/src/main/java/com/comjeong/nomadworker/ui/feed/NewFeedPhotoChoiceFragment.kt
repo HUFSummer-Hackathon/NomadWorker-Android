@@ -11,9 +11,9 @@ import android.view.View
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.OPEN_GALLERY
 import com.comjeong.nomadworker.databinding.FragmentNewFeedPhotoChoiceBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedCloseDialog
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.DialogUtil.setNewFeedCloseDialog
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.permission.UserPermission.isGrantedPhotoGalleryPermission
 import com.comjeong.nomadworker.ui.permission.UserPermission.requestPhotoGalleryPermission
 import okhttp3.MediaType.Companion.toMediaType

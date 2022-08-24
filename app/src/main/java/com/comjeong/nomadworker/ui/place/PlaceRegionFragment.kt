@@ -8,9 +8,9 @@ import com.comjeong.nomadworker.common.Constants.LOCATION_NAME_KEY
 import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentPlaceRegionBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateWithBundle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaceRegionFragment : BaseFragment<FragmentPlaceRegionBinding>(R.layout.fragment_place_region) {

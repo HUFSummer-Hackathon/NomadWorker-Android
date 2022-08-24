@@ -6,10 +6,10 @@ import android.text.TextWatcher
 import android.view.View
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentNewFeedContentChoiceBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedCloseDialog
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.DialogUtil.setNewFeedCloseDialog
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 
 class NewFeedContentChoiceFragment : BaseFragment<FragmentNewFeedContentChoiceBinding>(R.layout.fragment_new_feed_content_choice) {
 

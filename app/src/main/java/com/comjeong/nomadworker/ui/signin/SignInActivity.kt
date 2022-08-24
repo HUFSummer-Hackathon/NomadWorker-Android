@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.EventObserver
-import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.ActivitySignInBinding
-import com.comjeong.nomadworker.model.UserInfo
 import com.comjeong.nomadworker.ui.MainActivity
-import com.comjeong.nomadworker.ui.common.BaseActivity
+import com.comjeong.nomadworker.ui.common.base.BaseActivity
 import com.comjeong.nomadworker.ui.signup.SignUpActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
