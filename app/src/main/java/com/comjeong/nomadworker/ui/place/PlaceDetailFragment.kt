@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.CAMERA_ZOOM
 import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
+import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentPlaceDetailBinding
 import com.comjeong.nomadworker.ui.common.BaseFragment
 import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
@@ -25,7 +27,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fragment_place_detail),
+class PlaceDetailFragment :
+    BaseFragment<FragmentPlaceDetailBinding>(R.layout.fragment_place_detail),
     OnMapReadyCallback {
 
     private val viewModel: PlaceDetailViewModel by viewModel()
@@ -55,6 +58,7 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
 
         bindViews()
         observePlaceDetailInfo()
+        observeMessage()
         bindEvaluationClick()
 
         mMapView = binding.mvPlaceMap
@@ -62,6 +66,12 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
         mMapView.getMapAsync(this)
 
 
+    }
+
+    private fun observeMessage() {
+        viewModel.message.observe(viewLifecycleOwner, EventObserver { message ->
+            Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
+        })
     }
 
     override fun onStart() {
@@ -134,16 +144,18 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
     }
 
     private fun setEvaluationDialog() {
-        val builder = AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme)
-        val view = LayoutInflater.from(requireActivity()).inflate(R.layout.dialog_evaluation,
-            requireActivity().findViewById<ConstraintLayout>(R.id.dialog_layout))
+        val builder = AlertDialog.Builder(requireActivity(), R.style.AlertDialogTheme)
+        val view = LayoutInflater.from(requireActivity()).inflate(
+            R.layout.dialog_evaluation,
+            requireActivity().findViewById<ConstraintLayout>(R.id.dialog_layout)
+        )
 
         builder.setView(view)
 
-        val placeName =  view.findViewById<TextView>(R.id.tv_place_name)
+        val placeName = view.findViewById<TextView>(R.id.tv_place_name)
         val ratingNumber = view.findViewById<TextView>(R.id.tv_evaluation_number)
         val alertMessage = view.findViewById<TextView>(R.id.tv_alert)
-        val evaluationButton =  view.findViewById<Button>(R.id.btn_add_evaluation)
+        val evaluationButton = view.findViewById<Button>(R.id.btn_add_evaluation)
         val closeButton = view.findViewById<Button>(R.id.btn_close)
         val ratingBar = view.findViewById<RatingBar>(R.id.rb_rating)
 
@@ -153,16 +165,17 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
         val alertDialog = builder.create()
 
         ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
-             ratingNumber.text = rating.toString()
+            ratingNumber.text = rating.toString()
         }
 
         evaluationButton.setOnClickListener {
-            if(ratingBar.rating == 0f){
+            if (ratingBar.rating == 0f) {
                 alertMessage.visibility = View.VISIBLE
-            }
-            else{
+            } else {
                 // TODO( 서버에 평점바뀐 것을 전송 및 업데이트 된 평점을 뷰에 적용 )
-                // 우선은 정상동작 체크를 위해서 확인을 누르면 다이얼로그가 종료되게끔 dismiss()로 임시설정함
+                // API 연동
+                viewModel.placeRate = ratingBar.rating
+                viewModel.updatePlaceRate()
                 alertDialog.dismiss()
             }
         }
@@ -171,7 +184,7 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding>(R.layout.fr
             alertDialog.dismiss()
         }
 
-        if(alertDialog.window != null){
+        if (alertDialog.window != null) {
             alertDialog.window!!.setBackgroundDrawable(ColorDrawable(0))
         }
 

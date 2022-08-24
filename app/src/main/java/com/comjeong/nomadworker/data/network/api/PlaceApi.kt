@@ -2,11 +2,9 @@ package com.comjeong.nomadworker.data.network.api
 
 import com.comjeong.nomadworker.data.model.home.LocationCategoryResponseData
 import com.comjeong.nomadworker.data.model.home.RecommendPlaceResponseData
-import com.comjeong.nomadworker.data.model.place.LocationPlaceResponseData
 import com.comjeong.nomadworker.data.model.home.UpdateCurrentLocationRequestData
 import com.comjeong.nomadworker.data.model.home.UpdateCurrentLocationResponseData
-import com.comjeong.nomadworker.data.model.place.NearbyPlaceResponseData
-import com.comjeong.nomadworker.data.model.place.PlaceDetailResponseData
+import com.comjeong.nomadworker.data.model.place.*
 import com.comjeong.nomadworker.data.model.search.PlaceSearchResponseData
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -48,5 +46,10 @@ interface PlaceApi {
         @Query("place_Storetype") storetype: String,
         @Query("place_name") placeName: String
     ): PlaceSearchResponseData
+
+    @PUT("place/grade")
+    suspend fun putPlaceRate(
+        @Body body: UpdatePlaceRateRequestData
+    ): UpdatePlaceRateResponseData
 }
 

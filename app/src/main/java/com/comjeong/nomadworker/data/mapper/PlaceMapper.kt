@@ -2,8 +2,10 @@ package com.comjeong.nomadworker.data.mapper
 
 import com.comjeong.nomadworker.data.model.place.LocationPlaceResponseData
 import com.comjeong.nomadworker.data.model.place.PlaceDetailResponseData
+import com.comjeong.nomadworker.data.model.place.UpdatePlaceRateResponseData
 import com.comjeong.nomadworker.domain.model.place.LocationPlaceResult
 import com.comjeong.nomadworker.domain.model.place.PlaceDetailResult
+import com.comjeong.nomadworker.domain.model.place.UpdatePlaceRateResult
 
 object PlaceMapper {
     fun mapToLocationPlaceResult(body: LocationPlaceResponseData): LocationPlaceResult {
@@ -43,6 +45,13 @@ object PlaceMapper {
                 placeStoreType = body.data?.placeStoreType,
                 placeUrl = body.data?.placeUrl
             )
+        )
+    }
+
+    fun mapToUpdatePlaceRateResult(body: UpdatePlaceRateResponseData): UpdatePlaceRateResult {
+        return UpdatePlaceRateResult(
+            message = body.message,
+            status = body.status
         )
     }
 }
