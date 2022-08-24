@@ -14,34 +14,34 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_top_banner_container"
             android:layout_width="match_parent"
-            android:paddingBottom="24dp"
-            android:paddingTop="24dp"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
             android:layout_height="wrap_content"
             android:background="@color/nomad_white"
+            android:paddingStart="14dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title"
+                style="@style/TextHeadLine5.Black01.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="유저 피드"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/TextHeadLine5.Black01.Bold"
-                android:text="유저 피드"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_subtitle"
+                style="@style/TextSubtitle2.Blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_title"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/nomad_primary_blue"
-                android:text="여러분들의 장소를 공유해보세요."/>
+                android:text="여러분들의 장소를 공유해보세요."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_new_feed"

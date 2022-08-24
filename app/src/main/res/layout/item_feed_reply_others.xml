@@ -32,7 +32,7 @@
         android:maxLines="1"
         app:layout_constraintStart_toEndOf="@id/iv_others_profile"
         app:layout_constraintTop_toTopOf="@id/iv_others_profile"
-        tools:text="해커톤냠" />
+        tools:text="해커톤냠ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹ" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_reply_time"
