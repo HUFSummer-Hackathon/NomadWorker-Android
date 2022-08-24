@@ -53,7 +53,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_place_address"
-            style="@style/TextSubtitle2.Grey"
+            style="@style/TextSubtitle2.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -69,7 +69,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_weekday_time_title"
-            style="@style/TextSubtitle2.Grey"
+            style="@style/TextSubtitle2.Grey02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -80,7 +80,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_weekday_time"
-            style="@style/TextSubtitle2.Grey"
+            style="@style/TextSubtitle2.Grey02"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -94,7 +94,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_weekend_time_title"
-            style="@style/TextSubtitle2.Grey"
+            style="@style/TextSubtitle2.Grey02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -105,7 +105,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_weekend_time"
-            style="@style/TextSubtitle2.Grey"
+            style="@style/TextSubtitle2.Grey02"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -118,27 +118,26 @@
             tools:text="7:00 - 24:00" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_wifi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/iv_star"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_wifi_24"
-            app:layout_constraintBottom_toBottomOf="@id/iv_place_thumbnail"
-            app:layout_constraintStart_toEndOf="@id/iv_place_thumbnail" />
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_star_rate_28"
+            app:layout_constraintStart_toEndOf="@id/iv_place_thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/tv_weekend_time_title" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_plug"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_rate"
+            style="@style/TextSubtitle2.Black01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_plug_24"
-            app:layout_constraintBottom_toBottomOf="@id/iv_wifi"
-            app:layout_constraintStart_toEndOf="@id/iv_wifi"
-            app:layout_constraintTop_toTopOf="@id/iv_wifi" />
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_star"
+            app:layout_constraintStart_toEndOf="@id/iv_star"
+            app:layout_constraintTop_toTopOf="@id/iv_star"
+            tools:text="4.2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

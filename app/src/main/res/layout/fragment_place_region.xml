@@ -17,10 +17,8 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_new_feed_top_banner"
-            style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             app:contentInsetStartWithNavigation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
