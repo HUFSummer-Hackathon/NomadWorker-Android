@@ -13,11 +13,11 @@ object ReplyMapper {
             message = body.message,
             status = body.status,
             data = GetReplyResult.Result(
-                feedContent = body.data?.feedContent,
-                userNickname = body.data?.userNickname,
-                userImage = body.data?.userImage,
-                placeName = body.data?.placeName,
-                reply = body.data?.reply?.map { reply ->
+                feedContent = body.data.feedContent,
+                userNickname = body.data.userNickname,
+                userImage = body.data.userImage,
+                placeName = body.data.placeName,
+                reply = body.data.reply?.map { reply ->
                     GetReplyResult.Result.Other(
                         replyId = reply.replyId,
                         replyContent = reply.replyContent,

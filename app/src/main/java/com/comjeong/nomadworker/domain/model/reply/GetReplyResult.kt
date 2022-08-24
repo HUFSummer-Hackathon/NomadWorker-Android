@@ -6,13 +6,13 @@ import java.time.LocalDateTime
 data class GetReplyResult(
     val message: String,
     val status: Int,
-    val data: Result?
+    val data: Result
 ) {
     data class Result(
-        val feedContent: String?,
-        val userNickname: String?,
-        val userImage: String?,
-        val placeName: String?,
+        val feedContent: String,
+        val userNickname: String,
+        val userImage: String,
+        val placeName: String,
         val reply: List<Other>?
     ) {
         data class Other(

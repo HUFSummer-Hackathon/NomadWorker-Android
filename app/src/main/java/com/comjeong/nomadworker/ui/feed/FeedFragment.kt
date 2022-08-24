@@ -63,8 +63,7 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(R.layout.fragment_feed) {
     private fun moveFeedDetail(feedId: Long, placeName: String) {
         navigateWithBundle(
             R.id.action_navigation_feed_to_navigation_feed_detail, bundleOf(
-                Constants.FEED_ID_KEY to feedId,
-                Constants.PLACE_NAME_KEY to placeName
+                Constants.FEED_ID_KEY to feedId
             )
         )
     }
