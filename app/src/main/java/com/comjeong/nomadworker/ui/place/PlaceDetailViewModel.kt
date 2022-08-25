@@ -43,11 +43,9 @@ class PlaceDetailViewModel(private val repository: PlaceDetailRepository) : View
                 when (response.status) {
                     200 -> {
                         _placeDetailInfo.value = response.data
-                        _message.value = Event(response.message)
                     }
                     400 -> {
                         _placeDetailInfo.value = response.data
-                        _message.value = Event(response.message)
                     }
                 }
 

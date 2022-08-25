@@ -17,6 +17,8 @@ import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentPlaceDetailBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.customview.CustomToast.ToastType.STANDARD
+import com.comjeong.nomadworker.ui.common.customview.CustomToast.makeToast
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -69,6 +71,7 @@ class PlaceDetailFragment :
     }
 
     private fun observeMessage() {
+        Timber.d("START")
         viewModel.message.observe(viewLifecycleOwner, EventObserver { message ->
             Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
         })
