@@ -11,10 +11,9 @@ import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentHomeBinding
-import com.comjeong.nomadworker.domain.model.home.LocationCategoryResult.Category
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateWithBundle
 import com.comjeong.nomadworker.ui.permission.UserPermission.isGrantedLocationPermission
 import com.comjeong.nomadworker.ui.permission.UserPermission.requestLocationPermission
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

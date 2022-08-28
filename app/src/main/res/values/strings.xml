@@ -94,5 +94,11 @@
     <string name="personal_privacy">개인정보 처리방침</string>
     <string name="oss_license">오픈소스 라이선스</string>
     <string name="cancel">취소</string>
+    <string name="user_feed">유저 피드</string>
+    <string name="share_your_place">여러분들의 장소를 공유해보세요.</string>
+    <string name="place_open_time">영업 시간</string>
+    <string name="address">주소</string>
+    <string name="more_info">상세 정보</string>
+    <string name="add_place_rate">평점 추가하기</string>
 
 </resources>

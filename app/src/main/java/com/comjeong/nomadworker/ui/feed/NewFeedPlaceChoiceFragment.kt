@@ -5,10 +5,10 @@ import android.view.View
 import android.widget.Toast
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentNewFeedPlaceChoiceBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedCloseDialog
-import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedSuccessDialog
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.DialogUtil.setNewFeedCloseDialog
+import com.comjeong.nomadworker.ui.common.util.DialogUtil.setNewFeedSuccessDialog
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 

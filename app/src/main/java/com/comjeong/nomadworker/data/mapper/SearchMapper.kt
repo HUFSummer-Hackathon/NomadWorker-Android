@@ -15,6 +15,7 @@ object SearchMapper {
                     placeAddress = placeInfo.placeAddress,
                     placeWeekTime = placeInfo.placeWeekTime,
                     placeWeekendTime = placeInfo.placeWeekendTime,
+                    placeRate = placeInfo.placeRate,
                     placeImage = placeInfo.placeImage
                 )
             }

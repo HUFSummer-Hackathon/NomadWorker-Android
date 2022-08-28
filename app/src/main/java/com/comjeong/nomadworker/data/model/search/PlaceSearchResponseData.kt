@@ -13,6 +13,7 @@ data class PlaceSearchResponseData(
         @SerializedName("place_address") val placeAddress: String,
         @SerializedName("place_weektime") val placeWeekTime: String,
         @SerializedName("place_weekendtime") val placeWeekendTime: String,
+        @SerializedName("placeGrade") val placeRate: Float,
         @SerializedName("p_image") val placeImage: String
     )
 }

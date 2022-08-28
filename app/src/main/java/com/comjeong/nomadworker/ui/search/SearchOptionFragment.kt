@@ -1,16 +1,13 @@
 package com.comjeong.nomadworker.ui.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.view.get
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentSearchOptionBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
-import com.comjeong.nomadworker.ui.common.NavigationUtil.popBackStack
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.popBackStack
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import timber.log.Timber
 
 class SearchOptionFragment : BaseFragment<FragmentSearchOptionBinding>(R.layout.fragment_search_option){
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentOnBoardingFirstBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
 
 class OnBoardingFirstFragment : BaseFragment<FragmentOnBoardingFirstBinding>(R.layout.fragment_on_boarding_first){
 

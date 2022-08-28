@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentSettingsPlaceScrapBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SettingsPlaceScrapFragment :

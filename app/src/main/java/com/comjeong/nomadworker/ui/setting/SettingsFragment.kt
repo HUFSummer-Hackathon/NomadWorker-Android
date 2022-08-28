@@ -9,10 +9,10 @@ import com.comjeong.nomadworker.BuildConfig
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentSettingsBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.CustomDialog
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.customview.CustomDialog
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import com.comjeong.nomadworker.ui.signin.SignInActivity
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 

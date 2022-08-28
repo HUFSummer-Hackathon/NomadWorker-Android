@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentOnBoardingThirdBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
 
 class OnBoardingThirdFragment : BaseFragment<FragmentOnBoardingThirdBinding>(R.layout.fragment_on_boarding_third){
 

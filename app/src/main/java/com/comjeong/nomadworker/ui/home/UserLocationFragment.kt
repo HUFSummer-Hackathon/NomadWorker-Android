@@ -10,7 +10,7 @@ import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentUserLocationBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView

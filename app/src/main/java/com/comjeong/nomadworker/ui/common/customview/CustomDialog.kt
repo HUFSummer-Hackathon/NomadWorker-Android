@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.ui.common
+package com.comjeong.nomadworker.ui.common.customview
 
 import android.app.AlertDialog
 import android.content.Context

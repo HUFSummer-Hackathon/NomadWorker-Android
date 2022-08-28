@@ -2,8 +2,10 @@ package com.comjeong.nomadworker.data.mapper
 
 import com.comjeong.nomadworker.data.model.place.LocationPlaceResponseData
 import com.comjeong.nomadworker.data.model.place.PlaceDetailResponseData
+import com.comjeong.nomadworker.data.model.place.UpdatePlaceRateResponseData
 import com.comjeong.nomadworker.domain.model.place.LocationPlaceResult
 import com.comjeong.nomadworker.domain.model.place.PlaceDetailResult
+import com.comjeong.nomadworker.domain.model.place.UpdatePlaceRateResult
 
 object PlaceMapper {
     fun mapToLocationPlaceResult(body: LocationPlaceResponseData): LocationPlaceResult {
@@ -19,6 +21,7 @@ object PlaceMapper {
                         placeAddress = place.placeAddress,
                         placeWeekTime = place.placeWeekTime,
                         placeWeekEndTime = place.placeWeekEndTime,
+                        placeRate = place.placeRate,
                         placeThumbnailImageUrl = place.placeThumbnailImageUrl
                     )
                 }
@@ -36,6 +39,7 @@ object PlaceMapper {
                 placeName = body.data?.placeName,
                 placeWeekTime = body.data?.placeWeekTime,
                 placeWeekendTime = body.data?.placeWeekendTime,
+                placeRate = body.data?.placeRate,
                 placeAddress = body.data?.placeAddress,
                 placeImageUrl = body.data?.placeImageUrl,
                 placeLatitude = body.data?.placeLatitude,
@@ -43,6 +47,13 @@ object PlaceMapper {
                 placeStoreType = body.data?.placeStoreType,
                 placeUrl = body.data?.placeUrl
             )
+        )
+    }
+
+    fun mapToUpdatePlaceRateResult(body: UpdatePlaceRateResponseData): UpdatePlaceRateResult {
+        return UpdatePlaceRateResult(
+            message = body.message,
+            status = body.status
         )
     }
 }

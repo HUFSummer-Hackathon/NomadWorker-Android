@@ -15,6 +15,7 @@ data class LocationPlaceResult(
             val placeAddress: String,
             val placeWeekTime: String,
             val placeWeekEndTime: String,
+            val placeRate: Float,
             val placeThumbnailImageUrl: String
         )
     }

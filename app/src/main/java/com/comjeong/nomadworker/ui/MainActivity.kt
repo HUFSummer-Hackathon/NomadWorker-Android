@@ -2,14 +2,12 @@ package com.comjeong.nomadworker.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.ActivityMainBinding
-import com.comjeong.nomadworker.ui.common.BaseActivity
 
 
 class MainActivity : AppCompatActivity() {

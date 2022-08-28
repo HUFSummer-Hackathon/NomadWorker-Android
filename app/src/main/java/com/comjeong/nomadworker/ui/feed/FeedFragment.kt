@@ -8,9 +8,9 @@ import com.comjeong.nomadworker.common.Constants
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.data.model.feed.FeedLikeRequestData
 import com.comjeong.nomadworker.databinding.FragmentFeedBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateWithBundle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeedFragment : BaseFragment<FragmentFeedBinding>(R.layout.fragment_feed) {

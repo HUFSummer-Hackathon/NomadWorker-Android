@@ -7,14 +7,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
-import androidx.fragment.app.viewModels
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.VERIFICATION_CODE
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentSignUpEmailBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.DialogUtil.setSignUpCloseDialog
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigateWithBundle
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.DialogUtil.setSignUpCloseDialog
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateWithBundle
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 

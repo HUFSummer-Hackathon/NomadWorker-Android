@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.FragmentSearchBinding
-import com.comjeong.nomadworker.ui.common.BaseFragment
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
-import com.comjeong.nomadworker.ui.feed.NewFeedAdapter
-import com.comjeong.nomadworker.ui.place.PlaceRegionAdapter
+import com.comjeong.nomadworker.ui.common.base.BaseFragment
+import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
 

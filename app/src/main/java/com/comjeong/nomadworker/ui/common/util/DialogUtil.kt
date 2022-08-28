@@ -1,11 +1,8 @@
-package com.comjeong.nomadworker.ui.common
+package com.comjeong.nomadworker.ui.common.util
 
 import android.app.AlertDialog
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.comjeong.nomadworker.R
-import com.comjeong.nomadworker.ui.common.DialogUtil.setNewFeedCloseDialog
-import com.comjeong.nomadworker.ui.common.NavigationUtil.navigate
 
 object DialogUtil {
 

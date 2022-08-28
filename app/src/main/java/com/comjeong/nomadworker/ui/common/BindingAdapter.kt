@@ -4,8 +4,10 @@ import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingBuildInfo
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.GlideApp
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
@@ -39,6 +41,18 @@ object BindingAdapter {
     fun setPriceAmount(view: AppCompatTextView, price: Any) {
         val decimalFormat = DecimalFormat("#,###")
         view.text = view.context.getString(R.string.unit_kr_currency, decimalFormat.format(price))
+    }
+
+    @JvmStatic
+    @BindingAdapter("placeRate")
+    fun setPlaceRate(view: AppCompatTextView, placeRate: Float) {
+        view.text = "(${placeRate})"
+    }
+
+    @JvmStatic
+    @BindingAdapter("ratingBarRate")
+    fun setRatingBarRate(view: AppCompatRatingBar, placeRate: Float) {
+        view.rating = placeRate
     }
 
     @JvmStatic

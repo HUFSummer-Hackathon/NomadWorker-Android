@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.databinding.ActivityOnBoardingBinding
-import com.comjeong.nomadworker.ui.common.BaseActivity
+import com.comjeong.nomadworker.ui.common.base.BaseActivity
 import com.comjeong.nomadworker.ui.permission.CheckPermissionActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
