@@ -17,6 +17,7 @@ data class LocationPlaceResponseData(
             @SerializedName("p_addr") val placeAddress: String,
             @SerializedName("p_weekt") val placeWeekTime: String,
             @SerializedName("p_weekndt") val placeWeekEndTime: String,
+            @SerializedName("placeGrade") val placeRate: Float,
             @SerializedName("p_image") val placeThumbnailImageUrl: String
         )
     }

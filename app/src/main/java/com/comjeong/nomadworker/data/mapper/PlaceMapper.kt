@@ -21,6 +21,7 @@ object PlaceMapper {
                         placeAddress = place.placeAddress,
                         placeWeekTime = place.placeWeekTime,
                         placeWeekEndTime = place.placeWeekEndTime,
+                        placeRate = place.placeRate,
                         placeThumbnailImageUrl = place.placeThumbnailImageUrl
                     )
                 }
@@ -38,6 +39,7 @@ object PlaceMapper {
                 placeName = body.data?.placeName,
                 placeWeekTime = body.data?.placeWeekTime,
                 placeWeekendTime = body.data?.placeWeekendTime,
+                placeRate = body.data?.placeRate,
                 placeAddress = body.data?.placeAddress,
                 placeImageUrl = body.data?.placeImageUrl,
                 placeLatitude = body.data?.placeLatitude,

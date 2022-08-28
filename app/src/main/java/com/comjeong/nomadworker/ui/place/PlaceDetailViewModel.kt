@@ -8,7 +8,6 @@ import com.comjeong.nomadworker.common.Event
 import com.comjeong.nomadworker.data.model.place.UpdatePlaceRateRequestData
 import com.comjeong.nomadworker.domain.model.place.PlaceDetailResult
 import com.comjeong.nomadworker.domain.repository.place.PlaceDetailRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

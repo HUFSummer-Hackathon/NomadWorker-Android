@@ -11,6 +11,7 @@ data class PlaceDetailResult(
         val placeName: String?,
         val placeWeekTime: String?,
         val placeWeekendTime: String?,
+        val placeRate: Float?,
         val placeAddress: String?,
         val placeImageUrl: String?,
         val placeLatitude: Double?,

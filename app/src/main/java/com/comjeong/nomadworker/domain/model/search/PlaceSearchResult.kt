@@ -11,6 +11,7 @@ data class PlaceSearchResult(
         val placeAddress: String,
         val placeWeekTime: String,
         val placeWeekendTime: String,
+        val placeRate: Float,
         val placeImage: String
     )
 }

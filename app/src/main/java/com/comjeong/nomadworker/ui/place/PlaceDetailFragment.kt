@@ -175,8 +175,6 @@ class PlaceDetailFragment :
             if (ratingBar.rating == 0f) {
                 alertMessage.visibility = View.VISIBLE
             } else {
-                // TODO( 서버에 평점바뀐 것을 전송 및 업데이트 된 평점을 뷰에 적용 )
-                // API 연동
                 viewModel.placeRate = ratingBar.rating
                 viewModel.updatePlaceRate()
                 alertDialog.dismiss()
