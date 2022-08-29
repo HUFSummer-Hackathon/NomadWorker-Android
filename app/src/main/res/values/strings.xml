@@ -100,5 +100,7 @@
     <string name="address">주소</string>
     <string name="more_info">상세 정보</string>
     <string name="add_place_rate">평점 추가하기</string>
+    <string name="add_place">등록하러 가기</string>
+    <string name="empty_scrap_message">아직 저장한 장소가 없어요.\n직접 장소를 등록해보시는 건 어떨까요?</string>
 
 </resources>
