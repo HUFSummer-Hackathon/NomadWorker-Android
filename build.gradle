@@ -25,7 +25,7 @@ ext {
     timberVersion = '4.7.1'
     retrofitVersion = '2.9.0'
     okhttpVersion = '4.9.3'
-    coroutineVersion = '1.6.1'
+    coroutineVersion = '1.6.4'
     koinVersion = '3.1.5'
     googleMapsVersion = '18.1.0'
     ossVersion = '17.0.0'
