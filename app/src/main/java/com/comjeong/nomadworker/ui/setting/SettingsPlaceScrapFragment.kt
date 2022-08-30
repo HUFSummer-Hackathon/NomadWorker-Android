@@ -10,7 +10,6 @@ import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.UiState
 import com.comjeong.nomadworker.databinding.FragmentSettingsPlaceScrapBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
-import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -27,7 +26,6 @@ class SettingsPlaceScrapFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         viewModel.getPlaceScrapListByUserId()
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -37,7 +35,6 @@ class SettingsPlaceScrapFragment :
 
         bindViews()
         observePlaceScrapList()
-
     }
 
     private fun observePlaceScrapList() {
@@ -45,36 +42,23 @@ class SettingsPlaceScrapFragment :
             .onEach {
                 when(it) {
                     is UiState.Success -> {
+//                        dismissLoadingSpinner()
                         initRecyclerView()
                         scrapAdapter.submitList(it.data)
                         binding.isEmpty = false
                     }
                     is UiState.Empty -> {
+//                        dismissLoadingSpinner()
                         binding.isEmpty = true
                     }
                     is UiState.Error -> {
-
+//                        dismissLoadingSpinner()
                     }
                     is UiState.Loading -> {
-
+//                        showLoadingSpinner(requireContext())
                     }
                 }
             }.launchIn(lifecycleScope)
-
-
-//        viewModel.uiState.observe(viewLifecycleOwner) { scrapList ->
-//            when {
-//                scrapList.isEmpty() -> {
-//                    binding.isEmpty = true
-//                }
-//                else -> {
-//                    binding.isEmpty = false
-//                    binding.rvPlaceScrap.adapter = scrapAdapter.apply {
-//                        submitList(scrapList)
-//                    }
-//                }
-//            }
-//        }
     }
 
     private fun initRecyclerView() {
@@ -85,9 +69,5 @@ class SettingsPlaceScrapFragment :
         binding.tbPlaceScrap.setNavigationOnClickListener {
             navigateUp()
         }
-
-//        binding.layoutEmptyData.btnAddPlace.setOnClickListener {
-//            navigate(R.id.action_scrap_to_new_feed_graph)
-//        }
     }
 }

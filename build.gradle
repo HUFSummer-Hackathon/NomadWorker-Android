@@ -29,6 +29,7 @@ ext {
     koinVersion = '3.1.5'
     googleMapsVersion = '18.1.0'
     ossVersion = '17.0.0'
+    spinKitVersion = '1.4.0'
 }
 task clean(type: Delete) {
     delete rootProject.buildDir
