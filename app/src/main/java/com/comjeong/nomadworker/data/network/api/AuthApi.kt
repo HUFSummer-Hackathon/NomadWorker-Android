@@ -1,6 +1,7 @@
 package com.comjeong.nomadworker.data.network.api
 
 import com.comjeong.nomadworker.data.model.mypage.ProfileImageResponseData
+import com.comjeong.nomadworker.data.model.settings.PlaceScrapResponseData
 import com.comjeong.nomadworker.data.model.signin.SignInRequestData
 import com.comjeong.nomadworker.data.model.signin.SignInResponseData
 import com.comjeong.nomadworker.data.model.signup.SignUpRequestData
@@ -37,4 +38,9 @@ interface AuthApi {
     suspend fun updateUserProfileImage(
         @Part profileImage: MultipartBody.Part
     ): ProfileImageResponseData
+
+    @GET("user/placesub")
+    suspend fun getPlaceScrapListByUserId(
+        @Query("u_id") userId: Long
+    ): PlaceScrapResponseData
 }
