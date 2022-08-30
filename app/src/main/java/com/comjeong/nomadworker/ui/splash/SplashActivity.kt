@@ -8,11 +8,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
-import com.comjeong.nomadworker.model.UserInfo
 import com.comjeong.nomadworker.ui.MainActivity
-import com.comjeong.nomadworker.ui.permission.CheckPermissionActivity
 import com.comjeong.nomadworker.ui.signin.SignInActivity
-import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
 
@@ -21,7 +18,6 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         initSplash()
-
     }
 
     private fun initSplash() {
