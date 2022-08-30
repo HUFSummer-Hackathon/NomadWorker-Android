@@ -100,6 +100,12 @@
     <string name="address">주소</string>
     <string name="more_info">상세 정보</string>
     <string name="add_place_rate">평점 추가하기</string>
+    <string name="onboard_first_title">다양한 장소를 한눈에</string>
+    <string name="onboard_first_subtitle">지역별, 여러분의 근처, 그리고 앱에서 추천해주는 다양한 장소를 구경해보세요. 여러분의 쾌적한 업무를 도와드릴게요!</string>
+    <string name="onboard_second_title">장소에 대한 정보제공</string>
+    <string name="onboard_second_subtitle">업무 공간에 대한 자세한 정보도 같이 제공해드립니다. 참고하시고 비교해서 자신에게 맞는 장소를 찾아보세요!</string>
+    <string name="onboard_third_title">나만의 장소를 공유</string>
+    <string name="onboard_third_subtitle">다양한 사람들의 장소를 구경해보세요. 피드를 등록해서 좋은 업무 장소에 대한 정보가 모이는데 도움을 줄수도 있습니다.</string>
     <string name="add_place">등록하러 가기</string>
     <string name="empty_scrap_message">아직 저장한 장소가 없어요.\n직접 장소를 등록해보시는 건 어떨까요?</string>
 
