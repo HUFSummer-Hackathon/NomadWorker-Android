@@ -42,6 +42,12 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
     private val _message: MutableLiveData<Event<String>> = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> = _message
 
+    private val _isSuccessDelete: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
+    val isSuccessDelete: MutableLiveData<Event<Boolean>> = _isSuccessDelete
+
+    private val _userNickname: MutableLiveData<Event<String>> = MutableLiveData<Event<String>>()
+    val userNickname: MutableLiveData<Event<String>> = _userNickname
+
     fun getUserTotalFeedsWithInfo() {
         viewModelScope.launch {
             try {
@@ -80,6 +86,26 @@ class MyPageViewModel(private val repository: MyPageRepository) : ViewModel() {
                 }
                 Timber.d("SUCCESS: $response")
             } catch (e: Throwable) {
+                Timber.d("FAILED: $e")
+            }
+        }
+    }
+
+    fun deleteFeed() {
+        viewModelScope.launch {
+            try {
+                val response = repository.deleteFeed(_feedId)
+
+                when(response.status) {
+                    200 -> {
+                        _isSuccessDelete.value = Event(true)
+                    }
+                    400 -> {
+                        _isSuccessDelete.value = Event(false)
+                    }
+                }
+                Timber.d("SUCCESS: $response")
+            } catch (e : Throwable) {
                 Timber.d("FAILED: $e")
             }
         }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.FEED_ID_KEY
+import com.comjeong.nomadworker.common.Constants.FEED_USER_ID
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentMyPageBinding
@@ -61,7 +62,8 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
     private fun moveFeedDetail(feedId: Long) {
         navigateWithBundle(
             R.id.action_my_page_to_feed_detail, bundleOf(
-                FEED_ID_KEY to feedId
+                FEED_ID_KEY to feedId,
+                FEED_USER_ID to viewModel.userId
             )
         )
     }

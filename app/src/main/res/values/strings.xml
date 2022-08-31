@@ -108,5 +108,6 @@
     <string name="onboard_third_subtitle">다양한 사람들의 장소를 구경해보세요. 피드를 등록해서 좋은 업무 장소에 대한 정보가 모이는데 도움을 줄수도 있습니다.</string>
     <string name="add_place">등록하러 가기</string>
     <string name="empty_scrap_message">아직 저장한 장소가 없어요.\n직접 장소를 등록해보시는 건 어떨까요?</string>
+    <string name="delete_feed">피드 삭제</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.comjeong.nomadworker.data.datasource.remote.mypage
 
 import com.comjeong.nomadworker.data.datasource.source.mypage.MyPageDataSource
+import com.comjeong.nomadworker.data.model.mypage.DeleteFeedResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
 import com.comjeong.nomadworker.data.network.api.AuthApi
@@ -14,5 +15,9 @@ class MyPageRemoteDataSourceImpl(private val authApi: AuthApi, private val feedA
 
     override suspend fun getUserFeedDetail(feedId: Long): UserFeedDetailResponseData {
         return feedApi.getUserFeedDetail(feedId)
+    }
+
+    override suspend fun deleteFeed(feedId: Long): DeleteFeedResponseData {
+        return feedApi.deleteFeed(feedId)
     }
 }
