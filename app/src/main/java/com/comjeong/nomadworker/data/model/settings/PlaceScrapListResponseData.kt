@@ -2,7 +2,7 @@ package com.comjeong.nomadworker.data.model.settings
 
 import com.google.gson.annotations.SerializedName
 
-data class PlaceScrapResponseData(
+data class PlaceScrapListResponseData(
     @SerializedName("message") val message: String,
     @SerializedName("status") val status: Int,
     @SerializedName("data") val data: List<Result>?

@@ -7,7 +7,7 @@
 
         <variable
             name="place"
-            type="com.comjeong.nomadworker.domain.model.settings.PlaceScrapResult.Result" />
+            type="com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult.Result" />
 
     </data>
 

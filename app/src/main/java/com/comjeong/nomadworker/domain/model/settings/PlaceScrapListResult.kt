@@ -1,6 +1,6 @@
 package com.comjeong.nomadworker.domain.model.settings
 
-data class PlaceScrapResult(
+data class PlaceScrapListResult(
     val message: String,
     val status: Int,
     val data: List<Result>?

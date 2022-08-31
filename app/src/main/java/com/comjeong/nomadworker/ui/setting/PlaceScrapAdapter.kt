@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.comjeong.nomadworker.databinding.ItemPlaceScrapBinding
-import com.comjeong.nomadworker.domain.model.settings.PlaceScrapResult
+import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
 
-class PlaceScrapAdapter: ListAdapter<PlaceScrapResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(PlaceScrapDiffCallback()) {
+class PlaceScrapAdapter: ListAdapter<PlaceScrapListResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(PlaceScrapDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceScrapViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,23 +21,23 @@ class PlaceScrapAdapter: ListAdapter<PlaceScrapResult.Result, PlaceScrapAdapter.
     }
 
     class PlaceScrapViewHolder(private val binding: ItemPlaceScrapBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindViews(scrapItem: PlaceScrapResult.Result) {
+        fun bindViews(scrapItem: PlaceScrapListResult.Result) {
             binding.place = scrapItem
             binding.executePendingBindings()
         }
     }
 
-    class PlaceScrapDiffCallback: DiffUtil.ItemCallback<PlaceScrapResult.Result>() {
+    class PlaceScrapDiffCallback: DiffUtil.ItemCallback<PlaceScrapListResult.Result>() {
         override fun areItemsTheSame(
-            oldItem: PlaceScrapResult.Result,
-            newItem: PlaceScrapResult.Result
+            oldItem: PlaceScrapListResult.Result,
+            newItem: PlaceScrapListResult.Result
         ): Boolean {
             return oldItem.userPlaceId == newItem.userPlaceId
         }
 
         override fun areContentsTheSame(
-            oldItem: PlaceScrapResult.Result,
-            newItem: PlaceScrapResult.Result
+            oldItem: PlaceScrapListResult.Result,
+            newItem: PlaceScrapListResult.Result
         ): Boolean {
             return oldItem == newItem
         }

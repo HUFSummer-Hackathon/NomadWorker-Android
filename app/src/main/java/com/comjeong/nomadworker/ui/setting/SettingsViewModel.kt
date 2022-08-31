@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.comjeong.nomadworker.common.Event
 import com.comjeong.nomadworker.common.UiState
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
-import com.comjeong.nomadworker.domain.model.settings.PlaceScrapResult
+import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
 import com.comjeong.nomadworker.domain.repository.settings.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,8 +29,8 @@ class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(
     private val _message: MutableLiveData<Event<String>> = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> = _message
 
-    private val _uiState =  MutableStateFlow<UiState<PlaceScrapResult.Result>>(UiState.Loading)
-    val uiState: StateFlow<UiState<PlaceScrapResult.Result>> = _uiState.asStateFlow()
+    private val _uiState =  MutableStateFlow<UiState<PlaceScrapListResult.Result>>(UiState.Loading)
+    val uiState: StateFlow<UiState<PlaceScrapListResult.Result>> = _uiState.asStateFlow()
 
     fun updateUserProfileImage() {
         Timber.d("TEST $_profileImage")

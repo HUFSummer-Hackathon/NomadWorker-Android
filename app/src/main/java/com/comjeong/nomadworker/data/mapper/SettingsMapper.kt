@@ -1,16 +1,16 @@
 package com.comjeong.nomadworker.data.mapper
 
-import com.comjeong.nomadworker.data.model.settings.PlaceScrapResponseData
-import com.comjeong.nomadworker.domain.model.settings.PlaceScrapResult
+import com.comjeong.nomadworker.data.model.settings.PlaceScrapListResponseData
+import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
 
 object SettingsMapper {
 
-    fun mapToPlaceScrapResult(body: PlaceScrapResponseData): PlaceScrapResult {
-        return PlaceScrapResult(
+    fun mapToPlaceScrapResult(body: PlaceScrapListResponseData): PlaceScrapListResult {
+        return PlaceScrapListResult(
             message = body.message,
             status = body.status,
             data = body.data?.map { result ->
-                PlaceScrapResult.Result(
+                PlaceScrapListResult.Result(
                     userPlaceId = result.userPlaceId,
                     placeId = result.placeId,
                     placeName = result.placeName,
