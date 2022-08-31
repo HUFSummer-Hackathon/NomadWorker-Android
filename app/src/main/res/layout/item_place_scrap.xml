@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.comjeong.nomadworker.ui.setting.SettingsViewModel" />
+
+        <variable
             name="place"
             type="com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult.Result" />
 
@@ -22,6 +26,7 @@
             android:id="@+id/cv_scrap"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:onClick="@{() -> viewModel.openPlaceDetailByPlaceId(place.placeId)}"
             app:cardCornerRadius="6dp"
             app:layout_constraintDimensionRatio="150:220"
             app:layout_constraintEnd_toEndOf="parent"

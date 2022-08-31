@@ -8,26 +8,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.comjeong.nomadworker.databinding.ItemPlaceScrapBinding
 import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
 
-class PlaceScrapAdapter: ListAdapter<PlaceScrapListResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(PlaceScrapDiffCallback()) {
+class PlaceScrapAdapter(private val viewModel: SettingsViewModel) :
+    ListAdapter<PlaceScrapListResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(
+        PlaceScrapDiffCallback()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceScrapViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemPlaceScrapBinding.inflate(inflater, parent, false)
-        return PlaceScrapViewHolder(binding)
+        return PlaceScrapViewHolder(binding, viewModel)
     }
 
     override fun onBindViewHolder(holder: PlaceScrapViewHolder, position: Int) {
         holder.bindViews(getItem(position))
     }
 
-    class PlaceScrapViewHolder(private val binding: ItemPlaceScrapBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PlaceScrapViewHolder(
+        private val binding: ItemPlaceScrapBinding,
+        val viewModel: SettingsViewModel
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bindViews(scrapItem: PlaceScrapListResult.Result) {
             binding.place = scrapItem
+            binding.viewModel = viewModel
             binding.executePendingBindings()
         }
     }
 
-    class PlaceScrapDiffCallback: DiffUtil.ItemCallback<PlaceScrapListResult.Result>() {
+    class PlaceScrapDiffCallback : DiffUtil.ItemCallback<PlaceScrapListResult.Result>() {
         override fun areItemsTheSame(
             oldItem: PlaceScrapListResult.Result,
             newItem: PlaceScrapListResult.Result
