@@ -1,6 +1,7 @@
 package com.comjeong.nomadworker.data.network.api
 
 import com.comjeong.nomadworker.data.model.feed.*
+import com.comjeong.nomadworker.data.model.mypage.DeleteFeedResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserFeedDetailResponseData
 import com.comjeong.nomadworker.data.model.mypage.UserTotalFeedsWithInfoResponseData
 import okhttp3.MultipartBody
@@ -28,7 +29,7 @@ interface FeedApi {
     ) : NewFeedPlaceSearchResultResponseData
 
     @Multipart
-    @POST("feeds/new")
+    @POST("feeds/one")
     suspend fun postNewFeed(
         @Part file : MultipartBody.Part,
         @Part("feed_content") content : RequestBody,
@@ -39,4 +40,9 @@ interface FeedApi {
     suspend fun postFeedLike(
         @Body body: FeedLikeRequestData
     ): FeedLikeResponseData
+
+    @HTTP(method = "DELETE", path = "feeds/one", hasBody = true)
+    suspend fun deleteFeed(
+        @Query("f_id") feedId: Long
+    ) : DeleteFeedResponseData
 }
