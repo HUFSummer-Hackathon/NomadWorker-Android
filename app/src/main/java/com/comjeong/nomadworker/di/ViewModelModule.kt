@@ -22,6 +22,6 @@ val viewModelModule = module {
     viewModel { FeedViewModel(get()) }
     viewModel { MyPageViewModel(get()) }
     viewModel { SearchViewModel(get()) }
-    viewModel { SettingsViewModel(get()) }
+    viewModel { SettingsViewModel(get(), get()) }
     viewModel { ReplyViewModel(get()) }
 }

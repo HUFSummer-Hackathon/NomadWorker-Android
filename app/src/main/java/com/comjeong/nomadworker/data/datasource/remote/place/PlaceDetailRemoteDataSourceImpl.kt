@@ -1,18 +1,21 @@
 package com.comjeong.nomadworker.data.datasource.remote.place
 
 import com.comjeong.nomadworker.data.datasource.source.place.PlaceDetailDataSource
-import com.comjeong.nomadworker.data.model.place.PlaceDetailResponseData
-import com.comjeong.nomadworker.data.model.place.UpdatePlaceRateRequestData
-import com.comjeong.nomadworker.data.model.place.UpdatePlaceRateResponseData
+import com.comjeong.nomadworker.data.model.place.*
+import com.comjeong.nomadworker.data.network.api.AuthApi
 import com.comjeong.nomadworker.data.network.api.PlaceApi
 
-class PlaceDetailRemoteDataSourceImpl(private val api: PlaceApi) : PlaceDetailDataSource {
+class PlaceDetailRemoteDataSourceImpl(private val placeApi: PlaceApi, private val authApi: AuthApi) : PlaceDetailDataSource {
 
     override suspend fun getPlaceDetailById(placeId: Long): PlaceDetailResponseData {
-        return api.getPlaceDetailById(placeId)
+        return placeApi.getPlaceDetailById(placeId)
     }
 
     override suspend fun updatePlaceRate(body: UpdatePlaceRateRequestData): UpdatePlaceRateResponseData {
-        return api.putPlaceRate(body)
+        return placeApi.putPlaceRate(body)
+    }
+
+    override suspend fun postPlaceScrap(body: PlaceScrapRequestData): PlaceScrapResponseData {
+        return authApi.postPlaceScrap(body)
     }
 }

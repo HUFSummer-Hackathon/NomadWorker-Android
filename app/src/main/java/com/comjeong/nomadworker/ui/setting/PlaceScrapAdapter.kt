@@ -5,39 +5,59 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.ItemPlaceScrapBinding
-import com.comjeong.nomadworker.domain.model.settings.PlaceScrapResult
+import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
 
-class PlaceScrapAdapter: ListAdapter<PlaceScrapResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(PlaceScrapDiffCallback()) {
+class PlaceScrapAdapter(
+    private val viewModel: SettingsViewModel,
+    private val scrapClickListener: (Long, Long) -> Unit
+) : ListAdapter<PlaceScrapListResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(
+    PlaceScrapDiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceScrapViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemPlaceScrapBinding.inflate(inflater, parent, false)
-        return PlaceScrapViewHolder(binding)
+        return PlaceScrapViewHolder(binding, viewModel)
     }
 
     override fun onBindViewHolder(holder: PlaceScrapViewHolder, position: Int) {
-        holder.bindViews(getItem(position))
+        holder.bindViews(getItem(position), scrapClickListener)
     }
 
-    class PlaceScrapViewHolder(private val binding: ItemPlaceScrapBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindViews(scrapItem: PlaceScrapResult.Result) {
-            binding.place = scrapItem
-            binding.executePendingBindings()
+    class PlaceScrapViewHolder(
+        private val binding: ItemPlaceScrapBinding,
+        private val settingsViewModel: SettingsViewModel
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bindViews(
+            scrapItem: PlaceScrapListResult.Result,
+            scrapClickListener: (Long, Long) -> Unit
+        ) {
+            with(binding) {
+                place = scrapItem
+                viewModel = settingsViewModel
+
+                ivScrap.setOnClickListener {
+                    scrapClickListener.invoke(NomadSharedPreferences.getUserId(), scrapItem.placeId)
+                }
+
+                executePendingBindings()
+            }
         }
     }
 
-    class PlaceScrapDiffCallback: DiffUtil.ItemCallback<PlaceScrapResult.Result>() {
+    class PlaceScrapDiffCallback : DiffUtil.ItemCallback<PlaceScrapListResult.Result>() {
         override fun areItemsTheSame(
-            oldItem: PlaceScrapResult.Result,
-            newItem: PlaceScrapResult.Result
+            oldItem: PlaceScrapListResult.Result,
+            newItem: PlaceScrapListResult.Result
         ): Boolean {
             return oldItem.userPlaceId == newItem.userPlaceId
         }
 
         override fun areContentsTheSame(
-            oldItem: PlaceScrapResult.Result,
-            newItem: PlaceScrapResult.Result
+            oldItem: PlaceScrapListResult.Result,
+            newItem: PlaceScrapListResult.Result
         ): Boolean {
             return oldItem == newItem
         }

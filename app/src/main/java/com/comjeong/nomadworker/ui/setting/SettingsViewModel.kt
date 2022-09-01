@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.comjeong.nomadworker.common.Event
 import com.comjeong.nomadworker.common.UiState
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
-import com.comjeong.nomadworker.domain.model.settings.PlaceScrapResult
+import com.comjeong.nomadworker.data.model.place.PlaceScrapRequestData
+import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
+import com.comjeong.nomadworker.domain.repository.place.PlaceDetailRepository
 import com.comjeong.nomadworker.domain.repository.settings.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +18,10 @@ import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import timber.log.Timber
 
-class SettingsViewModel(private val repository: SettingsRepository) : ViewModel() {
+class SettingsViewModel(
+    private val settingsRepository: SettingsRepository,
+    private val placeRepository: PlaceDetailRepository
+) : ViewModel() {
 
     private var _profileImage: MultipartBody.Part =
         MultipartBody.Part.createFormData("image", "file")
@@ -29,14 +34,17 @@ class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(
     private val _message: MutableLiveData<Event<String>> = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> = _message
 
-    private val _uiState =  MutableStateFlow<UiState<PlaceScrapResult.Result>>(UiState.Loading)
-    val uiState: StateFlow<UiState<PlaceScrapResult.Result>> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow<UiState<PlaceScrapListResult.Result>>(UiState.Loading)
+    val uiState: StateFlow<UiState<PlaceScrapListResult.Result>> = _uiState.asStateFlow()
+
+    private val _openPlaceDetailEvent: MutableLiveData<Event<Long>> = MutableLiveData<Event<Long>>()
+    val openPlaceDetailEvent: LiveData<Event<Long>> = _openPlaceDetailEvent
 
     fun updateUserProfileImage() {
         Timber.d("TEST $_profileImage")
         viewModelScope.launch {
             try {
-                val response = repository.updateUserProfileImage(_profileImage)
+                val response = settingsRepository.updateUserProfileImage(_profileImage)
 
                 when (response.status) {
                     200 -> {
@@ -56,7 +64,7 @@ class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(
 
     fun getPlaceScrapListByUserId() {
         viewModelScope.launch {
-            runCatching { repository.getPlaceScrapListByUserId(NomadSharedPreferences.getUserId()) }
+            runCatching { settingsRepository.getPlaceScrapListByUserId(NomadSharedPreferences.getUserId()) }
                 .onSuccess { response ->
                     if (response.data == null) _uiState.value = UiState.Empty
                     else _uiState.value = UiState.Success(response.data)
@@ -67,5 +75,22 @@ class SettingsViewModel(private val repository: SettingsRepository) : ViewModel(
                     Timber.d("$it")
                 }
         }
+    }
+
+    fun postPlaceScrap(userId: Long, placeId: Long) {
+        val request = PlaceScrapRequestData(userId, placeId)
+        Timber.d("REQUEST: $request")
+        viewModelScope.launch {
+            try {
+                val response = placeRepository.postPlaceScrap(request)
+                Timber.d("SUCCESS: $response")
+            } catch (e: Throwable) {
+                Timber.d("FAILED: $e")
+            }
+        }
+    }
+
+    fun openPlaceDetailByPlaceId(placeId: Long) {
+        _openPlaceDetailEvent.value = Event(placeId)
     }
 }

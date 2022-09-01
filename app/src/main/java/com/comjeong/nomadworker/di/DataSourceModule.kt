@@ -29,7 +29,7 @@ val dataSourceModule = module {
     single<SignInDataSource> { SignInRemoteDataSourceImpl(get()) }
     single<HomeRemoteDataSource> { HomeRemoteDataSourceImpl(get()) }
     single<PlaceRegionDataSource> { PlaceRegionRemoteDataSourceImpl(get()) }
-    single<PlaceDetailDataSource> { PlaceDetailRemoteDataSourceImpl(get()) }
+    single<PlaceDetailDataSource> { PlaceDetailRemoteDataSourceImpl(get(), get()) }
     single<FeedsDataSource> { FeedsRemoteDataSourceImpl(get()) }
     single<MyPageDataSource> { MyPageRemoteDataSourceImpl(get(), get()) }
     single<PlaceSearchDataSource> { PlaceSearchDataSourceImpl(get()) }

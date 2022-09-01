@@ -4,7 +4,7 @@ import com.comjeong.nomadworker.data.datasource.source.settings.SettingsRemoteDa
 import com.comjeong.nomadworker.data.mapper.MyPageMapper
 import com.comjeong.nomadworker.data.mapper.SettingsMapper
 import com.comjeong.nomadworker.domain.model.mypage.ProfileImageResult
-import com.comjeong.nomadworker.domain.model.settings.PlaceScrapResult
+import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
 import com.comjeong.nomadworker.domain.repository.settings.SettingsRepository
 import okhttp3.MultipartBody
 
@@ -14,7 +14,7 @@ class SettingsRepositoryImpl(private val dataSource: SettingsRemoteDataSource) :
         return MyPageMapper.mapToProfileImageResult(dataSource.uploadUserProfileImage(profileImage))
     }
 
-    override suspend fun getPlaceScrapListByUserId(userId: Long): PlaceScrapResult {
+    override suspend fun getPlaceScrapListByUserId(userId: Long): PlaceScrapListResult {
         return SettingsMapper.mapToPlaceScrapResult(dataSource.getPlaceScrapListByUserId(userId))
     }
 }

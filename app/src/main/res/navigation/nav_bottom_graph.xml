@@ -172,7 +172,11 @@
         android:id="@+id/navigation_settings_scrap"
         android:name="com.comjeong.nomadworker.ui.setting.SettingsPlaceScrapFragment"
         android:label="SettingsPlaceScrapFragment"
-        tools:layout="@layout/fragment_settings_place_scrap"/>
+        tools:layout="@layout/fragment_settings_place_scrap">
+        <action
+            android:id="@+id/action_scrap_to_place_detail"
+            app:destination="@id/navigation_place_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_reply"
