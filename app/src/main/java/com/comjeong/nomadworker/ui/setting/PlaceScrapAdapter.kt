@@ -5,13 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.ItemPlaceScrapBinding
 import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
 
-class PlaceScrapAdapter(private val viewModel: SettingsViewModel) :
-    ListAdapter<PlaceScrapListResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(
-        PlaceScrapDiffCallback()
-    ) {
+class PlaceScrapAdapter(
+    private val viewModel: SettingsViewModel,
+    private val scrapClickListener: (Long, Long) -> Unit
+) : ListAdapter<PlaceScrapListResult.Result, PlaceScrapAdapter.PlaceScrapViewHolder>(
+    PlaceScrapDiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceScrapViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -20,17 +23,27 @@ class PlaceScrapAdapter(private val viewModel: SettingsViewModel) :
     }
 
     override fun onBindViewHolder(holder: PlaceScrapViewHolder, position: Int) {
-        holder.bindViews(getItem(position))
+        holder.bindViews(getItem(position), scrapClickListener)
     }
 
     class PlaceScrapViewHolder(
         private val binding: ItemPlaceScrapBinding,
-        val viewModel: SettingsViewModel
+        private val settingsViewModel: SettingsViewModel
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bindViews(scrapItem: PlaceScrapListResult.Result) {
-            binding.place = scrapItem
-            binding.viewModel = viewModel
-            binding.executePendingBindings()
+        fun bindViews(
+            scrapItem: PlaceScrapListResult.Result,
+            scrapClickListener: (Long, Long) -> Unit
+        ) {
+            with(binding) {
+                place = scrapItem
+                viewModel = settingsViewModel
+
+                ivScrap.setOnClickListener {
+                    scrapClickListener.invoke(NomadSharedPreferences.getUserId(), scrapItem.placeId)
+                }
+
+                executePendingBindings()
+            }
         }
     }
 

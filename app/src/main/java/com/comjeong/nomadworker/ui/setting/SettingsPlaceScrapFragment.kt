@@ -11,6 +11,7 @@ import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.common.UiState
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import com.comjeong.nomadworker.databinding.FragmentSettingsPlaceScrapBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
@@ -23,7 +24,15 @@ class SettingsPlaceScrapFragment :
     BaseFragment<FragmentSettingsPlaceScrapBinding>(R.layout.fragment_settings_place_scrap) {
 
     private val viewModel: SettingsViewModel by sharedViewModel()
-    private val scrapAdapter by lazy { PlaceScrapAdapter(viewModel) }
+
+    //    private val scrapAdapter = PlaceScrapAdapter(viewModel) { userId, placeId ->
+//        viewModel.postPlaceScrap(userId, placeId)
+//    }
+    private val scrapAdapter by lazy {
+        PlaceScrapAdapter(viewModel) { userId, placeId ->
+            viewModel.postPlaceScrap(userId, placeId)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

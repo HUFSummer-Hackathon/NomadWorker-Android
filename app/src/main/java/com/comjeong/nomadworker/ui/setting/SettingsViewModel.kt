@@ -77,6 +77,19 @@ class SettingsViewModel(
         }
     }
 
+    fun postPlaceScrap(userId: Long, placeId: Long) {
+        val request = PlaceScrapRequestData(userId, placeId)
+        Timber.d("REQUEST: $request")
+        viewModelScope.launch {
+            try {
+                val response = placeRepository.postPlaceScrap(request)
+                Timber.d("SUCCESS: $response")
+            } catch (e: Throwable) {
+                Timber.d("FAILED: $e")
+            }
+        }
+    }
+
     fun openPlaceDetailByPlaceId(placeId: Long) {
         _openPlaceDetailEvent.value = Event(placeId)
     }
