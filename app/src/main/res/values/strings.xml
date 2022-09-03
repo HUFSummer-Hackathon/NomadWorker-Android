@@ -20,7 +20,7 @@
     <string name="signup_verify_title_message">작성하신 이메일로 전송 된 인증 번호를 입력해주세요.</string>
     <string name="resend_verify_code">인증 번호를 못 받았어요 :(</string>
     <string name="signup_password_title">비밀번호를 입력해주세요.</string>
-    <string name="signup_password_title_message">영어와 숫자, 문자를 포함해 8~15자리 이내로 입력해주세요.</string>
+    <string name="signup_password_title_message">영어와 숫자, 문자를 포함해 8~16자리 이내로 입력해주세요.</string>
     <string name="signup_nickname_title">사용하실 닉네임을 입력해주세요.</string>
     <string name="signup_nickname_title_message">닉네임은 수정이 불가하니 신중하게 입력해주세요 :)</string>
     <string name="correct_password">알맞은 비밀번호 입니다 :)</string>
@@ -109,5 +109,6 @@
     <string name="add_place">등록하러 가기</string>
     <string name="empty_scrap_message">아직 저장한 장소가 없어요.\n직접 장소를 등록해보시는 건 어떨까요?</string>
     <string name="delete_feed">피드 삭제</string>
+    <string name="verify_notice">인증코드가 오지 않았다면 작성한 메일을 다시 확인해주세요.</string>
 
 </resources>

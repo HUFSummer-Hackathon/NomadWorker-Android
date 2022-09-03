@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.VERIFICATION_CODE
+import com.comjeong.nomadworker.common.Constants.TYPED_USER_EMAIL
 import com.comjeong.nomadworker.databinding.FragmentSignUpVerifyBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
 import com.comjeong.nomadworker.ui.common.util.DialogUtil.setSignUpCloseDialog
@@ -16,11 +17,13 @@ import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 class SignUpVerifyFragment : BaseFragment<FragmentSignUpVerifyBinding>(R.layout.fragment_sign_up_verify) {
 
     private var verificationCode: String? = ""
+    private var userEmail: String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         verificationCode = requireArguments().getString(VERIFICATION_CODE)
+        userEmail = requireArguments().getString(TYPED_USER_EMAIL).toString()
 
         setNavigation()
         bindViews()
@@ -44,6 +47,8 @@ class SignUpVerifyFragment : BaseFragment<FragmentSignUpVerifyBinding>(R.layout.
                 else -> false
             }
         }
+
+        binding.tvShowTypedUserEmail.text = userEmail
     }
 
     private fun bindViews() {
