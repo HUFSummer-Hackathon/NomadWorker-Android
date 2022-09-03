@@ -45,6 +45,19 @@
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/nomad_accent_red"
+            android:text="@string/verify_notice"
+            app:layout_constraintTop_toBottomOf="@id/tv_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_verify_code"
             style="@style/TextSubtitle3"
@@ -63,7 +76,7 @@
             android:paddingBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_message" />
+            app:layout_constraintTop_toBottomOf="@id/tv_notice" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_status_message"

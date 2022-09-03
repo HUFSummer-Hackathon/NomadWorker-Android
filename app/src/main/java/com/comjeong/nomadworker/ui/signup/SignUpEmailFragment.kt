@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import com.comjeong.nomadworker.R
+import com.comjeong.nomadworker.common.Constants
 import com.comjeong.nomadworker.common.Constants.VERIFICATION_CODE
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentSignUpEmailBinding
@@ -16,6 +17,7 @@ import com.comjeong.nomadworker.ui.common.util.DialogUtil.setSignUpCloseDialog
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateWithBundle
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
+import java.util.regex.Pattern
 
 class SignUpEmailFragment :
     BaseFragment<FragmentSignUpEmailBinding>(R.layout.fragment_sign_up_email) {
@@ -88,7 +90,8 @@ class SignUpEmailFragment :
 
     private fun isValidatePattern(): Boolean {
         val email = binding.etEmail.text.toString().trim()
-        val pattern = android.util.Patterns.EMAIL_ADDRESS
+        val patternReg  = Constants.EMAIL_PATTERN
+        val pattern = Pattern.compile(patternReg)
 
         return if (pattern.matcher(email).matches()) {
             binding.etEmail.setBackgroundResource(R.drawable.bg_green_radius_10)

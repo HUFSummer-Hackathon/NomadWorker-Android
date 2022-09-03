@@ -6,6 +6,7 @@ object Constants {
     const val PLACE_ID_KEY = "place_id"
     const val FEED_ID_KEY = "feed_id"
     const val FEED_USER_ID = "user_id"
+    const val EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})\$"
     const val BASE_URL = "http://3.37.224.92:8080/api/"
     const val TOS_URL = "https://dev-wotjd.notion.site/30102a46da7d4f65af7b9af8a9769f3d"
     const val PRIVACY_POLICY_URL = "https://dev-wotjd.notion.site/7e6065d1856745f5bffa7a5411c650ca"
