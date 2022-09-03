@@ -23,8 +23,9 @@ class SignUpPasswordFragment :
         super.onViewCreated(view, savedInstanceState)
 
         setNavigation()
-
         bindViews()
+
+        observePassword()
     }
 
     private fun setNavigation() {
@@ -50,7 +51,7 @@ class SignUpPasswordFragment :
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
+                viewModel.typedPassword.value = s.toString()
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -64,16 +65,10 @@ class SignUpPasswordFragment :
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if (isSamePassword()) {
-                    handleNextButton(true)
-                    moveNextStep()
-                } else {
-                    handleNextButton(false)
-                }
+                activateNextButtonWithPasswordVerification()
             }
         })
     }
@@ -138,6 +133,12 @@ class SignUpPasswordFragment :
         }
     }
 
+    private fun observePassword() {
+        viewModel.typedPassword.observe(viewLifecycleOwner) { password ->
+            activateNextButtonWithPasswordVerification()
+        }
+    }
+
     private fun handleNextButton(canEnable: Boolean) {
         if (canEnable) {
             binding.btnNext.isEnabled = true
@@ -148,7 +149,14 @@ class SignUpPasswordFragment :
         }
     }
 
-
+    private fun activateNextButtonWithPasswordVerification() {
+        if (isSamePassword()) {
+            handleNextButton(true)
+            moveNextStep()
+        } else {
+            handleNextButton(false)
+        }
+    }
 
     private fun moveNextStep() {
         binding.btnNext.setOnClickListener {
@@ -157,5 +165,6 @@ class SignUpPasswordFragment :
             viewModel.password = binding.etConfirmPassword.text.toString().trim()
         }
     }
+
 
 }
