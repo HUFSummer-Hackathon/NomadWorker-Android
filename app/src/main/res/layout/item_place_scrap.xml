@@ -54,14 +54,6 @@
                     app:strokeWidth="1dp"
                     tools:src="@drawable/img_empty_data" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_scrap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/selector_scrap"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_place_name"
                     style="@style/TextSubtitle1.Bold.Black01"
