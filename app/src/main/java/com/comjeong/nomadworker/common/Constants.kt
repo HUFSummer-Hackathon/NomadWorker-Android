@@ -2,6 +2,7 @@ package com.comjeong.nomadworker.common
 
 object Constants {
     const val VERIFICATION_CODE = "verification_code"
+    const val TYPED_USER_EMAIL = "user_email"
     const val LOCATION_NAME_KEY = "location_name"
     const val PLACE_ID_KEY = "place_id"
     const val FEED_ID_KEY = "feed_id"

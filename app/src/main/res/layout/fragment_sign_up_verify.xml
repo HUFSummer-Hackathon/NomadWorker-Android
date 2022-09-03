@@ -50,13 +50,38 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:layout_marginTop="2dp"
-            android:textColor="@color/nomad_accent_red"
+            android:layout_marginEnd="24dp"
             android:text="@string/verify_notice"
-            app:layout_constraintTop_toBottomOf="@id/tv_message"
+            android:textColor="@color/nomad_primary_blue"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_message" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_user_email_notice_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="4dp"
+            android:text="입력한 이메일 : "
+            android:textColor="@color/nomad_primary_blue"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@id/et_verify_code"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_show_typed_user_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:textColor="@color/nomad_primary_blue"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_user_email_notice_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_notice" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_verify_code"
@@ -64,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/bg_white_radius_10_stroke_bluegrey"
             android:hint="@string/verify_number"
@@ -76,7 +101,7 @@
             android:paddingBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_notice" />
+            app:layout_constraintTop_toBottomOf="@id/tv_show_typed_user_email" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_status_message"

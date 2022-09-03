@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants
 import com.comjeong.nomadworker.common.Constants.VERIFICATION_CODE
+import com.comjeong.nomadworker.common.Constants.TYPED_USER_EMAIL
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentSignUpEmailBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
@@ -124,7 +125,8 @@ class SignUpEmailFragment :
             viewModel.email = binding.etEmail.text.toString().trim()
             navigateWithBundle(
                 R.id.action_email_to_verify, bundleOf(
-                    VERIFICATION_CODE to emailCode
+                    VERIFICATION_CODE to emailCode,
+                    TYPED_USER_EMAIL to binding.etEmail.text.toString()
                 )
             )
         }
