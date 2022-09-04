@@ -17,6 +17,7 @@ data class PlaceDetailResult(
         val placeLatitude: Double?,
         val placeLongitude: Double?,
         val placeStoreType: String?,
+        val isScraped: Int?,
         val placeUrl: String?
     )
 }

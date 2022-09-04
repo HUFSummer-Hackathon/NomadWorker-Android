@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="isScraped"
+            type="int" />
+
+        <variable
+            name="viewModel"
+            type="com.comjeong.nomadworker.ui.place.PlaceDetailViewModel" />
 
         <variable
             name="placeInfo"
@@ -25,7 +32,6 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/nomad_white"
                 app:contentInsetStartWithNavigation="0dp"
-                app:menu="@menu/menu_bookmark"
                 app:navigationIcon="@drawable/ic_back_24"
                 app:title="장소 정보" />
 
@@ -35,6 +41,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:overScrollMode="never">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,7 +70,6 @@
                     android:src="@drawable/ic_place_detail_charge_24"
                     app:layout_constraintBottom_toBottomOf="@id/iv_place_detail_thumbnail"
                     app:layout_constraintEnd_toEndOf="parent" />
-
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_icon_wifi"
@@ -306,23 +312,32 @@
         </androidx.core.widget.NestedScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_bottom_bar"
+            android:id="@+id/cl_bottom_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/nomad_white_transparent"
             android:padding="12dp">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_scrap"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@{isScraped == 1 ? @drawable/ic_scrap_activate_28 : @drawable/ic_scrap_disable_28}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_evaluation"
-                style="@style/TextSubtitle1.Bold.White"
+                style="@style/TextSubtitle2.White"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_blue_radius_10"
-                android:paddingStart="26dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="26dp"
-                android:paddingBottom="10dp"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
                 android:text="@string/add_place_rate"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

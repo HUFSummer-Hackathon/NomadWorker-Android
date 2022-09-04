@@ -21,5 +21,5 @@
     <color name="nomad_blue_grey">#e2e2e6</color>
     <color name="nomad_blue_grey_transparent">#aae2e2e6</color>
     <color name="nomad_white">#ffffff</color>
-    <color name="nomad_white_transparent">#aaffffff</color>
+    <color name="nomad_white_transparent">#E6ffffff</color>
 </resources>

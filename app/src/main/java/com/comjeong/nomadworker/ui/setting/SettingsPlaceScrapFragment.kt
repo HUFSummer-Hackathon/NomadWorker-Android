@@ -25,14 +25,7 @@ class SettingsPlaceScrapFragment :
 
     private val viewModel: SettingsViewModel by sharedViewModel()
 
-    //    private val scrapAdapter = PlaceScrapAdapter(viewModel) { userId, placeId ->
-//        viewModel.postPlaceScrap(userId, placeId)
-//    }
-    private val scrapAdapter by lazy {
-        PlaceScrapAdapter(viewModel) { userId, placeId ->
-            viewModel.postPlaceScrap(userId, placeId)
-        }
-    }
+    private lateinit var scrapAdapter: PlaceScrapAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -90,6 +83,7 @@ class SettingsPlaceScrapFragment :
     }
 
     private fun initRecyclerView() {
+        scrapAdapter = PlaceScrapAdapter(viewModel)
         binding.rvPlaceScrap.adapter = scrapAdapter
     }
 
