@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="isScraped"
+            type="int" />
+
+        <variable
+            name="viewModel"
+            type="com.comjeong.nomadworker.ui.place.PlaceDetailViewModel" />
 
         <variable
             name="placeInfo"
@@ -34,6 +41,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:overScrollMode="never">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -315,7 +323,7 @@
                 android:id="@+id/iv_scrap"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/selector_scrap"
+                android:src="@{isScraped == 1 ? @drawable/ic_scrap_activate_28 : @drawable/ic_scrap_disable_28}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

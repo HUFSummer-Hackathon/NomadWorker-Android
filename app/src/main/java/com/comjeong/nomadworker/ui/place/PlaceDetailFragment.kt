@@ -17,8 +17,6 @@ import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentPlaceDetailBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
-import com.comjeong.nomadworker.ui.common.customview.CustomToast.ToastType.STANDARD
-import com.comjeong.nomadworker.ui.common.customview.CustomToast.makeToast
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -66,12 +64,9 @@ class PlaceDetailFragment :
         mMapView = binding.mvPlaceMap
         mMapView.onCreate(savedInstanceState)
         mMapView.getMapAsync(this)
-
-
     }
 
     private fun observeMessage() {
-        Timber.d("START")
         viewModel.message.observe(viewLifecycleOwner, EventObserver { message ->
             Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
         })
@@ -113,11 +108,19 @@ class PlaceDetailFragment :
             Timber.d("$placeLongitude")
 
         }
+
+        viewModel.isScraped.observe(viewLifecycleOwner) { isScraped ->
+            binding.isScraped = isScraped
+        }
     }
 
     private fun bindViews() {
         binding.tbPlaceDetail.setNavigationOnClickListener {
             navigateUp()
+        }
+
+        binding.ivScrap.setOnClickListener {
+            viewModel.postPlaceScrap()
         }
     }
 
@@ -167,7 +170,7 @@ class PlaceDetailFragment :
 
         val alertDialog = builder.create()
 
-        ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
+        ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
             ratingNumber.text = rating.toString()
         }
 
