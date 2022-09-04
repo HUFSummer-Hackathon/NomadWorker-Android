@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.comjeong.nomadworker.R
+import com.comjeong.nomadworker.common.Constants
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.databinding.FragmentSignUpNickNameBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
@@ -76,7 +77,7 @@ class SignUpNickNameFragment :
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s?.length!! > 0) {
+                if (s?.length!! > 0 && s.length <= Constants.NICKNAME_LENGTH_LIMIT) {
                     binding.tvCheckNickname.visibility = View.VISIBLE
                 } else {
                     binding.tvCheckNickname.visibility = View.GONE
