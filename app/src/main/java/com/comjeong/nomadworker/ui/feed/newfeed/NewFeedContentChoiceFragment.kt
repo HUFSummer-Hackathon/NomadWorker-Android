@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.ui.feed
+package com.comjeong.nomadworker.ui.feed.newfeed
 
 import android.os.Bundle
 import android.text.Editable

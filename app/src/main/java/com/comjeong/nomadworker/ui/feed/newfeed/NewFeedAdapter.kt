@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.ui.feed
+package com.comjeong.nomadworker.ui.feed.newfeed
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,17 +7,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.comjeong.nomadworker.databinding.ItemNewFeedPlaceSearchBinding
 import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
+import com.comjeong.nomadworker.ui.feed.FeedViewModel
 
 class NewFeedAdapter(private val viewModel : FeedViewModel)
-    : ListAdapter<NewFeedPlaceSearchResult.Result, NewFeedAdapter.NewFeedViewHolder>(NewFeedDiffCallback()) {
+    : ListAdapter<NewFeedPlaceSearchResult.Result, NewFeedAdapter.NewFeedViewHolder>(
+    NewFeedDiffCallback()
+) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewFeedAdapter.NewFeedViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewFeedViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemNewFeedPlaceSearchBinding.inflate(layoutInflater, parent, false)
         return NewFeedViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: NewFeedAdapter.NewFeedViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NewFeedViewHolder, position: Int) {
         holder.bindItems(getItem(position))
     }
 

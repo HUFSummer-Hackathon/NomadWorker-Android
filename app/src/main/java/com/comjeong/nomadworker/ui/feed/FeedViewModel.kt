@@ -9,7 +9,7 @@ import com.comjeong.nomadworker.data.model.feed.FeedLikeRequestData
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
 import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
 import com.comjeong.nomadworker.domain.repository.feed.FeedRepository
-import com.comjeong.nomadworker.ui.common.extension.default
+import com.comjeong.nomadworker.ui.feed.newfeed.NewFeedInfo
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody

@@ -64,7 +64,7 @@
 
     <activity
         android:id="@+id/navigation_new_feed_activity"
-        android:name="com.comjeong.nomadworker.ui.feed.NewFeedActivity"
+        android:name="com.comjeong.nomadworker.ui.feed.newfeed.NewFeedActivity"
         android:label="activity_new_feed"
         tools:layout="@layout/activity_new_feed" />
 

@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.ui.feed
+package com.comjeong.nomadworker.ui.feed.newfeed
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
