@@ -7,9 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.comjeong.nomadworker.common.Event
 import com.comjeong.nomadworker.common.UiState
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
-import com.comjeong.nomadworker.data.model.place.PlaceScrapRequestData
 import com.comjeong.nomadworker.domain.model.settings.PlaceScrapListResult
-import com.comjeong.nomadworker.domain.repository.place.PlaceDetailRepository
 import com.comjeong.nomadworker.domain.repository.settings.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,10 +16,7 @@ import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import timber.log.Timber
 
-class SettingsViewModel(
-    private val settingsRepository: SettingsRepository,
-    private val placeRepository: PlaceDetailRepository
-) : ViewModel() {
+class SettingsViewModel(private val repository: SettingsRepository) : ViewModel() {
 
     private var _profileImage: MultipartBody.Part =
         MultipartBody.Part.createFormData("image", "file")
@@ -44,7 +39,7 @@ class SettingsViewModel(
         Timber.d("TEST $_profileImage")
         viewModelScope.launch {
             try {
-                val response = settingsRepository.updateUserProfileImage(_profileImage)
+                val response = repository.updateUserProfileImage(_profileImage)
 
                 when (response.status) {
                     200 -> {
@@ -64,7 +59,7 @@ class SettingsViewModel(
 
     fun getPlaceScrapListByUserId() {
         viewModelScope.launch {
-            runCatching { settingsRepository.getPlaceScrapListByUserId(NomadSharedPreferences.getUserId()) }
+            runCatching { repository.getPlaceScrapListByUserId(NomadSharedPreferences.getUserId()) }
                 .onSuccess { response ->
                     if (response.data == null) _uiState.value = UiState.Empty
                     else _uiState.value = UiState.Success(response.data)
@@ -74,19 +69,6 @@ class SettingsViewModel(
                     _uiState.value = UiState.Error(it.message)
                     Timber.d("$it")
                 }
-        }
-    }
-
-    fun postPlaceScrap(userId: Long, placeId: Long) {
-        val request = PlaceScrapRequestData(userId, placeId)
-        Timber.d("REQUEST: $request")
-        viewModelScope.launch {
-            try {
-                val response = placeRepository.postPlaceScrap(request)
-                Timber.d("SUCCESS: $response")
-            } catch (e: Throwable) {
-                Timber.d("FAILED: $e")
-            }
         }
     }
 

@@ -47,6 +47,7 @@ object PlaceMapper {
                 placeLatitude = body.data?.placeLatitude,
                 placeLongitude = body.data?.placeLongitude,
                 placeStoreType = body.data?.placeStoreType,
+                isScraped = if (body.data?.isScraped == true) 1 else 0,
                 placeUrl = body.data?.placeUrl
             )
         )

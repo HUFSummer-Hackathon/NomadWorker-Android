@@ -5,15 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.comjeong.nomadworker.common.Event
+import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
+import com.comjeong.nomadworker.data.model.place.PlaceScrapRequestData
 import com.comjeong.nomadworker.data.model.place.UpdatePlaceRateRequestData
 import com.comjeong.nomadworker.domain.model.place.PlaceDetailResult
 import com.comjeong.nomadworker.domain.repository.place.PlaceDetailRepository
+import com.comjeong.nomadworker.ui.common.extension.default
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class PlaceDetailViewModel(private val repository: PlaceDetailRepository) : ViewModel() {
 
-    private var _placeId: Long = 0
+    private var _placeId: Long = -1
     var placeId: Long = _placeId
         set(value) {
             _placeId = value
@@ -26,6 +29,8 @@ class PlaceDetailViewModel(private val repository: PlaceDetailRepository) : View
             _placeRate = value
             field = value
         }
+
+    var isScraped = MutableLiveData<Int>().default(0)
 
     private val _placeDetailInfo: MutableLiveData<PlaceDetailResult.Result> =
         MutableLiveData<PlaceDetailResult.Result>()
@@ -42,6 +47,7 @@ class PlaceDetailViewModel(private val repository: PlaceDetailRepository) : View
                 when (response.status) {
                     200 -> {
                         _placeDetailInfo.value = response.data
+                        isScraped.value = if (response.data?.isScraped == 0) 0 else 1
                     }
                     400 -> {
                         _placeDetailInfo.value = response.data
@@ -58,7 +64,7 @@ class PlaceDetailViewModel(private val repository: PlaceDetailRepository) : View
     fun updatePlaceRate() {
         val requestBody = UpdatePlaceRateRequestData(
             placeId = _placeId,
-            placeRate = _placeRate
+            placeRate = placeRate
         )
         Timber.d("$requestBody")
 
@@ -67,9 +73,6 @@ class PlaceDetailViewModel(private val repository: PlaceDetailRepository) : View
                 val response = repository.updatePlaceRate(requestBody)
 
                 when (response.status) {
-                    200 -> {
-                        _message.value = Event(response.message)
-                    }
                     400 -> {
                         _message.value = Event(response.message)
                     }
@@ -82,4 +85,24 @@ class PlaceDetailViewModel(private val repository: PlaceDetailRepository) : View
         }
     }
 
+    fun postPlaceScrap() {
+        val requestBody = PlaceScrapRequestData(
+            userId = NomadSharedPreferences.getUserId(),
+            placeId = _placeId,
+            isScraped = isScraped.value != 0
+        )
+        viewModelScope.launch {
+            runCatching { repository.postPlaceScrap(requestBody) }
+                .onSuccess {
+                    if (it.status == 200) {
+                        isScraped.value = isScraped.value?.plus(1)?.rem(2)
+
+                        Timber.d("SUCCESS: ${it.message}")
+                    }
+                }
+                .onFailure {
+                    Timber.d("FAILED: $it")
+                }
+        }
+    }
 }

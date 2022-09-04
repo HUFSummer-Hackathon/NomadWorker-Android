@@ -19,6 +19,7 @@ data class PlaceDetailResponseData(
         @SerializedName("p_latitude") val placeLatitude: Double,
         @SerializedName("p_longitude") val placeLongitude: Double,
         @SerializedName("p_storeType") val placeStoreType: String,
-        @SerializedName("p_url") val placeUrl: String
+        @SerializedName("p_url") val placeUrl: String,
+        @SerializedName("u_p_scrab") val isScraped: Boolean
     )
 }
