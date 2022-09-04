@@ -47,9 +47,6 @@ class SignUpViewModel(private val repository: SignUpRepository) : ViewModel() {
     private val _isSignUpSuccess: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
     val isSignUpSuccess: LiveData<Event<Boolean>> = _isSignUpSuccess
 
-    private val _typedPassword: MutableLiveData<String> = MutableLiveData<String>()
-    val typedPassword: MutableLiveData<String> = _typedPassword
-
     fun checkDuplicateEmail(email: String) {
         viewModelScope.launch {
             try {
