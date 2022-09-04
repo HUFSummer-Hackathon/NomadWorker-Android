@@ -56,11 +56,11 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(R.layout.fragment_feed) {
 
     private fun observeFeedDetailEvent() {
         viewModel.openFeedDetailEvent.observe(viewLifecycleOwner, EventObserver<Long> { feedId ->
-            moveFeedDetail(feedId, viewModel.placeName)
+            moveFeedDetail(feedId)
         })
     }
 
-    private fun moveFeedDetail(feedId: Long, placeName: String) {
+    private fun moveFeedDetail(feedId: Long) {
         navigateWithBundle(
             R.id.action_navigation_feed_to_navigation_feed_detail, bundleOf(
                 Constants.FEED_ID_KEY to feedId

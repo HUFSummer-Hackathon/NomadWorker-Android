@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="1dp"
-                android:background="@drawable/ic_dislike_24"
+                android:background="@drawable/ic_like_disable_24"
                 app:layout_constraintEnd_toStartOf="@id/tv_like_count"
                 app:layout_constraintTop_toTopOf="@id/tv_user_nickname" />
 

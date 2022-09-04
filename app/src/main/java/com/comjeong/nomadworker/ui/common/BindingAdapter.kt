@@ -63,7 +63,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("bindLikeStatus")
-    fun setLikeStatus(view: ImageButton, favorite: Boolean) {
+    fun setLikeStatus(view: AppCompatImageView, favorite: Boolean) {
         var select = true
         view.isSelected = favorite
     }
