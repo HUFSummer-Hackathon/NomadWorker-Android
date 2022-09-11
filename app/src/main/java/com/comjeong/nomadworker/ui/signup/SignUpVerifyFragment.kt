@@ -13,9 +13,12 @@ import com.comjeong.nomadworker.ui.common.base.BaseFragment
 import com.comjeong.nomadworker.ui.common.util.DialogUtil.setSignUpCloseDialog
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SignUpVerifyFragment : BaseFragment<FragmentSignUpVerifyBinding>(R.layout.fragment_sign_up_verify) {
 
+
+    private val viewModel : SignUpViewModel by sharedViewModel()
     private var verificationCode: String? = ""
     private var userEmail: String = ""
 
