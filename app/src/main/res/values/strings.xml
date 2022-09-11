@@ -26,7 +26,7 @@
     <string name="correct_password">알맞은 비밀번호 입니다 :)</string>
     <string name="incorrect_password">적합하지 않은 비밀번호 입니다 :(</string>
     <string name="same_password">비밀번호가 일치합니다!</string>
-    <string name="different_password">비밀번호가 달라요. 확인해주세요!</string>
+    <string name="different_password">동일한 비밀번호를 입력해주세요.</string>
     <string name="correct_email_format">여기로 인증 번호를 보낼게요!</string>
     <string name="incorrect_email_format">잘못된 이메일 형식이에요 :(</string>
     <string name="already_user">이미 존재하는 이메일입니다!</string>
@@ -110,5 +110,6 @@
     <string name="empty_scrap_message">아직 저장한 장소가 없어요.\n직접 장소를 등록해보시는 건 어떨까요?</string>
     <string name="delete_feed">피드 삭제</string>
     <string name="verify_notice">인증코드가 오지 않았다면 작성한 메일을 다시 확인해주세요.</string>
+    <string name="nickname_length_notice">닉네임은 최대 5글자까지 가능합니다.</string>
 
 </resources>

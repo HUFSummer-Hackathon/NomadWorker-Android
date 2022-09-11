@@ -15,4 +15,5 @@ object Constants {
     const val REPORT_USER_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdm7ZJWq3-ZjGyiNvdM3WbnGQAJ1sliAltSNLbDFIZ0xtVKvg/viewform?usp=sf_link"
     const val CAMERA_ZOOM = 17f
     const val OPEN_GALLERY : Int = 1
+    const val NICKNAME_LENGTH_LIMIT : Int = 5
 }

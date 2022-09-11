@@ -18,14 +18,13 @@ class SignUpPasswordFragment :
     BaseFragment<FragmentSignUpPasswordBinding>(R.layout.fragment_sign_up_password) {
 
     private val viewModel: SignUpViewModel by sharedViewModel()
+    private var isChangedPassword: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setNavigation()
         bindViews()
-
-        observePassword()
     }
 
     private fun setNavigation() {
@@ -47,15 +46,22 @@ class SignUpPasswordFragment :
     private fun bindViews() {
         binding.etPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
+                isChangedPassword = s?.length!! > 0
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                viewModel.typedPassword.value = s.toString()
             }
 
             override fun afterTextChanged(s: Editable?) {
-                checkValidationPattern()
+                if(s?.isEmpty()!!){
+                    binding.etPassword.setBackgroundResource(R.drawable.bg_white_radius_10_stroke_bluegrey)
+                    binding.tvPasswordStatusMessage.visibility = View.INVISIBLE
+                }
+                else{
+                    checkValidationPattern()
+                    activateNextButtonWithPasswordVerification()
+                }
+
             }
         })
 
@@ -68,7 +74,13 @@ class SignUpPasswordFragment :
             }
 
             override fun afterTextChanged(s: Editable?) {
-                activateNextButtonWithPasswordVerification()
+                if(s?.isEmpty()!!){
+                    binding.etConfirmPassword.setBackgroundResource(R.drawable.bg_white_radius_10_stroke_bluegrey)
+                    binding.tvConfirmPasswordStatusMessage.visibility = View.INVISIBLE
+                }
+                else{
+                    activateNextButtonWithPasswordVerification()
+                }
             }
         })
     }
@@ -77,12 +89,11 @@ class SignUpPasswordFragment :
      * 숫자, 문자, 특수문자 포함 8~15자 제한
      */
     private fun checkValidationPattern() {
-        val password = binding.etPassword.text.toString().trim()
+        val password = binding.etPassword.text.toString()
         val validationPattern = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\$@\$!%*#?&]).{8,15}.\$"
+        val isValidated = if(password.indexOf(" ") == -1) Pattern.matches(validationPattern, password) else false
 
-        val isValidated = Pattern.matches(validationPattern, password)
         return if (isValidated) {
-            binding.etPassword.setBackgroundResource(R.drawable.bg_green_radius_10)
             binding.tvPasswordStatusMessage.visibility = View.VISIBLE
             binding.tvPasswordStatusMessage.text = getString(R.string.correct_password)
             binding.tvPasswordStatusMessage.setTextColor(
@@ -92,7 +103,6 @@ class SignUpPasswordFragment :
                 )
             )
         } else {
-            binding.etPassword.setBackgroundResource(R.drawable.bg_red_radius_10)
             binding.tvPasswordStatusMessage.visibility = View.VISIBLE
             binding.tvPasswordStatusMessage.text = getString(R.string.incorrect_password)
             binding.tvPasswordStatusMessage.setTextColor(
@@ -105,11 +115,10 @@ class SignUpPasswordFragment :
     }
 
     private fun isSamePassword(): Boolean {
-        val password = binding.etPassword.text.toString().trim()
-        val confirmPassword = binding.etConfirmPassword.text.toString().trim()
+        val password = binding.etPassword.text.toString()
+        val confirmPassword = binding.etConfirmPassword.text.toString()
 
         return if (password == confirmPassword) {
-            binding.etConfirmPassword.setBackgroundResource(R.drawable.bg_green_radius_10)
             binding.tvConfirmPasswordStatusMessage.visibility = View.VISIBLE
             binding.tvConfirmPasswordStatusMessage.text = getString(R.string.same_password)
             binding.tvConfirmPasswordStatusMessage.setTextColor(
@@ -120,7 +129,6 @@ class SignUpPasswordFragment :
             )
             true
         } else {
-            binding.etConfirmPassword.setBackgroundResource(R.drawable.bg_red_radius_10)
             binding.tvConfirmPasswordStatusMessage.visibility = View.VISIBLE
             binding.tvConfirmPasswordStatusMessage.text = getString(R.string.different_password)
             binding.tvConfirmPasswordStatusMessage.setTextColor(
@@ -130,12 +138,6 @@ class SignUpPasswordFragment :
                 )
             )
             false
-        }
-    }
-
-    private fun observePassword() {
-        viewModel.typedPassword.observe(viewLifecycleOwner) { password ->
-            activateNextButtonWithPasswordVerification()
         }
     }
 

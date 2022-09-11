@@ -67,6 +67,7 @@ class SignUpEmailFragment :
         binding.btnVerifyEmail.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             viewModel.checkDuplicateEmail(email)
+            showLoadingSpinner(requireActivity())
 
             viewModel.isEmailDuplicated.observe(viewLifecycleOwner, EventObserver { isDuplicated ->
                 if (!isDuplicated) {
@@ -123,6 +124,7 @@ class SignUpEmailFragment :
         viewModel.emailCode.observe(viewLifecycleOwner) { emailCode ->
             Timber.d(emailCode)
             viewModel.email = binding.etEmail.text.toString().trim()
+            dismissLoadingSpinner()
             navigateWithBundle(
                 R.id.action_email_to_verify, bundleOf(
                     VERIFICATION_CODE to emailCode,

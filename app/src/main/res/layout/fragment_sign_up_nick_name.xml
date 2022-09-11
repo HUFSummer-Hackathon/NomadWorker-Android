@@ -45,6 +45,18 @@
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_nickname_length_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/nickname_length_notice"
+            android:textColor="@color/nomad_primary_blue"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@id/et_nickname"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_nickname"
             style="@style/TextSubtitle3"
