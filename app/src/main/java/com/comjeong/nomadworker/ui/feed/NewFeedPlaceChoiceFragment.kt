@@ -89,7 +89,8 @@ class NewFeedPlaceChoiceFragment : BaseFragment<FragmentNewFeedPlaceChoiceBindin
     private fun observePostNewFeed() {
         viewModel.isSuccessPost.observe(viewLifecycleOwner) { isSuccess ->
             if(isSuccess){
-                setNewFeedSuccessDialog(requireContext())
+                Toast.makeText(requireActivity(), "피드가 등록됐습니다.", Toast.LENGTH_SHORT).show()
+                this.requireActivity().finish()
             }
             else{
                 Toast.makeText(requireActivity(), "다시 시도해주세요.", Toast.LENGTH_SHORT)
