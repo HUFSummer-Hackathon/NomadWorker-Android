@@ -50,10 +50,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:text="@string/new_feed_content_subtitle"
+            android:text="@string/notice_new_feed_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_main_title"
-            tools:text="뭐라고 적는게 좋을까요?" />
+            tools:text="@string/notice_new_feed_content" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/tv_content_input_container"

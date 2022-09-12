@@ -61,7 +61,7 @@ class NewFeedContentChoiceFragment : BaseFragment<FragmentNewFeedContentChoiceBi
     }
 
     private fun isValidatePattern() : Boolean {
-        val text = binding.tvContentInputContainer.text
+        val text = binding.tvContentInputContainer.text?.trim()
         return !text.isNullOrEmpty()
     }
 
