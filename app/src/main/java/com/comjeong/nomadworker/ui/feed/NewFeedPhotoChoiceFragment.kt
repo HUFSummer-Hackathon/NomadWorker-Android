@@ -42,6 +42,7 @@ class NewFeedPhotoChoiceFragment : BaseFragment<FragmentNewFeedPhotoChoiceBindin
 
         binding.btnCamera.setOnClickListener {
             if(requireActivity().isGrantedPhotoGalleryPermission()){
+                Timber.d("갤러리 진입 전")
                 openGallery()
             }
             else{
@@ -57,11 +58,9 @@ class NewFeedPhotoChoiceFragment : BaseFragment<FragmentNewFeedPhotoChoiceBindin
     }
 
     private fun openGallery(){
-        binding.btnCamera.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "image/*"
-            startActivityForResult(intent, OPEN_GALLERY)
-        }
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent, OPEN_GALLERY)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
