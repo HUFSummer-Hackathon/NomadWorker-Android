@@ -4,13 +4,14 @@ import android.app.AlertDialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.MotionEvent.ACTION_HOVER_MOVE
+import android.view.MotionEvent.ACTION_MOVE
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RatingBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.Constants.CAMERA_ZOOM
 import com.comjeong.nomadworker.common.Constants.PLACE_ID_KEY
@@ -60,10 +61,12 @@ class PlaceDetailFragment :
         observePlaceDetailInfo()
         observeMessage()
         bindEvaluationClick()
+        bindGoogleMapScroll()
 
         mMapView = binding.mvPlaceMap
         mMapView.onCreate(savedInstanceState)
         mMapView.getMapAsync(this)
+
     }
 
     private fun observeMessage() {
@@ -131,6 +134,7 @@ class PlaceDetailFragment :
         mGoogleMap = googleMap
         mGoogleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
 
+
         mGoogleMap.apply {
             moveCamera(CameraUpdateFactory.newLatLngZoom(placeLocation, CAMERA_ZOOM))
             val options = MarkerOptions()
@@ -147,6 +151,29 @@ class PlaceDetailFragment :
         binding.btnEvaluation.setOnClickListener {
             setEvaluationDialog()
         }
+    }
+
+    private fun bindGoogleMapScroll() {
+        binding.ivMapContainer.setOnTouchListener(object : View.OnTouchListener{
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when(event?.action) {
+                    MotionEvent.ACTION_UP -> {
+                        binding.svPlaceDetail.requestDisallowInterceptTouchEvent(false)
+                        return false
+                    }
+                    MotionEvent.ACTION_DOWN -> {
+                        Timber.d("Down")
+                        binding.svPlaceDetail.requestDisallowInterceptTouchEvent(true)
+                        return false
+                    }
+                    MotionEvent.ACTION_MOVE -> {
+                        binding.svPlaceDetail.requestDisallowInterceptTouchEvent(true)
+                        return false
+                    }
+                }
+                return true
+            }
+        })
     }
 
     private fun setEvaluationDialog() {
