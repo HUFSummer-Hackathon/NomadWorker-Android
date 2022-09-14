@@ -12,11 +12,13 @@ import com.comjeong.nomadworker.common.Constants.FEED_ID_KEY
 import com.comjeong.nomadworker.common.Constants.FEED_USER_ID
 import com.comjeong.nomadworker.common.EventObserver
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
+import com.comjeong.nomadworker.data.model.feed.FeedLikeRequestData
 import com.comjeong.nomadworker.databinding.FragmentMyPageUserFeedDetailBinding
 import com.comjeong.nomadworker.ui.common.base.BaseFragment
 import com.comjeong.nomadworker.ui.common.customview.CustomDialog
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigate
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.feed.FeedViewModel
 import com.comjeong.nomadworker.ui.reply.ReplyViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
@@ -25,6 +27,7 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
 
     private val viewModel: MyPageViewModel by sharedViewModel()
     private val replyViewModel: ReplyViewModel by sharedViewModel()
+    private val feedViewModel: FeedViewModel by sharedViewModel()
     private var feedId: Long = 0
     private var userId: Long = 0
 
@@ -61,6 +64,14 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
             Timber.d("업데이트 된 피드상세 정보 : $feedDetail")
             setFeedOptionVisibility(feedDetail.userNickname.toString())
             setFeedOption()
+        }
+
+        viewModel.likesCount.observe(viewLifecycleOwner) { value ->
+            binding.likeCount = value
+        }
+
+        viewModel.isFavorite.observe(viewLifecycleOwner) { value ->
+            binding.isFavorite = value
         }
     }
 
@@ -128,6 +139,10 @@ class MyPageUserFeedDetailFragment : BaseFragment<FragmentMyPageUserFeedDetailBi
 
         binding.clCommentIconContainer.setOnClickListener {
             moveReplyPage()
+        }
+
+        binding.ivLike.setOnClickListener {
+            viewModel.postFeedLike(FeedLikeRequestData(feedId))
         }
     }
 

@@ -26,15 +26,6 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
 
     private val viewModel: ReplyViewModel by sharedViewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,7 +36,6 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
         bindDoneToWriteComment()
 
         observeClickReplyOption()
-        observeDeleteReply()
         observePostReply()
 
     }
@@ -80,20 +70,10 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
 
     private fun observeClickReplyOption() {
         viewModel.isClickOption.observe(viewLifecycleOwner, EventObserver<Boolean> {
-            setReplyOptionView()
+            setDeleteConfirmDialog()
         })
     }
 
-    private fun observeDeleteReply() {
-        viewModel.isDeleteReply.observe(viewLifecycleOwner, EventObserver<Boolean> { isSuccess ->
-            if(isSuccess){
-                Toast.makeText(requireActivity(),"댓글을 삭제했습니다.",Toast.LENGTH_SHORT).show()
-            }
-            else{
-                Toast.makeText(requireActivity(),"다시 시도해주세요.",Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     private fun setListAdapter() {
         val authorAdapter = ReplyAuthorTopAdapter(viewModel,viewLifecycleOwner)
@@ -126,17 +106,7 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
         })
     }
 
-    private fun setReplyOptionView() {
-        val bottomSheetView = layoutInflater.inflate(R.layout.dialog_reply_option, null)
-        val bottomSheetDialog = BottomSheetDialog(requireActivity())
 
-        bottomSheetView.findViewById<ConstraintLayout>(R.id.cl_delete_container).setOnClickListener {
-            setDeleteConfirmDialog()
-        }
-        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        bottomSheetDialog.setContentView(bottomSheetView)
-        bottomSheetDialog.show()
-    }
 
     private fun getTime(): String {
         val now = System.currentTimeMillis()

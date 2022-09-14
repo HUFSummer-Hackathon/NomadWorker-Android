@@ -51,33 +51,33 @@
             android:layout_marginEnd="10dp"
             android:text="@{feed.userName}"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_profile"
-            app:layout_constraintEnd_toStartOf="@id/btn_like"
+            app:layout_constraintEnd_toStartOf="@id/iv_like"
             app:layout_constraintStart_toEndOf="@id/iv_user_profile"
             app:layout_constraintTop_toTopOf="@id/iv_user_profile"
             tools:text="강원도불주먹" />
 
-        <ImageButton
-            android:id="@+id/btn_like"
-            app:layout_constraintCircleRadius="10dp"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="1dp"
             bindLikeStatus="@{feed.feedLikeStatus}"
             android:background="@drawable/selector_like_heart"
             app:layout_constraintBottom_toBottomOf="@id/iv_user_profile"
+            app:layout_constraintCircleRadius="10dp"
             app:layout_constraintEnd_toStartOf="@id/tv_like_count"
             app:layout_constraintTop_toTopOf="@id/iv_user_profile" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_like_count"
             style="@style/TextSubtitle2.Grey"
+            toString="@{feed.feedLike}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            toString="@{feed.feedLike}"
-            app:layout_constraintBottom_toBottomOf="@id/iv_user_profile"
+            app:layout_constraintBottom_toBottomOf="@id/iv_like"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_user_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_like"
             tools:text="127" />
 
         <androidx.appcompat.widget.AppCompatTextView

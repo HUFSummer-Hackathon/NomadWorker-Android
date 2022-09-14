@@ -18,7 +18,7 @@
         android:theme="@style/Theme.NomadWorker"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.feed.NewFeedActivity"
+            android:name=".ui.feed.newfeed.NewFeedActivity"
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"

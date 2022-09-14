@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.ui.feed
+package com.comjeong.nomadworker.ui.feed.newfeed
 
 import okhttp3.MultipartBody
 

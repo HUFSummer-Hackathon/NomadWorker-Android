@@ -1,4 +1,4 @@
-package com.comjeong.nomadworker.ui.feed
+package com.comjeong.nomadworker.ui.feed.newfeed
 
 import android.os.Bundle
 import android.view.View
@@ -9,6 +9,7 @@ import com.comjeong.nomadworker.ui.common.base.BaseFragment
 import com.comjeong.nomadworker.ui.common.util.DialogUtil.setNewFeedCloseDialog
 import com.comjeong.nomadworker.ui.common.util.DialogUtil.setNewFeedSuccessDialog
 import com.comjeong.nomadworker.ui.common.util.NavigationUtil.navigateUp
+import com.comjeong.nomadworker.ui.feed.FeedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 

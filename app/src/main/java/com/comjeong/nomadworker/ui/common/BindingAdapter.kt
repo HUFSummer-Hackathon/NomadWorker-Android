@@ -1,17 +1,18 @@
 package com.comjeong.nomadworker.ui.common
 
 import android.view.View
-import android.widget.ImageButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
-import androidx.databinding.BindingBuildInfo
 import com.comjeong.nomadworker.R
 import com.comjeong.nomadworker.common.GlideApp
 import com.comjeong.nomadworker.data.datasource.local.NomadSharedPreferences
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 object BindingAdapter {
 
@@ -63,7 +64,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("bindLikeStatus")
-    fun setLikeStatus(view: ImageButton, favorite: Boolean) {
+    fun setLikeStatus(view: AppCompatImageView, favorite: Boolean) {
         var select = true
         view.isSelected = favorite
     }
@@ -86,7 +87,7 @@ object BindingAdapter {
     @BindingAdapter("time")
     fun setTime(view: AppCompatTextView, timeToString: String) {
         val idx = 10
-        view.text = timeToString.replace("T", " ")
+        view.text = mappingReplyDateWithCalculateTime(timeToString)
     }
 
     @JvmStatic
@@ -96,6 +97,48 @@ object BindingAdapter {
             true -> view.visibility = View.VISIBLE
             false -> view.visibility = View.INVISIBLE
         }
+    }
+
+    private fun mappingReplyDateWithCalculateTime(replyDate: String): String {
+        val replyDateTime = dateTimeToMillis(replyDate)
+
+        val currentDateTime = Calendar.getInstance().timeInMillis
+        val difference = currentDateTime - replyDateTime
+
+        return when {
+            difference < 60000 -> {
+                "방금 전"
+            }
+            difference < 3600000 -> {
+                "${TimeUnit.MILLISECONDS.toMinutes(difference)}분 전"
+            }
+            difference < 86400000 -> {
+                "${TimeUnit.MILLISECONDS.toHours(difference)}시간 전"
+            }
+            difference < 2678000000 -> {  // 31일전
+                "${TimeUnit.MILLISECONDS.toDays(difference)}일 전"
+            }
+            else -> {
+                "오래 전"
+            }
+        }
+
+    }
+
+    private fun dateTimeToMillis(dateTime: String): Long {
+        var timeInMilliSeconds: Long = 0
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")  // yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
+
+        try {
+            val date = simpleDateFormat.parse(dateTime)
+            if (date != null) {
+                timeInMilliSeconds = date.time
+            }
+        } catch (e: Throwable) {
+            e.printStackTrace()
+        }
+
+        return timeInMilliSeconds
     }
 
 //    @JvmStatic

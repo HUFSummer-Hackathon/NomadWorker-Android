@@ -38,7 +38,7 @@ class FeedAdapter(
         }
 
         private fun setLikeButtonClickListener(feed: TotalFeedsResult.Result) {
-            binding.btnLike.setOnClickListener {
+            binding.ivLike.setOnClickListener {
                 Timber.d("$isLikeClick")
                 if (isLikeClick) {
                     it.isSelected = !feed.feedLikeStatus

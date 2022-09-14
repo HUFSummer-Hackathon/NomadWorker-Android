@@ -4,6 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="likeCount"
+            type="int" />
+
+
+        <variable
+            name="isFavorite"
+            type="int" />
 
         <variable
             name="feedDetail"
@@ -87,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
-                app:layout_constraintEnd_toStartOf="@id/btn_like"
+                app:layout_constraintEnd_toStartOf="@id/iv_like"
                 app:layout_constraintTop_toTopOf="@id/tv_user_nickname">
 
                 <androidx.appcompat.widget.AppCompatImageButton
@@ -116,25 +124,26 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btn_like"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="1dp"
-                android:background="@drawable/ic_dislike_24"
+                android:background="@drawable/selector_like_heart"
+                android:src="@{isFavorite == 1 ? @drawable/ic_like_activate_24 : @drawable/ic_like_disable_24}"
                 app:layout_constraintEnd_toStartOf="@id/tv_like_count"
                 app:layout_constraintTop_toTopOf="@id/tv_user_nickname" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_like_count"
                 style="@style/TextSubtitle1.Gray01"
-                toString="@{feedDetail.feedLike}"
+                toString="@{likeCount}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                app:layout_constraintBottom_toBottomOf="@id/btn_like"
+                app:layout_constraintBottom_toBottomOf="@id/iv_like"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/btn_like"
+                app:layout_constraintTop_toTopOf="@id/iv_like"
                 tools:text="127" />
 
 

@@ -8,7 +8,8 @@ data class UserFeedDetailResult(
     data class Result(
         val feedImage: String?,
         val feedContent: String?,
-        val feedLike: Int?,
+        val likeCount: Int?,
+        val likeStatus: Int?,
         val userProfileUrl: String?,
         val userNickname: String?
     )

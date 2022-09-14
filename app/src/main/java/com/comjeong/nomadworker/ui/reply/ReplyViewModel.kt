@@ -56,9 +56,6 @@ class ReplyViewModel(private val repository: ReplyRepository): ViewModel() {
     private val _isClickOption: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
     val isClickOption: MutableLiveData<Event<Boolean>> = _isClickOption
 
-    private val _isDeleteReply: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
-    val isDeleteReply: MutableLiveData<Event<Boolean>> = _isDeleteReply
-
     fun getReply() {
         viewModelScope.launch {
             try {
@@ -124,10 +121,6 @@ class ReplyViewModel(private val repository: ReplyRepository): ViewModel() {
                                 as ArrayList<GetReplyResult.Result.Other>
                         replyMutableList.removeAt(selectedIndex)
                         _replyList.value = replyMutableList
-                        _isDeleteReply.value = Event(true)
-                    }
-                    400 -> {
-                        _isDeleteReply.value = Event(false)
                     }
                 }
 
