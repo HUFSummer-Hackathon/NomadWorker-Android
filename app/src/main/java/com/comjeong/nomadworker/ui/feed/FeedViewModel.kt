@@ -9,6 +9,7 @@ import com.comjeong.nomadworker.data.model.feed.FeedLikeRequestData
 import com.comjeong.nomadworker.domain.model.feed.TotalFeedsResult
 import com.comjeong.nomadworker.domain.model.place.NewFeedPlaceSearchResult
 import com.comjeong.nomadworker.domain.repository.feed.FeedRepository
+import com.comjeong.nomadworker.ui.common.extension.default
 import com.comjeong.nomadworker.ui.feed.newfeed.NewFeedInfo
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -40,11 +41,6 @@ class FeedViewModel(private val repository: FeedRepository) : ViewModel() {
     private val _openFeedDetailEvent: MutableLiveData<Event<Long>> = MutableLiveData<Event<Long>>()
     val openFeedDetailEvent: LiveData<Event<Long>> = _openFeedDetailEvent
 
-    private val _isFavorite: MutableLiveData<Int> = MutableLiveData<Int>()
-    val isFavorite: LiveData<Int> = _isFavorite
-
-    private val _likesCount: MutableLiveData<Int> = MutableLiveData<Int>()
-    val likesCount: LiveData<Int> = _likesCount
 
     fun getTotalFeeds() {
         viewModelScope.launch {

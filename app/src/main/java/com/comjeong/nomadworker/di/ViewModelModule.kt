@@ -20,7 +20,7 @@ val viewModelModule = module {
     viewModel { PlaceRegionViewModel(get()) }
     viewModel { PlaceDetailViewModel(get()) }
     viewModel { FeedViewModel(get()) }
-    viewModel { MyPageViewModel(get()) }
+    viewModel { MyPageViewModel(get(), get()) }
     viewModel { SearchViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
     viewModel { ReplyViewModel(get()) }

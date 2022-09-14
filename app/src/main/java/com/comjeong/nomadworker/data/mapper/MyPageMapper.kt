@@ -35,7 +35,8 @@ object MyPageMapper {
             data = UserFeedDetailResult.Result(
                 feedImage = body.data?.feedImage,
                 feedContent = body.data?.feedContent,
-                feedLike = body.data?.feedLike,
+                likeCount = body.data?.likeCount,
+                likeStatus = if (body.data?.likeStatus == true) 1 else 0,
                 userProfileUrl = body.data?.userProfileUrl,
                 userNickname = body.data?.userNickname
             )

@@ -10,7 +10,7 @@ data class UserFeedDetailResponseData(
     data class Result(
         @SerializedName("f_image") val feedImage: String,
         @SerializedName("f_content") val feedContent: String,
-        @SerializedName("f_like_count") val feedLike: Int,
+        @SerializedName("f_like_count") val likeCount: Int,
         @SerializedName("like_status") val likeStatus: Boolean,
         @SerializedName("f_time") val feedTime: String,
         @SerializedName("u_image") val userProfileUrl: String,
