@@ -36,7 +36,6 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
         bindDoneToWriteComment()
 
         observeClickReplyOption()
-        observeDeleteReply()
         observePostReply()
 
     }
@@ -75,16 +74,6 @@ class ReplyFragment : BaseFragment<FragmentFeedReplyBinding>(R.layout.fragment_f
         })
     }
 
-    private fun observeDeleteReply() {
-        viewModel.isDeleteReply.observe(viewLifecycleOwner, EventObserver<Boolean> { isSuccess ->
-            if(isSuccess){
-                Toast.makeText(requireActivity(),"댓글을 삭제했습니다.",Toast.LENGTH_SHORT).show()
-            }
-            else{
-                Toast.makeText(requireActivity(),"다시 시도해주세요.",Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     private fun setListAdapter() {
         val authorAdapter = ReplyAuthorTopAdapter(viewModel,viewLifecycleOwner)
